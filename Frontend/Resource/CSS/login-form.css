@@ -1,0 +1,59 @@
+.form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px black solid;
+    padding: 15px;
+    border-radius: 5px;
+    
+}
+@media (min-width: 2700px){
+    .form{
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 1500px){
+    .form{
+        max-width: 500px;
+    }
+}
+
+.active{
+    display: none;
+}
+
+.form>div:first-child {
+    padding-top: 5px;
+    text-align: center;
+}
+
+.form>div:nth-child(2) {
+    padding: 5px 5px 0 0;
+    text-align: right;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 2.12;
+}
+
+.form>form {
+    padding-top: 10px;
+    text-align: right;
+}
+
+.login-button {
+    text-align: center;
+    padding-top: 5px;
+    width: 100%;
+}
+
+.signup {
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.rememberme-label {
+    margin-right: 25px;
+}

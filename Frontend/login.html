@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhatis Shop</title>
+    <link rel="shortcut icon" href="Resource/Logo/ZH-Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="Resource/lib/bootstrap4/css/bootstrap-rtl.css" />
+    <link href="https://cdn.rawgit.com/rastikerdar/sahel-font/v1.0.0-alpha23/dist/font-face.css" rel="stylesheet"
+        type="text/css" />
+    <link rel="stylesheet" href="Resource/CSS/login-form.css">
+</head>
+
+<body class="row">
+    <div class="col-3 login-form form">
+        <div>
+            <img src="Resource/Logo/ZH-Logo.png" height="80" width="80" alt="">
+        </div>
+        <div>
+            <a>ورود</a>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">ایمیل کاربری</label>
+                <input dir="rtl" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">رمز عبور</label>
+                <input dir="rtl" type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="form-check">
+                <label class="form-check-label rememberme-label" for="exampleCheck1">مرا به خاطر بسپار</label>
+                <input dir="rtl" type="checkbox" class="form-check-input" id="exampleCheck1">
+            </div>
+            <div class="login-button">
+                <button type="submit" class="btn btn-primary login-button">ورود</button>
+            </div>
+            <div class="signup">
+                <span class="" id="check">اکانت کاربری ندارید؟
+                    <a class="label signup-label" href="#" id="signin-form-button">ثبت نام</a>
+                </span>
+            </div>
+        </form>
+    </div>
+    <div class="col-4 signup-form form active">
+        <div>
+            <img src="Resource/Logo/ZH-Logo.png" height="80" width="80" alt="">
+        </div>
+        <div>
+            <a>ثبت نام</a>
+        </div>
+        <form>
+            <div class="row" dir="rtl">
+                <div class="col-md-6 form-group">
+                        <label for="exampleInputEmail1">نام</label>
+                        <input dir="rtl" type="text" class="form-control" id="exampleInputEmail1"
+                            placeholder="">
+                </div>
+                <div class="col-md-6 form-group">
+                        <label for="exampleInputEmail1">نام خانوادگی</label>
+                        <input dir="rtl" type="text" class="form-control" id="exampleInputEmail1"
+                            placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">ایمیل کاربری</label>
+                <input dir="rtl" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">رمز عبور</label>
+                <input dir="rtl" type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">تکرار رمز عبور</label>
+                <input dir="rtl" type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="login-button">
+                <button type="submit" class="btn btn-primary login-button">ثبت نام</button>
+            </div>
+            <div class="signup">
+                <span class="" id="check">قبلا ثبت نام کرده اید؟
+                    <a class="label login-label" href="#" id="login-form-button">ورود</a>
+                </span>
+            </div>
+        </form>
+    </div>
+
+    <script src="Resource/lib/jquery/dist/jquery.min.js"></script>
+    <script src="Resource/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="Js/login-form.js"></script>
+</body>
+
+</html>
