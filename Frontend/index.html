@@ -42,7 +42,7 @@
                     </ul>
                     <ul class="navbar-nav left-navbar">
                         <li class="nav-item shopping-cart">
-                            <i class="nav-link active orderList fa fa-shopping-cart fa-lg">
+                            <i class="nav-link active bg-transparent orderList fa fa-shopping-cart fa-lg">
                             </i>
                         </li>
                         <li class="nav-item">
@@ -51,17 +51,33 @@
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-user-o fa-xl" aria-hidden="true"></i>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <div class="dropdown-item row" href="#">
-                                        <div class="dropdown-item-icon col-md-2">
-                                            <i class="fa fa-google-wallet  fa-lg" aria-hidden="true"></i>
+                                <div dir="rtl" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a href="javascript:void(0)" class="dropdown-item">
+                                        <div class="border-bottom">
+                                            <span>
+                                                <img class="avatar" src="Resource/Images/avatar.png" alt="Avatar"></img>
+                                            </span>
+                                            <span>
+                                                نام کاربری
+                                            </span>
+                                            <span class="float-left">
+                                                <i class="fa fa-chevron-left"></i>
+                                            </span>
                                         </div>
-                                        <div class="dropdown-item-text col-md-5">
-                                            <a>js</a>
+                                    </a>
+                                    <a class="dropdown-item">
+                                        <div>
+                                            <span>
+                                                <img class="wallet-icon" src="Resource/Images/profile-wallet.svg"></img>
+                                            </span>
+                                                <span>
+                                                    کیف پول
+                                                </span>
+                                                <span class="float-left wallet-balance">
+                                                    ۰ تومان
+                                                </span>
                                         </div>
-                                    </div>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    </a>
                                 </div>
                             </div>
                         </li>
@@ -76,20 +92,20 @@
         </nav>
     </header>
 
-    <div class="row">
-        <div class="col-md-12 container-fluid slide-show">
+    <div>
+        <div class="slide-show ">
             <div class="slideshow-container">
                 <!-- Full-width images with number and caption text -->
-                <div class="mySlides fade">
-                    <img src="/Resource/Images/slideshowimage1.jpg" style="width:100%">
+                <div class="mySlides fade show">
+                    <img src="Resource/Images/slideshowimage1.jpg" style="width:100%">
                 </div>
 
-                <div class="mySlides fade">
-                    <img src="/Resource/Images/slideshowimage2.jpg" style="width:100%">
+                <div class="mySlides fade show">
+                    <img src="Resource/Images/slideshowimage2.jpg" style="width:100%">
                 </div>
 
-                <div class="mySlides fade">
-                    <img src="/Resource/Images/slideshowimage3.jpg" style="width:100%">
+                <div class="mySlides fade show">
+                    <img src="Resource/Images/slideshowimage3.jpg" style="width:100%">
                 </div>
             </div>
             <!-- The dots/circles -->
@@ -113,7 +129,7 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="card border-dark mb-3 card text-center">
-                                <img src="/Resource/Images/1.jpg" height="250" width="170" class="card-img-top"
+                                <img src="Resource/Images/1.jpg" height="250" width="170" class="card-img-top"
                                     alt="image" />
                                 <div class="card-body">
                                     <h6 class="card-title">نام محصول</h6>
@@ -139,8 +155,8 @@
     </footer>
     <script src="Resource/lib/jquery/dist/jquery.min.js"></script>
     <script src="Resource/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/Js/icons.js" crossorigin="anonymous"></script>
-    <script src="/Js/slideshow.js"></script>
+    <script src="Js/icons.js" crossorigin="anonymous"></script>
+    <script src="Js/slideshow.js"></script>
 </body>
 
 </html>

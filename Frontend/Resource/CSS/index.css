@@ -1,30 +1,30 @@
 .body {
-    font-family: sahel, sans-serif;
+  font-family: sahel, sans-serif;
 }
 
 .wallet {
-    position: absolute;
-    left: 50px;
-    margin-left: 30px;
-    color: white;
+  position: absolute;
+  left: 50px;
+  margin-left: 30px;
+  color: white;
 }
 
 .wallet .dropdown-menu {
-    right: auto !important;
+  right: auto !important;
 }
 
 .accountInfoIcon {
-    color: white;
+  color: white;
 }
 
 .AccountInfo {
-    position: absolute;
-    left: 0px;
-    margin-left: 85px;
+  position: absolute;
+  left: 0px;
+  margin-left: 85px;
 }
 
 .AccountInfo .dropdown-menu {
-    right: auto !important;
+  right: auto !important;
 }
 
 /* .search1 {
@@ -33,96 +33,125 @@
 } */
 
 .footer {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .orderList {
-    margin: auto;
-    /* margin: 5px; */
-    /* margin-top: 12px; */
-    text-align: center;
-    vertical-align: middle;
+  margin: auto;
+  /* margin: 5px; */
+  /* margin-top: 12px; */
+  text-align: center;
+  vertical-align: middle;
 
-    /* height: 40px; */
+  /* height: 40px; */
 }
 
 .ordercount {
-    left: 29px;
-    position: absolute
+  left: 29px;
+  position: absolute;
 }
 
 .container-fluid {
-    max-width: 1500px !important;
-    width: 90%;
+  max-width: 1500px !important;
+  width: 90%;
 }
 
 .left-navbar {
-    position: absolute;
-    direction: ltr;
-    /* padding-top: 15px; */
+  position: absolute;
+  direction: ltr;
+  /* padding-top: 15px; */
 }
 
 .input-group {
-    direction: rtl;
+  direction: rtl;
 }
 
 .nav-item {
-    margin-left: auto !important;
+  margin-left: auto !important;
 }
 
 .shopping-cart {
-    border-right: 1px white dotted;
-    margin-right: 5px;
-    padding-right: 15px;
+  border-right: 1px white dotted;
+  margin-right: 5px;
+  padding-right: 15px;
 }
 
 .signin {
-    border: 1px white solid;
-    border-radius: 8px;
-    margin-left: 5px !important;
-    font-size: 80%;
-    color: white !important;
+  border: 1px white solid;
+  border-radius: 8px;
+  margin-left: 5px !important;
+  font-size: 80%;
+  color: white !important;
 }
 
 .signin>a>i {
-    padding-left: 7px;
+  padding-left: 7px;
 }
 
-.dropdown-menu {
-    right: auto !important;
-}
+.dropdown-menu {}
 
 #dropdownMenuLink {
-    color: white;
+  color: white;
 }
 
 .nav-link {
-    color: white !important;
+  color: white !important;
 }
 
 .navbar-nav {
-    padding-right: 5px !important;
+  padding-right: 5px !important;
 }
 
 .body-content {
-    border-top: 2px rgb(174, 174, 174) solid;
-    padding-top: 10px;
-    margin: auto !important;
+  border-top: 2px rgb(174, 174, 174) solid;
+  padding-top: 10px;
+  margin: auto !important;
 }
 
 .navbar {
-    margin-bottom: 0px !important;
+  margin-bottom: 0px !important;
 }
 
 .dropdown-item {
-    padding-right: 10px;
-    padding-left: 10px;
+  padding: 0 15px 5px 15px;
 }
 
-.dropdown-item-icon {
+.dropdown-item>div {
+  padding: 0 0px 2px 15px;
 }
 
-.dropdown-item-text {
-    border-bottom: 1px;
-    padding: 0px;
+.navbar-nav {
+  align-items: center;
+}
+
+.sticky-top {
+  right: 0;
+  left: 0;
+  width: 100%;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+.dropdown-menu {
+  min-width: 270px;
+  font-size: 16px;
+  border-radius: 5px;
+  right: auto !important;
+}
+
+.fa-chevron-left {
+  vertical-align: text-bottom;
+}
+.wallet-icon{
+  padding: 0px 5px 0px 5px ;
+}
+.wallet-balance{
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.303);
 }

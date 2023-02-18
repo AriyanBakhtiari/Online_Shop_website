@@ -3,17 +3,17 @@
     "development"
   ],
   "hints": {
+    "axe/parsing": [
+      "default",
+      {
+        "duplicate-id-aria": "off"
+      }
+    ],
     "axe/text-alternatives": [
       "default",
       {
         "image-alt": "off"
       }
     ]
-  },
-  "browserslist": [
-    "defaults",
-    "not ie 11",
-    "not ios_saf <= 16.3",
-    "not safari <= 16.3"
-  ]
+  }
 }
