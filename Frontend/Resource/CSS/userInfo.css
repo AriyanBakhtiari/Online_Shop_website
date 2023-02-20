@@ -1,0 +1,36 @@
+.user-avatar {
+  vertical-align: middle;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: -5px -10px 0px 5px;
+  margin-bottom: 5px;
+}
+
+.list-group-item-div {
+  margin-bottom: -10px;
+}
+
+.list-group-item.no-border {
+  border-bottom: none;
+}
+
+.line-content {
+  margin: -21px 23px 10px 10px;
+  position: absolute;
+  border: 2px rgba(0, 0, 0, 0.303) solid;
+  border-radius: 1px;
+  height: 70px;
+}
+
+.circle-content {
+  margin: 22px 23px 10px 10px;
+  position: absolute;
+  border: 8px rgba(0, 0, 0, 0.303) solid;
+  border-radius: 50px;
+  height: 5px;
+}
+
+.line-content~span {
+  margin-right: 35px;
+}
