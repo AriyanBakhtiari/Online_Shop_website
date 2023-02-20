@@ -21,15 +21,16 @@
         <div class="text-center">
             <h5>ورود</h5>
         </div>
-        <form>
+        <form class="form-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">ایمیل کاربری</label>
-                <input dir="rtl" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="">
+                <label for="InputEmail1">ایمیل کاربری</label>
+                <input dir="rtl" type="text" class="form-control" id="InputEmail1" placeholder="">
+                <span dir="rtl" class="error" aria-live="polite"></span>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">رمز عبور</label>
-                <input dir="rtl" type="password" class="form-control" id="exampleInputPassword1">
+                <label for="InputPassword1">رمز عبور</label>
+                <input dir="rtl" type="password" class="form-control" id="InputPassword1">
+                <span dir="rtl" class="error" aria-live="polite"></span>
             </div>
             <div class="form-check">
                 <label class="form-check-label rememberme-label" for="exampleCheck1">مرا به خاطر بسپار</label>
@@ -55,26 +56,31 @@
         <form>
             <div class="row" dir="rtl">
                 <div class="col-md-6 form-group">
-                    <label for="exampleInputEmail1">نام</label>
-                    <input dir="rtl" type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                    <label for="inputName">نام</label>
+                    <input dir="rtl" type="text" class="form-control" id="inputName" placeholder="">
+                    <span dir="rtl" class="error" aria-live="polite"></span>
                 </div>
                 <div class="col-md-6 form-group">
-                    <label for="exampleInputEmail1">نام خانوادگی</label>
-                    <input dir="rtl" type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                    <label for="InputFamily">نام خانوادگی</label>
+                    <input dir="rtl" type="text" class="form-control" id="InputFamily" placeholder="" novalidate>
+                    <span dir="rtl" class="error" aria-live="polite"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">ایمیل کاربری</label>
-                <input dir="rtl" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                <label for="InputEmail2">ایمیل کاربری</label>
+                <input dir="rtl" type="text" class="form-control" id="InputEmail2" aria-describedby="emailHelp"
                     placeholder="">
+                <span dir="rtl" class="error" aria-live="polite"></span>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">رمز عبور</label>
-                <input dir="rtl" type="password" class="form-control" id="exampleInputPassword1">
+                <label for="InputPassword2">رمز عبور</label>
+                <input dir="rtl" type="password" class="form-control" id="InputPassword2">
+                <span dir="rtl" class="error" aria-live="polite"></span>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">تکرار رمز عبور</label>
-                <input dir="rtl" type="password" class="form-control" id="exampleInputPassword1">
+                <label for="InputPassword2-repeat">تکرار رمز عبور</label>
+                <input dir="rtl" type="password" class="form-control" id="InputPassword2-repeat">
+                <span dir="rtl" class="error" aria-live="polite"></span>
             </div>
             <div class="login-button">
                 <button type="submit" class="btn btn-primary login-button">ثبت نام</button>
@@ -90,6 +96,7 @@
     <script src="Resource/lib/jquery/dist/jquery.min.js"></script>
     <script src="Resource/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="Js/login-form.js"></script>
+    <script src="Js/loginvalidation.js"></script>
 </body>
 
 </html>

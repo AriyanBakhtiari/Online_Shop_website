@@ -177,7 +177,7 @@
 }
 
 .popup-outside {
-  display: flex;
+  display: none;
   -webkit-box-pack: center;
   justify-content: center;
   -webkit-box-align: center;
@@ -185,9 +185,7 @@
   position: fixed;
   inset: 0px;
   z-index: 10000;
-  animation: 0.3s;
   background-color: rgba(0, 0, 0, 0.4);
-
 }
 
 .blocker {

@@ -1,10 +1,11 @@
 
 function showCurrencyDetail() {
     var popup = document.getElementById("currencyDetailPopup");
-    popup.classList.replace("invisible", "visible");
+    popup.style.display = "block";
+    toPersianNumbers();
 }
 
 function closeCurrencyDetailt() {
     var popup = document.getElementById("currencyDetailPopup");
-    popup.classList.replace("visible", "invisible");
+    popup.style.display = "none";
 }
