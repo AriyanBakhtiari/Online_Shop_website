@@ -3,6 +3,7 @@ for (let i = 0; i < elements.length; i++) {
     const element = elements[i];
     element.innerText = toFarsiNumber(element.innerText);
 }
+
 function toFarsiNumber(n) {
     const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     let num = "";
@@ -44,11 +45,10 @@ function toFarsiNumber(n) {
     return num;
 }
 
-function showCurrencyDetail() {
-    var popup = document.getElementById("currencyDetailPopup");
-    popup.classList.replace("invisible", "visible");
-}
-function closeCurrencyDetailt() {
-    var popup = document.getElementById("currencyDetailPopup");
-    popup.classList.replace("visible", "invisible");
-}
+$(function () {
+    var includes = $('[data-include]')
+    $.each(includes, function () {
+        var file = 'PartialViews/' + $(this).data('include') + '.html'
+        $(this).load(file)
+    })
+})

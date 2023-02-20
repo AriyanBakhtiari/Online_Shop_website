@@ -15,348 +15,270 @@
 </head>
 
 <body class="rtl body">
-    <header class="sticky-top">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  navbar-dark bg-dark box-shadow mb-3 ">
-            <div class="container-fluid">
-                <div class="navbar-brand">
-                    <img src="Resource/Logo/ZH-Logo.png" height="40" width="40" alt="">
-                    <!-- <a>
-                        ژاتیس
-                    </a> -->
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link">صفحه اصلی</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">محصولات</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">درباره ما</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav left-navbar">
-                        <li class="nav-item shopping-cart">
-                            <i class="nav-link active bg-transparent orderList fa fa-shopping-cart fa-lg">
-                            </i>
-                        </li>
-                        <li class="nav-item">
-                            <div class="dropdown show">
-                                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-user-o fa-xl" aria-hidden="true"></i>
-                                </a>
-                                <div dir="rtl" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a href="javascript:void(0)" class="dropdown-item">
-                                        <div class="border-bottom">
-                                            <span>
-                                                <img class="avatar" src="Resource/Images/avatar.png" alt="Avatar"></img>
-                                            </span>
-                                            <span>
-                                                نام کاربری
-                                            </span>
-                                            <span class="float-left">
-                                                <i class="fa fa-chevron-left"></i>
-                                            </span>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item">
-                                        <div>
-                                            <span>
-                                                <img class="wallet-icon" src="Resource/Images/profile-wallet.svg"></img>
-                                            </span>
-                                            <span>
-                                                کیف پول
-                                            </span>
-                                            <span class="float-left wallet-balance">
-                                                ۰ تومان
-                                            </span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item signin">
-                            <a class="nav-link" href="login.html">ورود | ثبت‌نام
-                                <i class="fa fa-sign-in fa-lg" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    <script src="Resource/lib/jquery/dist/jquery.min.js"></script>
+    <script src="Js/main.js"></script>
+
+    <header class="sticky-top" data-include="navbar"></header>
+
+    <div class="slide-show ">
+        <div class="slideshow-container">
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade show">
+                <img src="Resource/Images/slideshowimage1.jpg" style="width:100%">
             </div>
-        </nav>
-    </header>
 
-    <div>
-        <div class="slide-show ">
-            <div class="slideshow-container">
-                <!-- Full-width images with number and caption text -->
-                <div class="mySlides fade show">
-                    <img src="Resource/Images/slideshowimage1.jpg" style="width:100%">
-                </div>
-
-                <div class="mySlides fade show">
-                    <img src="Resource/Images/slideshowimage2.jpg" style="width:100%">
-                </div>
-
-                <div class="mySlides fade show">
-                    <img src="Resource/Images/slideshowimage3.jpg" style="width:100%">
-                </div>
+            <div class="mySlides fade show">
+                <img src="Resource/Images/slideshowimage2.jpg" style="width:100%">
             </div>
-            <!-- The dots/circles -->
-            <div class=" slide-dot ">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
+
+            <div class="mySlides fade show">
+                <img src="Resource/Images/slideshowimage3.jpg" style="width:100%">
             </div>
         </div>
-        <div class="container-fluid body-content">
-            <div class="row" id="body-1">
-                <div class="col-md-3">
-                    <ul class="list-group">
-                        <li
-                            class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
-                            <div style="margin:auto;">
-                                <a>
-                                    قیمت ارز
-                                </a>
-                            </div>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center  pb-0">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">عنوان</th>
-                                        <th scope="col" class="text-center">قیمت(تومان)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <image src="http://185.8.175.192/Currency/CurrencyIcon/Dollar.png"
-                                                class="avatar-currency"></image>
-                                            <span>دلار</span>
-                                        </td>
-                                        <td class="persian-num text-center">۴۷۰،۰۰۰</td>
+        <!-- The dots/circles -->
+        <div class=" slide-dot ">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+    <div class="container-fluid body-content">
+        <div class="row" id="body-1">
+            <div class="col-md-3">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
+                        <div style="margin:auto;">
+                            <a>
+                                قیمت ارز
+                            </a>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center  pb-0">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">عنوان</th>
+                                    <th scope="col" class="text-center">قیمت(تومان)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <image src="http://185.8.175.192/Currency/CurrencyIcon/Dollar.png"
+                                            class="avatar-currency"></image>
+                                        <span>دلار</span>
+                                    </td>
+                                    <td class="persian-num text-center">۴۷۰،۰۰۰</td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <image src="http://185.8.175.192/Currency/CurrencyIcon/Dollar.png"
-                                                class="avatar-currency"></image>
-                                            <span>دلار</span>
-                                        </td>
-                                        <td class="persian-num text-center">۴۷۰،۰۰۰</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" class="text-center">
-                                            <button class="btn btn-secondary btn-block"
-                                                onclick="showCurrencyDetail()">جزییات
-                                                بیشتر</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </li>
-                        <br />
-                        <li
-                            class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center pb-0">
-                            <div style="margin:auto;">
-                                <a>
-                                    قیمت ارز دیجیتال
-                                </a>
-                            </div>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <table class="table table-sm ">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">عنوان</th>
-                                        <th scope="col" class="text-center">قیمت(تومان)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <image src="http://185.8.175.192/Currency/CurrencyIcon/Dollar.png"
-                                                class="avatar-currency"></image>
-                                            <span>دلار</span>
-                                        </td>
-                                        <td class="persian-num text-center">۴۷۰،۰۰۰</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <image src="http://185.8.175.192/Currency/CurrencyIcon/Dollar.png"
+                                            class="avatar-currency"></image>
+                                        <span>دلار</span>
+                                    </td>
+                                    <td class="persian-num text-center">۴۷۰،۰۰۰</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">
+                                        <button class="btn btn-secondary btn-block"
+                                            onclick="showCurrencyDetail()">جزییات
+                                            بیشتر</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <br />
+                    <li
+                        class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center pb-0">
+                        <div style="margin:auto;">
+                            <a>
+                                قیمت ارز دیجیتال
+                            </a>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <table class="table table-sm ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">عنوان</th>
+                                    <th scope="col" class="text-center">قیمت(تومان)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <image src="http://185.8.175.192/Currency/CurrencyIcon/Dollar.png"
+                                            class="avatar-currency"></image>
+                                        <span>دلار</span>
+                                    </td>
+                                    <td class="persian-num text-center">۴۷۰،۰۰۰</td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <image src="http://185.8.175.192/Currency/CurrencyIcon/Dollar.png"
-                                                class="avatar-currency"></image>
-                                            <span>دلار</span>
-                                        </td>
-                                        <td class="persian-num text-center">۴۷۰،۰۰۰</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" class="text-center">
-                                            <button class="btn btn-secondary btn-block" onclick="showCurrencyDetail()">جزییات
-                                                بیشتر</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </li>
-                        <br />
-                        <li
-                            class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center pb-0">
-                            <div style="margin:auto;">
-                                <a>
-                                    قیمت طلا
-                                </a>
-                            </div>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <table class="table table-sm ">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">عنوان</th>
-                                        <th scope="col" class="text-center">قیمت(تومان)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <span>دلار</span>
-                                        </td>
-                                        <td class="persian-num text-center">۴۷۰،۰۰۰</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <image src="http://185.8.175.192/Currency/CurrencyIcon/Dollar.png"
+                                            class="avatar-currency"></image>
+                                        <span>دلار</span>
+                                    </td>
+                                    <td class="persian-num text-center">۴۷۰،۰۰۰</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">
+                                        <button class="btn btn-secondary btn-block"
+                                            onclick="showCurrencyDetail()">جزییات
+                                            بیشتر</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <br />
+                    <li
+                        class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center pb-0">
+                        <div style="margin:auto;">
+                            <a>
+                                قیمت طلا
+                            </a>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <table class="table table-sm ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">عنوان</th>
+                                    <th scope="col" class="text-center">قیمت(تومان)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span>دلار</span>
+                                    </td>
+                                    <td class="persian-num text-center">۴۷۰،۰۰۰</td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>دلار</span>
-                                        </td>
-                                        <td class="persian-num text-center">۴۷۰،۰۰۰</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" class="text-center">
-                                            <button class="btn btn-secondary btn-block" onclick="showCurrencyDetail()">جزییات
-                                                بیشتر</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-9">
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="card border-dark mb-3 card text-center">
-                                <img src="Resource/Images/1.jpg" height="250" width="170" class="card-img-top"
-                                    alt="image" />
-                                <div class="card-body">
-                                    <h6 class="card-title">نام محصول</h6>
-                                    <p class="card-text">
-                                        <span class="badge badge-light">قیمت تومان </span>
-                                    </p>
-                                    <a asp-action="Details" asp-controller="Home" asp-route-id="@Model.Id"
-                                        class="btn btn-primary">جزییات محصول</a>
-                                </div>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>دلار</span>
+                                    </td>
+                                    <td class="persian-num text-center">۴۷۰،۰۰۰</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">
+                                        <button class="btn btn-secondary btn-block"
+                                            onclick="showCurrencyDetail()">جزییات
+                                            بیشتر</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="card border-dark mb-3 card text-center">
+                            <img src="Resource/Images/1.jpg" height="250" width="170" class="card-img-top"
+                                alt="image" />
+                            <div class="card-body">
+                                <h6 class="card-title">نام محصول</h6>
+                                <p class="card-text">
+                                    <span class="badge badge-light">قیمت تومان </span>
+                                </p>
+                                <a asp-action="Details" asp-controller="Home" asp-route-id="@Model.Id"
+                                    class="btn btn-primary">جزییات محصول</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="popup-outside invisible" id="currencyDetailPopup">
-                    <div class="blocker" onclick="closeCurrencyDetailt()"></div>
-                    <div class="align-self-center popup form active shadow-lg p-3 mb-5 bg-white rounded">
-                        <button type="button" class="close float-right" aria-label="Close"
-                            onclick="closeCurrencyDetailt()">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <div class="table-container">
-                            <table class="table table-striped table-1">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">عنوان</th>
-                                        <th scope="col">قیمت زنده</th>
-                                        <th scope="col">تغییر</th>
-                                        <th scope="col">کمترین</th>
-                                        <th scope="col">بیشترین</th>
-                                        <th scope="col">زمان</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="table table-striped">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">عنوان</th>
-                                        <th scope="col">قیمت زنده</th>
-                                        <th scope="col">تغییر</th>
-                                        <th scope="col">کمترین</th>
-                                        <th scope="col">بیشترین</th>
-                                        <th scope="col">زمان</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+            </div>
+            <div class="popup-outside invisible" id="currencyDetailPopup">
+                <div class="blocker" onclick="closeCurrencyDetailt()"></div>
+                <div class="align-self-center popup form active shadow-lg p-3 mb-5 bg-white rounded">
+                    <button type="button" class="close float-right" aria-label="Close" onclick="closeCurrencyDetailt()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="table-container">
+                        <table class="table table-striped table-1">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">عنوان</th>
+                                    <th scope="col">قیمت زنده</th>
+                                    <th scope="col">تغییر</th>
+                                    <th scope="col">کمترین</th>
+                                    <th scope="col">بیشترین</th>
+                                    <th scope="col">زمان</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">عنوان</th>
+                                    <th scope="col">قیمت زنده</th>
+                                    <th scope="col">تغییر</th>
+                                    <th scope="col">کمترین</th>
+                                    <th scope="col">بیشترین</th>
+                                    <th scope="col">زمان</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container-fluid">
-            &copy; 2022 - Zhatis Shop -
-            <a>Privacy</a>
-        </div>
-    </footer>
-    <script src="Resource/lib/jquery/dist/jquery.min.js"></script>
+    <footer class="border-top footer text-muted" data-include="footer"></footer>
+
     <script src="Resource/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="Js/icons.js" crossorigin="anonymous"></script>
+    <script src="Js/icons.js"></script>
     <script src="Js/slideshow.js"></script>
-    <script src="Js/main.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
