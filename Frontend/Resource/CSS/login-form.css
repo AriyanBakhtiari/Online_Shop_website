@@ -8,7 +8,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 20px;
     max-width: 500px;
     border: 1px rgba(0, 0, 0, 0.3) solid;
 }
@@ -95,4 +95,16 @@ input:focus.invalid {
     color: rgb(255, 0, 0);
     border-radius: 0 0 5px 5px;
     box-sizing: border-box;
+}
+
+.logo-section {
+    background-color: rgb(52, 58, 64);
+    margin: -16px -16px 5px -16px;
+    padding: 10px 0 10px 0;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+label {
+    margin-right: 5px;
 }
