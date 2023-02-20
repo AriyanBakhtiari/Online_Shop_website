@@ -3,24 +3,25 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px black solid;
     padding: 15px;
     border-radius: 5px;
-    
-}
-@media (min-width: 2700px){
-    .form{
-        max-width: 700px;
-    }
+    max-width: 500px;
+    border: 1px rgba(0, 0, 0, 0.3) solid;
 }
 
-@media (max-width: 1500px){
-    .form{
+@media (min-width: 2700px) {
+    .form {
         max-width: 500px;
     }
 }
 
-.active{
+@media (max-width: 1500px) {
+    .form {
+        max-width: 400px;
+    }
+}
+
+.active {
     display: none;
 }
 

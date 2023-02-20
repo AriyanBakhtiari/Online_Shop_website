@@ -3,16 +3,13 @@
 }
 
 /* Slideshow container */
-.slideshow-container {
+.slideshow-container {}
 
-}
-
-.slide-show{
+.slide-show {
     padding: 0px 0px 5px 0px;
     max-width: 1800px !important;
     position: relative;
-    margin: auto
-    ;
+    margin: auto;
 }
 
 /* Hide the images by default */
@@ -53,9 +50,9 @@
     transition: background-color 0.6s ease;
 }
 
-.slide-dot{
-    text-align:center ;
-    position:relative !important;
+.slide-dot {
+    text-align: center;
+    position: relative !important;
     top: -24px;
     opacity: 50%;
 }
@@ -80,4 +77,3 @@
         opacity: 1
     }
 }
-
