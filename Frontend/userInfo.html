@@ -11,6 +11,8 @@
         type="text/css" />
     <link rel="stylesheet" href="Resource/CSS/index.css" />
     <link rel="stylesheet" href="Resource/CSS/userInfo.css" />
+    <link rel="stylesheet" href="Resource/splide/node_modules/@splidejs/splide/dist/css/splide-core.min.css" />
+    <link rel="stylesheet" href="Resource/splide/node_modules/@splidejs/splide/dist/css/splide.min.css" />
 </head>
 
 <body class="rtl body ">
@@ -39,6 +41,9 @@
                 <li class="list-group-item">
                     <div>
                         <span class="wallet-info">
+                            <img class="wallet-icon" src="Resource/Images/profile-wallet.svg"></img>
+                        </span>
+                        <span>
                             کیف پول
                         </span>
                         <span class="float-left wallet-balance">
@@ -48,7 +53,7 @@
                 </li>
             </ul>
             <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" id="user-info-detail-list" data-toggle="list"
+                <a class="list-group-item list-group-item-action  active" id="user-info-detail-list" data-toggle="list"
                     href="#user-info-detail" role="tab" aria-controls="user-info-detail">
                     <span>
                         اطلاعات کاربری
@@ -78,13 +83,242 @@
         <div class="col-md-9">
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade active show" id="user-info-detail">
-                    ...
+                    <div class="card ">
+                        <div class="card-header">
+                            اطلاعات کاربری
+                        </div>
+                        <div class="card-body user-info-body row">
+                            <div class="col-md-6 user-info-body-detail">
+                                <p>
+                                    نام </p>
+                                <p>
+                                    -
+                                </p>
+                            </div>
+                            <div class="col-md-6 user-info-body-detail">
+                                <p>
+                                    نام خانوادگی
+                                </p>
+                                <p>
+                                    -
+                                </p>
+                            </div>
+                            <div class="col-md-6 user-info-body-detail">
+                                <p>
+                                    کد ملی
+                                </p>
+                                <p>
+                                    -
+                                </p>
+                            </div>
+                            <div class="col-md-6 user-info-body-detail">
+                                <p>
+                                    شماره موبایل
+                                </p>
+                                <p>
+                                    -
+                                </p>
+                            </div>
+                            <div class="col-md-6 user-info-body-detail">
+                                <p>
+                                    ایمیل
+                                </p>
+                                <p>
+                                    -
+                                </p>
+                            </div>
+                            <div class="col-md-6 user-info-body-detail">
+                                <p>
+                                    تاریخ تولد
+                                </p>
+                                <p>
+                                    -
+                                </p>
+                            </div>
+                            <div class="col-md-6 user-info-body-detail">
+                                <p>
+                                    کد پستی
+                                </p>
+                                <p>
+                                    -
+                                </p>
+                            </div>
+                            <div class="col-md-12 user-info-body-detail">
+                                <p>
+                                    آدرس
+                                </p>
+                                <p>
+                                    -
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="tab-pane fade" id="order-list" role="tabpanel" aria-labelledby="list-profile-list">...</div>
-                <div class="tab-pane fade" id="order-history" role="tabpanel" aria-labelledby="list-profile-list">...
+                <div class="tab-pane fade " id="order-list" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div class="card ">
+                        <div class="card-header">
+                            سبد خرید
+                        </div>
+                        <div class="card-body orderList-body row">
+                            <div class="col-md-12">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" scope="col"></th>
+                                            <th class="text-center" scope="col">عنوان</th>
+                                            <th class="text-center" scope="col">قیمت </th>
+                                            <th class="text-center" scope="col">تعداد</th>
+                                            <th class="text-center" scope="col">مجموع</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="align-middle-table">
+                                            <td class="orderlist-image">
+                                                <img src="Resource/Images/1.jpg" class="orderlist-image" alt="image" />
+                                            </td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr class="align-middle-table">
+                                            <td class="orderlist-image">
+                                                -
+                                            </td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr class="align-middle-table">
+                                            <td class="orderlist-image">
+                                                -
+                                            </td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="order-list-price">
+                                <span>
+                                    قیمت کل
+                                </span>
+                                <span>
+                                    -
+                                </span>
+                            </div>
+                            <div class="col-12">
+                                <a href="#" class="btn btn-primary mt-2 float-left ">خرید نهایی</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade  " id="order-history" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div>
+                        <div class="card ">
+                            <div class="card-header">
+                                <div class=" row">
+                                    <div class="col-md-4 order-history-card-header">
+                                        <span>
+                                            شماره سفارش :
+                                        </span>
+                                        <span>
+                                            -
+                                        </span>
+                                    </div>
+                                    <div class="col-md-4 order-history-card-header">
+                                        <span>
+                                            تاریخ سفارش :
+                                        </span>
+                                        <span>
+                                            -
+                                        </span>
+                                    </div>
+                                    <div class="col-md-4 order-history-card-header">
+                                        <span>
+                                            مبلغ :
+                                        </span>
+                                        <span>
+                                            -
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="splide" role="group" aria-label="Splide Basic HTML Example">
+                                <div class="splide__track">
+                                    <ul class="splide__list">
+                                        <li class="splide__slide">
+                                            <div class="card border-dark mb-3 card text-center">
+                                                <img src="Resource/Images/1.jpg" class="card-img-order-history"
+                                                    alt="image" />
+                                                <div class="card-body">
+                                                    <h6 class="card-title">نام محصول</h6>
+                                                    <p class="card-text">
+                                                        <span class="badge badge-light">قیمت تومان </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="splide__slide">
+                                            <div class="card border-dark mb-3 card text-center">
+                                                <img src="Resource/Images/1.jpg" class="card-img-order-history"
+                                                    alt="image" />
+                                                <div class="card-body">
+                                                    <h6 class="card-title">نام محصول</h6>
+                                                    <p class="card-text">
+                                                        <span class="badge badge-light">قیمت تومان </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="splide__slide">
+                                            <div class="card border-dark mb-3 card text-center">
+                                                <img src="Resource/Images/1.jpg" class="card-img-order-history"
+                                                    alt="image" />
+                                                <div class="card-body">
+                                                    <h6 class="card-title">نام محصول</h6>
+                                                    <p class="card-text">
+                                                        <span class="badge badge-light">قیمت تومان </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="splide__slide">
+                                            <div class="card border-dark mb-3 card text-center">
+                                                <img src="Resource/Images/1.jpg" class="card-img-order-history"
+                                                    alt="image" />
+                                                <div class="card-body">
+                                                    <h6 class="card-title">نام محصول</h6>
+                                                    <p class="card-text">
+                                                        <span class="badge badge-light">قیمت تومان </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="splide__slide">
+                                            <div class="card border-dark mb-3 card text-center">
+                                                <img src="Resource/Images/1.jpg" class="card-img-order-history"
+                                                    alt="image" />
+                                                <div class="card-body">
+                                                    <h6 class="card-title">نام محصول</h6>
+                                                    <p class="card-text">
+                                                        <span class="badge badge-light">قیمت تومان </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="edit-user-info-detail" role="tabpanel"
-                    aria-labelledby="list-profile-list">...</div>
+                    aria-labelledby="list-profile-list">
+                    ...</div>
             </div>
         </div>
     </div>
@@ -95,7 +329,27 @@
     <script src="Js/icons.js"></script>
     <script src="Js/userInfo.js"></script>
     <script src="Js/main.js"></script>
+    <script src="Resource/splide/node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
+    <script>
+        var splide = new Splide('.splide', {
 
+            direction: 'rtl',
+            // type: 'loop',
+            perPage: 5,
+            focus: 'center',
+            rewind: true,
+            speed: 400,
+            perMove: 1,
+            pagination: true,
+            drag: true,
+            // fixedWidth: 230 ,
+            autoWidth: true,
+            trimSpace: 'move',
+        });
+
+        splide.mount();
+
+    </script>
 </body>
 
 </html>

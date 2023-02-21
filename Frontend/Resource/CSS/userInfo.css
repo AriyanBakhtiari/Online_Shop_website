@@ -16,7 +16,7 @@
 }
 
 .wallet-info {
-  padding-right: 25px;
+  padding-right: 15px;
   font-size: 15px;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .list-group-item.active>span {
-  border-right: 3px white solid;
+  border-right: 2px white solid;
   border-radius: 5px;
   padding-right: 5px;
   margin-right: -10px;
@@ -49,4 +49,131 @@
   to {
     opacity: 1
   }
+}
+
+.user-info-body-detail>p:first-of-type {
+  opacity: 0.7;
+}
+
+.user-info-body-detail>p:nth-of-type(2) {
+  padding-right: 20px;
+  border: rgba(0, 0, 0, 0.2) solid 1px;
+  border-radius: 10px;
+  padding: 5px 10px 5px 0px;
+  width: 90%;
+}
+
+.user-info-body-detail {
+  margin-top: 10px;
+}
+
+.orderlist-image {
+  width: 100px;
+  height: 100px;
+}
+
+
+.align-middle-table>td,
+.align-middle-table>th {
+  vertical-align: middle !important;
+  text-align: center;
+}
+
+.order-list-price {
+  display: flex;
+  white-space: nowrap;
+  vertical-align: middle !important;
+  padding: 5px;
+  margin-right: 25px;
+}
+
+.order-list-price>span:first-of-type {
+  vertical-align: middle !important;
+  margin-left: 15px;
+  padding: 5px;
+}
+
+.order-list-price>span:nth-of-type(2) {
+  padding: 5px 10px 5px 0px;
+  border: rgba(0, 0, 0, 0.2) solid 1px;
+  border-radius: 10px;
+  vertical-align: middle !important;
+  min-width: 250px !important;
+}
+
+
+.splide__slide {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  /* background: rgb(52, 58, 64); */
+}
+
+.splide__slide__container {
+  width: 600px;
+  text-align: center;
+}
+
+.slide__content {
+  margin: 1rem 0;
+  font-size: 1.3rem;
+}
+
+.slide-img__wrapper {
+  display: flex;
+  align-items: center;
+
+}
+
+.slide-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.slide-img__caption {
+  margin-left: 1rem;
+}
+
+.slide-img__caption span {
+  color: #2E86C1;
+  font-weight: 500;
+}
+
+.splide__pagination__page.is-active {
+  background: #ff0000 !important;
+}
+
+.splide__pagination {
+  display: flex !important;
+  position: relative !important;
+}
+
+.order-history-card-header {
+  display: flex;
+  white-space: nowrap;
+  vertical-align: middle !important;
+  padding: 5px;
+}
+
+.order-history-card-header>span:nth-of-type(1) {
+  vertical-align: middle !important;
+  margin-left: 15px;
+  padding: 5px;
+}
+
+.order-history-card-header>span:nth-of-type(2) {
+  padding: 5px 10px 5px 0px;
+  border: rgba(0, 0, 0, 0.2) solid 1px;
+  border-radius: 10px;
+  vertical-align: middle !important;
+  min-width: 200px !important;
+}
+
+.card-img-order-history {
+  width: 200px;
+  height: 200spx;
 }
