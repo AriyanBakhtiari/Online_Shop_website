@@ -15,22 +15,38 @@
   border-bottom: none;
 }
 
-.line-content {
-  margin: -21px 23px 10px 10px;
-  position: absolute;
-  border: 2px rgba(0, 0, 0, 0.303) solid;
-  border-radius: 1px;
-  height: 70px;
+.wallet-info {
+  padding-right: 25px;
+  font-size: 15px;
 }
 
-.circle-content {
-  margin: 22px 23px 10px 10px;
-  position: absolute;
-  border: 8px rgba(0, 0, 0, 0.303) solid;
-  border-radius: 50px;
-  height: 5px;
+.wallet-balance {
+  padding-left: 10px;
 }
 
-.line-content~span {
-  margin-right: 35px;
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #000000b4;
+  border-color: #00000067;
+
+}
+
+.list-group-item.active>span {
+  border-right: 3px white solid;
+  border-radius: 5px;
+  padding-right: 5px;
+  margin-right: -10px;
+  animation-name: fadeBorderButton;
+  animation-duration: 1.5s;
+}
+
+@keyframes fadeBorderButton {
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
 }

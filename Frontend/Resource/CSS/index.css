@@ -155,49 +155,13 @@
 }
 
 .wallet-icon {
-  padding: 0px 5px 0px 5px;
+  padding: 0px 0px 0px 5px;
+  margin-right: -5px;
 }
 
 .wallet-balance {
   font-size: 15px;
   color: rgba(0, 0, 0, 0.303);
-}
-
-.popup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  padding: 15px;
-  border-radius: 5px;
-  margin: auto;
-  animation: 1s cubic-bezier(0.4, 0, 0, 1.5) 0s 1 normal forwards running cdxymQ;
-}
-
-.popup-outside {
-  display: none;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
-  position: fixed;
-  inset: 0px;
-  z-index: 10000;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.blocker {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  content: ' ';
-}
-
-.popup .show {
-  visibility: visible;
 }
 
 .table-container {
@@ -209,4 +173,8 @@
 
 .table-1 {
   margin-left: 15px
+}
+
+.modal-dialog {
+  max-width: 1500px !important;
 }

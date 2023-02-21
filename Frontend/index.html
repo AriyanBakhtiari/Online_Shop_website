@@ -23,15 +23,15 @@
     <div class="slide-show ">
         <div class="slideshow-container">
             <!-- Full-width images with number and caption text -->
-            <div class="mySlides fade show">
+            <div class="mySlides fadeSideShow show">
                 <img src="Resource/Images/slideshowimage1.jpg" style="width:100%">
             </div>
 
-            <div class="mySlides fade show">
+            <div class="mySlides fadeSideShow show">
                 <img src="Resource/Images/slideshowimage2.jpg" style="width:100%">
             </div>
 
-            <div class="mySlides fade show">
+            <div class="mySlides fadeSideShow show">
                 <img src="Resource/Images/slideshowimage3.jpg" style="width:100%">
             </div>
         </div>
@@ -80,8 +80,8 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="text-center">
-                                        <button class="btn btn-secondary btn-block"
-                                            onclick="showCurrencyDetail()">جزییات
+                                        <button class="btn btn-secondary btn-block" data-toggle="modal"
+                                            data-target="#currencyModel">جزییات
                                             بیشتر</button>
                                     </td>
                                 </tr>
@@ -198,94 +198,100 @@
                     </div>
                 </div>
             </div>
-            <div class="popup-outside" id="currencyDetailPopup">
-                <div class="blocker" onclick="closeCurrencyDetailt()"></div>
-                <div class="align-self-center popup form active shadow-lg p-3 mb-5 bg-white rounded">
-                    <button type="button" class="close float-right" aria-label="Close" onclick="closeCurrencyDetailt()">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <div class="table-container">
-                        <table class="table table-striped table-1">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">عنوان</th>
-                                    <th scope="col">قیمت زنده</th>
-                                    <th scope="col">تغییر</th>
-                                    <th scope="col">کمترین</th>
-                                    <th scope="col">بیشترین</th>
-                                    <th scope="col">زمان</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <image src="http://185.8.175.192/Currency/CurrencyIcon/Dollar.png"
-                                            class="avatar-currency"></image>
-                                        <span>دلار</span>
-                                    </td>
-                                    <td class="persian-num">452,040 ریال</td>
-                                    <td class="persian-num">-10 ریال</td>
-                                    <td class="persian-num">451,980 ریال</td>
-                                    <td class="persian-num">452,180 ریال</td>
-                                    <td class="persian-num">2023-02-20T13:26:01</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="table table-striped">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">عنوان</th>
-                                    <th scope="col">قیمت زنده</th>
-                                    <th scope="col">تغییر</th>
-                                    <th scope="col">کمترین</th>
-                                    <th scope="col">بیشترین</th>
-                                    <th scope="col">زمان</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <image src="http://185.8.175.192/Currency/CurrencyIcon/Dollar.png"
-                                            class="avatar-currency"></image>
-                                        <span>دلار</span>
-                                    </td>
-                                    <td class="persian-num">452,040 ریال</td>
-                                    <td class="persian-num">-10 ریال</td>
-                                    <td class="persian-num">451,980 ریال</td>
-                                    <td class="persian-num">452,180 ریال</td>
-                                    <td class="persian-num">2023-02-20T13:26:01</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <div dir="rtl" class="modal fade" id="currencyModel" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-container">
+                                <table class="table table-striped table-1">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">عنوان</th>
+                                            <th scope="col">قیمت زنده</th>
+                                            <th scope="col">تغییر</th>
+                                            <th scope="col">کمترین</th>
+                                            <th scope="col">بیشترین</th>
+                                            <th scope="col">زمان</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <image src="http://185.8.175.192/Currency/CurrencyIcon/Dollar.png"
+                                                    class="avatar-currency"></image>
+                                                <span>دلار</span>
+                                            </td>
+                                            <td class="persian-num">452,040 ریال</td>
+                                            <td class="persian-num">-10 ریال</td>
+                                            <td class="persian-num">451,980 ریال</td>
+                                            <td class="persian-num">452,180 ریال</td>
+                                            <td class="persian-num">2023-02-20T13:26:01</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">عنوان</th>
+                                            <th scope="col">قیمت زنده</th>
+                                            <th scope="col">تغییر</th>
+                                            <th scope="col">کمترین</th>
+                                            <th scope="col">بیشترین</th>
+                                            <th scope="col">زمان</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <image src="http://185.8.175.192/Currency/CurrencyIcon/Dollar.png"
+                                                    class="avatar-currency"></image>
+                                                <span>دلار</span>
+                                            </td>
+                                            <td class="persian-num">452,040 ریال</td>
+                                            <td class="persian-num">-10 ریال</td>
+                                            <td class="persian-num">451,980 ریال</td>
+                                            <td class="persian-num">452,180 ریال</td>
+                                            <td class="persian-num">2023-02-20T13:26:01</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <footer class="border-top footer text-muted" data-include="footer"></footer>
@@ -293,7 +299,7 @@
     <script src="Resource/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="Js/icons.js"></script>
     <script src="Js/slideshow.js"></script>
-    <script src="js/index.js"></script>
+    <script src="Js/index.js"></script>
 </body>
 
 </html>

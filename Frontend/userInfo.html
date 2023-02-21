@@ -10,7 +10,6 @@
     <link href="https://cdn.rawgit.com/rastikerdar/sahel-font/v1.0.0-alpha23/dist/font-face.css" rel="stylesheet"
         type="text/css" />
     <link rel="stylesheet" href="Resource/CSS/index.css" />
-    <link rel="stylesheet" href="Resource/CSS/slideshow.css" />
     <link rel="stylesheet" href="Resource/CSS/userInfo.css" />
 </head>
 
@@ -18,11 +17,11 @@
     <script src="Resource/lib/jquery/dist/jquery.min.js"></script>
     <script src="Js/main.js"></script>
 
-    <header class="sticky-top" data-include="navbar"></header>
+    <header class="sticky-top mb-4" data-include="navbar"></header>
     <div class="container-fluid row body-content">
         <div class="col-md-3">
-            <ul class="list-group">
-                <li class="list-group-item">
+            <ul class="list-group mb-2">
+                <li class="list-group-item no-border">
                     <div class="list-group-item-div ">
                         <span>
                             <img class="user-avatar" src="Resource/Images/avatar.png" alt="Avatar"></img>
@@ -37,38 +36,66 @@
                         </span>
                     </div>
                 </li>
-                <li class="list-group-item no-border">
+                <li class="list-group-item">
                     <div>
-                        <span class="line-content">
-                        </span>
-                        <span class="circle-content">
-                        </span>
-                        <span>
+                        <span class="wallet-info">
                             کیف پول
                         </span>
-                    </div>
-                </li>
-                <li class="list-group-item no-border">
-                    <div>
-                        <span class="line-content">
-                        </span>
-                        <span>
-                            کیف پول
+                        <span class="float-left wallet-balance">
+                            ۰ تومان
                         </span>
                     </div>
                 </li>
             </ul>
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="user-info-detail-list" data-toggle="list"
+                    href="#user-info-detail" role="tab" aria-controls="user-info-detail">
+                    <span>
+                        اطلاعات کاربری
+                    </span>
+                </a>
+                <a class="list-group-item list-group-item-action" id="order-list-list" data-toggle="list"
+                    href="#order-list" role="tab" aria-controls="order-list">
+                    <span>
+                        سبد خرید
+                    </span>
+                </a>
+                <a class="list-group-item list-group-item-action" id="order-history-list" data-toggle="list"
+                    href="#order-history" role="tab" aria-controls="order-history">
+                    <span>
+                        سفارشات پیشین
+                    </span>
+                </a>
+                <a class="list-group-item list-group-item-action" id="edit-user-info-detail-list" data-toggle="list"
+                    href="#edit-user-info-detail" role="tab" aria-controls="edit-user-info-detail">
+                    <span>
+                        ویرایش اطلاعات
+                        کاربری
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade active show" id="user-info-detail">
+                    ...
+                </div>
+                <div class="tab-pane fade" id="order-list" role="tabpanel" aria-labelledby="list-profile-list">...</div>
+                <div class="tab-pane fade" id="order-history" role="tabpanel" aria-labelledby="list-profile-list">...
+                </div>
+                <div class="tab-pane fade" id="edit-user-info-detail" role="tabpanel"
+                    aria-labelledby="list-profile-list">...</div>
+            </div>
         </div>
     </div>
-
-
 
     <footer class="border-top footer text-muted" data-include="footer"></footer>
 
     <script src="Resource/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="Js/icons.js"></script>
-    <script src="Js/slideshow.js"></script>
-    <script src="js/index.js"></script>
+    <script src="Js/userInfo.js"></script>
+    <script src="Js/main.js"></script>
+
 </body>
 
 </html>

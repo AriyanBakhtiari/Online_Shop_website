@@ -2,8 +2,6 @@
     box-sizing: border-box
 }
 
-/* Slideshow container */
-.slideshow-container {}
 
 .slide-show {
     padding: 0px 0px 5px 0px;
@@ -16,7 +14,6 @@
 .mySlides {
     display: none;
 }
-
 
 /* Caption text */
 .text {
@@ -57,18 +54,18 @@
     opacity: 50%;
 }
 
-.active,
+.dot.active,
 .dot:hover {
     background-color: #717171;
 }
 
 /* Fading animation */
-.fade {
-    animation-name: fade;
+.fadeSideShow {
+    animation-name: fadeSideShow;
     animation-duration: 1.5s;
 }
 
-@keyframes fade {
+@keyframes fadeSideShow {
     from {
         opacity: .4
     }

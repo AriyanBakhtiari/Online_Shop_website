@@ -5,9 +5,10 @@
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('jquery'), require('popper.js')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
-  (global = global || self, factory(global.bootstrap = {}, global.jQuery, global.Popper));
-}(this, (function (exports, $, Popper) { 'use strict';
+    typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
+      (global = global || self, factory(global.bootstrap = {}, global.jQuery, global.Popper));
+}(this, (function (exports, $, Popper) {
+  'use strict';
 
   $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
   Popper = Popper && Popper.hasOwnProperty('default') ? Popper['default'] : Popper;
@@ -315,7 +316,7 @@
       $.removeData(this._element, DATA_KEY);
       this._element = null;
     } // Private
-    ;
+      ;
 
     _proto._getRootElement = function _getRootElement(element) {
       var selector = Util.getSelectorFromElement(element);
@@ -358,7 +359,7 @@
     _proto._destroyElement = function _destroyElement(element) {
       $(element).detach().trigger(Event.CLOSED).remove();
     } // Static
-    ;
+      ;
 
     Alert._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -516,7 +517,7 @@
       $.removeData(this._element, DATA_KEY$1);
       this._element = null;
     } // Static
-    ;
+      ;
 
     Button._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -816,7 +817,7 @@
       this._activeElement = null;
       this._indicatorsElement = null;
     } // Private
-    ;
+      ;
 
     _proto._getConfig = function _getConfig(config) {
       config = _objectSpread2(_objectSpread2({}, Default), config);
@@ -1103,7 +1104,7 @@
         this.cycle();
       }
     } // Static
-    ;
+      ;
 
     Carousel._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -1439,7 +1440,7 @@
       this._triggerArray = null;
       this._isTransitioning = null;
     } // Private
-    ;
+      ;
 
     _proto._getConfig = function _getConfig(config) {
       config = _objectSpread2(_objectSpread2({}, Default$1), config);
@@ -1484,7 +1485,7 @@
         $(triggerArray).toggleClass(ClassName$3.COLLAPSED, !isOpen).attr('aria-expanded', isOpen);
       }
     } // Static
-    ;
+      ;
 
     Collapse._getTargetFromElement = function _getTargetFromElement(element) {
       var selector = Util.getSelectorFromElement(element);
@@ -1800,7 +1801,7 @@
         this._popper.scheduleUpdate();
       }
     } // Private
-    ;
+      ;
 
     _proto._addEventListeners = function _addEventListeners() {
       var _this = this;
@@ -1895,7 +1896,7 @@
 
       return _objectSpread2(_objectSpread2({}, popperConfig), this._config.popperConfig);
     } // Static
-    ;
+      ;
 
     Dropdown._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -1985,7 +1986,7 @@
 
       return parent || element.parentNode;
     } // eslint-disable-next-line complexity
-    ;
+      ;
 
     Dropdown._dataApiKeydownHandler = function _dataApiKeydownHandler(event) {
       // If not input/textarea:
@@ -2301,7 +2302,7 @@
     _proto.handleUpdate = function handleUpdate() {
       this._adjustDialog();
     } // Private
-    ;
+      ;
 
     _proto._getConfig = function _getConfig(config) {
       config = _objectSpread2(_objectSpread2({}, Default$3), config);
@@ -2391,11 +2392,11 @@
       var _this5 = this;
 
       $(document).off(Event$5.FOCUSIN) // Guard against infinite focus loop
-      .on(Event$5.FOCUSIN, function (event) {
-        if (document !== event.target && _this5._element !== event.target && $(_this5._element).has(event.target).length === 0) {
-          _this5._element.focus();
-        }
-      });
+        .on(Event$5.FOCUSIN, function (event) {
+          if (document !== event.target && _this5._element !== event.target && $(_this5._element).has(event.target).length === 0) {
+            _this5._element.focus();
+          }
+        });
     };
 
     _proto._setEscapeEvent = function _setEscapeEvent() {
@@ -2519,10 +2520,10 @@
         callback();
       }
     } // ----------------------------------------------------------------------
-    // the following methods are used to handle overflowing modals
-    // todo (fat): these should probably be refactored out of modal.js
-    // ----------------------------------------------------------------------
-    ;
+      // the following methods are used to handle overflowing modals
+      // todo (fat): these should probably be refactored out of modal.js
+      // ----------------------------------------------------------------------
+      ;
 
     _proto._adjustDialog = function _adjustDialog() {
       var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
@@ -2608,7 +2609,7 @@
       document.body.removeChild(scrollDiv);
       return scrollbarWidth;
     } // Static
-    ;
+      ;
 
     Modal._jQueryInterface = function _jQueryInterface(config, relatedTarget) {
       return this.each(function () {
@@ -3141,7 +3142,7 @@
         this._popper.scheduleUpdate();
       }
     } // Protected
-    ;
+      ;
 
     _proto.isWithContent = function isWithContent() {
       return Boolean(this.getTitle());
@@ -3196,7 +3197,7 @@
 
       return title;
     } // Private
-    ;
+      ;
 
     _proto._getPopperConfig = function _getPopperConfig(attachment) {
       var _this3 = this;
@@ -3461,7 +3462,7 @@
       this.show();
       this.config.animation = initConfigAnimation;
     } // Static
-    ;
+      ;
 
     Tooltip._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -3630,7 +3631,7 @@
       this.setElementContent($tip.find(Selector$7.CONTENT), content);
       $tip.removeClass(ClassName$7.FADE + " " + ClassName$7.SHOW);
     } // Private
-    ;
+      ;
 
     _proto._getContent = function _getContent() {
       return this.element.getAttribute('data-content') || this.config.content;
@@ -3644,7 +3645,7 @@
         $tip.removeClass(tabClass.join(''));
       }
     } // Static
-    ;
+      ;
 
     Popover._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -3854,7 +3855,7 @@
       this._activeTarget = null;
       this._scrollHeight = null;
     } // Private
-    ;
+      ;
 
     _proto._getConfig = function _getConfig(config) {
       config = _objectSpread2(_objectSpread2({}, Default$6), typeof config === 'object' && config ? config : {});
@@ -3962,7 +3963,7 @@
         return node.classList.remove(ClassName$8.ACTIVE);
       });
     } // Static
-    ;
+      ;
 
     ScrollSpy._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -4143,7 +4144,7 @@
       $.removeData(this._element, DATA_KEY$9);
       this._element = null;
     } // Private
-    ;
+      ;
 
     _proto._activate = function _activate(element, container, callback) {
       var _this2 = this;
@@ -4205,7 +4206,7 @@
         callback();
       }
     } // Static
-    ;
+      ;
 
     Tab._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -4388,7 +4389,7 @@
       this._element = null;
       this._config = null;
     } // Private
-    ;
+      ;
 
     _proto._getConfig = function _getConfig(config) {
       config = _objectSpread2(_objectSpread2(_objectSpread2({}, Default$7), $(this._element).data()), typeof config === 'object' && config ? config : {});
@@ -4422,7 +4423,7 @@
         complete();
       }
     } // Static
-    ;
+      ;
 
     Toast._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
