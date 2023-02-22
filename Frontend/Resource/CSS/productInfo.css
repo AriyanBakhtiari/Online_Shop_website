@@ -1,0 +1,16 @@
+.product-info {
+    min-width: 300px;
+}
+
+.product-info>p:first-of-type {
+    white-space: nowrap;
+    margin-bottom: 2px;
+}
+
+.product-info>p:nth-of-type(2) {
+    border: rgba(0, 0, 0, 0.2) solid 1px;
+    border-radius: 10px;
+    padding: 5px 10px 5px 0px;
+    width: 80%;
+    margin-right: 20px;
+}
