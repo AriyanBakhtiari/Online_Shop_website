@@ -135,12 +135,12 @@ const password2Repeaterror = password2Repeat.nextElementSibling;
 window.addEventListener("load", () => {
     // Here, we test if the field is empty (remember, the field is not required)
     // If it is not, we check if its content is a well-formed email address.
-    const isValid = password2Repeat.value.length === 0 || password2Repeat.textContent == password2Repeat;
+    const isValid = password2Repeat.value.length === 0 || password2Repeat.value == password2.value;
     password2Repeat.className = isValid ? "form-control valid" : "form-control invalid";
 });
 
 password2Repeat.addEventListener("input", () => {
-    const isValid = password2Repeat.value.length === 0 || password2Repeat.textContent == password2Repeat;
+    const isValid = password2Repeat.value.length === 0 || password2Repeat.value == password2.value;
     if (isValid) {
         password2Repeat.className = "form-control valid";
         password2Repeaterror.textContent = "";
@@ -154,7 +154,7 @@ password2Repeat.addEventListener("input", () => {
 form[1].addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const isValid = password2.value.length === 0 || password2Repeat.value == password2Repeat.value;
+    const isValid = password2.value.length === 0 || password2Repeat.value == password2.value;
     if (!isValid) {
         password2Repeat.className = "form-control invalid";
         password2Repeaterror.textContent = "◉ " + "تکرار رمز عبور یکسان نمیباشد";

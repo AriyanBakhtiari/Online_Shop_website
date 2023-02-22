@@ -177,3 +177,23 @@
   width: 200px;
   height: 200spx;
 }
+
+.edit-user-form-input {
+  border-radius: 10px;
+  width: 90%;
+}
+
+.birthday-input-form {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.birthday-input {
+  margin-right: 0px;
+}
+
+.edit-user-button {
+  width: 100px;
+  margin-left: 50px;
+  margin-top: 5px;
+}
