@@ -1,11 +1,10 @@
 using Newtonsoft.Json;
 using Persia;
-using System.Data;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 
-namespace OnlineShop
+namespace OnlineShop.Helper
 {
     public static class Helper
     {
@@ -26,9 +25,9 @@ namespace OnlineShop
                 //Log.Trace(ProjectValues.SuccessfulLog, sw.Elapsed.TotalMilliseconds);
                 return englishNumber;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return null;
+                return string.Empty;
             }
         }
         public static T ToEnum<T>(this string stringValue) where T : struct
@@ -42,7 +41,7 @@ namespace OnlineShop
                 //Log.Trace(ProjectValues.SuccessfulLog, sw.Elapsed.TotalMilliseconds);
                 return enumValue;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return default;
             }
@@ -53,16 +52,16 @@ namespace OnlineShop
 
             try
             {
-                var persianNumber = (string)null;
+                var persianNumber = string.Empty;
                 if (!string.IsNullOrEmpty(number))
                     persianNumber = PersianWord.ToPersianString(number);
 
                 //Log.Trace(ProjectValues.SuccessfulLog, sw.Elapsed.TotalMilliseconds);
                 return persianNumber;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return null;
+                return string.Empty;
             }
         }
         public static string ToSafePersianString(this string persianString)
@@ -78,26 +77,12 @@ namespace OnlineShop
                 //Log.Trace(ProjectValues.SuccessfulLog, sw.Elapsed.TotalMilliseconds);
                 return safePersianString;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return null;
+                return string.Empty;
             }
         }
-        public static bool TryGetValue<T>(this DataRow dataRow, int columnIndex, out T output)
-        {
-            var sw = Stopwatch.StartNew();
-            try
-            {
-                output = dataRow.Field<T>(columnIndex);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                output = default;
-                return false;
-            }
-        }
-        public static T JsonDeserializer<T>(string jsonString, [CallerFilePath] string callerFilePath = "", [CallerMemberName] string callerMemberName = "", [CallerLineNumber] int callerLineNumber = 0)
+        public static T? JsonDeserializer<T>(string jsonString, [CallerFilePath] string callerFilePath = "", [CallerMemberName] string callerMemberName = "", [CallerLineNumber] int callerLineNumber = 0)
         {
             var sw = Stopwatch.StartNew();
 
@@ -108,7 +93,7 @@ namespace OnlineShop
                 //Log.Trace("successfully completed.", sw.ElapsedMilliseconds);
                 return instance;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return default;
             }
@@ -124,9 +109,9 @@ namespace OnlineShop
                 //Log.Trace("successfully completed.", sw.ElapsedMilliseconds);
                 return jsonString;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return null;
+                return string.Empty;
             }
         }
         public static long LongRandom(this Random random, long min, long max)
@@ -141,7 +126,7 @@ namespace OnlineShop
 
                 return Math.Abs(longRand % (max - min)) + min;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return 0;
             }
@@ -162,7 +147,7 @@ namespace OnlineShop
                 //Log.Trace("successfully completed.", sw.ElapsedMilliseconds);
                 return gregorianDateTime;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -185,7 +170,7 @@ namespace OnlineShop
                 //Log.Trace("successfully completed.", sw.ElapsedMilliseconds);
                 return gregorianDateTime;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -205,7 +190,7 @@ namespace OnlineShop
                 //Log.Trace("successfully completed.", sw.ElapsedMilliseconds);
                 return gregorianDateTime;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -224,7 +209,7 @@ namespace OnlineShop
                 //Log.Trace("successfully completed.", sw.ElapsedMilliseconds);
                 return gregorianDateTime;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -247,7 +232,7 @@ namespace OnlineShop
                 //Log.Trace("successfully completed.", sw.ElapsedMilliseconds);
                 return gregorianDateTime;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -258,14 +243,14 @@ namespace OnlineShop
 
             try
             {
-                var gregorianDateTime = dateTime.HasValue ? dateTime.Value.ToString("s") : null;
+                var gregorianDateTime = dateTime.HasValue ? dateTime.Value.ToString("s") : string.Empty;
 
                 //Log.Trace("successfully completed.", sw.ElapsedMilliseconds);
                 return gregorianDateTime;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return null;
+                return string.Empty;
             }
         }
         public static string ToPersianDateTime(DateTime? dateTime)
@@ -287,7 +272,7 @@ namespace OnlineShop
                 //Log.Trace("successfully completed.", sw.ElapsedMilliseconds);
                 return solarDateTimeString;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return "نامشخص";
             }
@@ -307,9 +292,9 @@ namespace OnlineShop
                 //Log.Trace("successfully completed.", sw.ElapsedMilliseconds);
                 return shamiDate;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return null;
+                return string.Empty;
             }
         }
         public static int ParseShamsiYear(string yearPart)
@@ -339,7 +324,7 @@ namespace OnlineShop
                 //Log.Trace("successfully completed.", sw.ElapsedMilliseconds);
                 return year;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return 0;
             }
@@ -356,9 +341,9 @@ namespace OnlineShop
                 //Log.Trace("successfully completed.", sw.ElapsedMilliseconds);
                 return dateTime;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return null;
+                return string.Empty;
             }
         }
         public static long ToEpoch(DateTime dateTime)
@@ -371,7 +356,7 @@ namespace OnlineShop
 
                 return epochTime;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return 0;
             }
@@ -382,17 +367,12 @@ namespace OnlineShop
 
             try
             {
-                if (string.IsNullOrEmpty(numberString))
-                {
-                    return numberString;
-                }
-
                 double.TryParse($"{numberString.ToEnglishNumber()}", out double number);
                 return number.ToString("#,##0;-#,##0;0");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return null;
+                return string.Empty;
             }
         }
         public static string ToThousandSepratedInt(this long number)
@@ -403,18 +383,13 @@ namespace OnlineShop
         {
             if (number == null)
             {
-                return null;
+                return string.Empty;
             }
 
             return ((long)number).ToString("#,##0;-#,##0;0");
         }
         public static string AddRials(this string str)
         {
-            if (string.IsNullOrEmpty(str))
-            {
-                return null;
-            }
-
             return $"{str} ریال";
         }
         public static string ToThousandSepratedPersianNumber(this string numberString)
@@ -431,9 +406,9 @@ namespace OnlineShop
                 long.TryParse(numberString.ToEnglishNumber().ExtractJustTheDigits(), out long number);
                 return number.ToString("#,##0").ToPersianNumber();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return null;
+                return string.Empty;
             }
         }
         public static string ToThousandSepratedIntWithAddRials(this string numberString)
@@ -455,9 +430,9 @@ namespace OnlineShop
                 double.TryParse($"{numberString.ToEnglishNumber()}", System.Globalization.NumberStyles.Float, format, out double number);
                 return AddRials(number.ToString("#,##0;-#,##0;0"));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return null;
+                return string.Empty;
             }
         }
         public static string ExtractJustTheDigits(this string text)
@@ -466,14 +441,14 @@ namespace OnlineShop
 
             try
             {
-                var justNumbers = string.IsNullOrEmpty(text) ? null : new string(text.Where(char.IsDigit).ToArray());
+                var justNumbers = string.IsNullOrEmpty(text) ? string.Empty : new string(text.Where(char.IsDigit).ToArray());
 
                 //Log.Trace("successfully completed.", sw.ElapsedMilliseconds);
                 return justNumbers;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return null;
+                return string.Empty;
             }
         }
     }

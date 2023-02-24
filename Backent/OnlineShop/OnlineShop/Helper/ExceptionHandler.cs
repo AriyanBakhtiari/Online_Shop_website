@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OnlineShop
+namespace OnlineShop.Helper
 {
     public class ExceptionHandler: Exception
     {
