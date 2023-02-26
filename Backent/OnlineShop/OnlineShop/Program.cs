@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Data;
+using OnlineShop.Services;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.Elasticsearch;
@@ -14,6 +15,13 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<OnlineShopeDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SQLDB")));
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
+builder.Services.AddScoped<MainServices, MainServices>();
+
 
 
 //serilog

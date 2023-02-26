@@ -32,8 +32,6 @@
 
     <ItemGroup>
         <Folder Include="Data\Models\" />
-        <Folder Include="Data\Repository\" />
-        <Folder Include="Data\Repository\" />
         <Folder Include="Migrations\" />
     </ItemGroup>
 

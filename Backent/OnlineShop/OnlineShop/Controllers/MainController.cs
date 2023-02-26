@@ -1,12 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Data;
+using OnlineShop.Services;
 
 namespace OnlineShop.Controllers;
 
 public class MainController : Controller
 {
-    // [HttpGet]
-    // public async Task<T> GetUserInfo()
-    // {
-    //     return await 
-    // }
+    public MainServices MainServices { get; set; }
+
+    public MainController(MainServices mainServices)
+    {
+        MainServices = mainServices;
+    }
+
+    [HttpGet]
+    [Route("/Products")]
+    public async Task<List<Product>> GetProductsList()
+    {
+        return await Task.Run(() => MainServices.GetProductsList());
+    }
 }
