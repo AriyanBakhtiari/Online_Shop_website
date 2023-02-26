@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OnlineShop.Data.Models;
+namespace OnlineShop.Data;
 
 [Table("Categories")]
 public class Category

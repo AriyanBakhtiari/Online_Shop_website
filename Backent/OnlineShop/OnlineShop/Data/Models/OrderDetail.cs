@@ -1,7 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OnlineShop.Data.Models;
+namespace OnlineShop.Data;
 [Table("OrderDetails")]
 public class OrderDetail
 {

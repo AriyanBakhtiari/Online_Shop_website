@@ -1,4 +1,4 @@
-namespace OnlineShop.Data.Models;
+namespace OnlineShop.Data;
 
 public enum GenderEnum : short
 {

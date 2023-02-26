@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OnlineShop.Data.Models;
+namespace OnlineShop.Data;
 
 [Table("Products")]
 public class Product
@@ -12,6 +12,6 @@ public class Product
     public string ImagePath { get; set; }
     public decimal Price { get; set; }
 
-    public int CategoryId { get; set; }
+    public long CategoryId { get; set; }
     public Category Category { get; set; }
 }
