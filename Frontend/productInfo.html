@@ -11,6 +11,8 @@
         type="text/css" />
     <link rel="stylesheet" href="Resource/CSS/index.css" />
     <link rel="stylesheet" href="Resource/CSS/productInfo.css" />
+    <link rel="stylesheet" href="./Resource/quantityInput/quantityInput.css" type="text/css" />
+
 
 </head>
 
@@ -48,9 +50,16 @@
                             -
                         </p>
                     </div>
-                    <button class="btn btn-dark btn-block mt-3" onclick="javascript.void()">
-                        افزودن به سبد خرید
-                    </button>
+                    <form>
+                        <div class="change-quantity">
+                            <fieldset data-quantity>
+                                <legend>Change quantity</legend>
+                            </fieldset>
+                        </div>
+                        <button type="submit" class="btn btn-dark btn-block mt-3" onclick="javascript.void()">
+                            افزودن به سبد خرید
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -81,8 +90,8 @@
     </div>
 
     <footer class="border-top footer text-muted" data-include="footer"></footer>
-
     <script src="Resource/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./Resource/quantityInput/quantityInput.js" type="module"></script>
     <script src="Js/icons.js"></script>
     <script src="Js/main.js"></script>
 
