@@ -1,10 +1,10 @@
-using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Data;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.Elasticsearch;
 using Serilog.Sinks.SystemConsole.Themes;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 

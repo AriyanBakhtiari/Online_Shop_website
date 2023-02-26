@@ -31,13 +31,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Controllers\" />
         <Folder Include="Data\Models\" />
         <Folder Include="Data\Repository\" />
         <Folder Include="Data\Repository\" />
         <Folder Include="Migrations\" />
-        <Folder Include="ViewModel\" />
-        <Folder Include="Services\" />
     </ItemGroup>
 
 </Project>

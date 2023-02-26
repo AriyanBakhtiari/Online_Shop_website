@@ -1,8 +1,8 @@
+using Newtonsoft.Json;
+using Persia;
 using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.CompilerServices;
-using Newtonsoft.Json;
-using Persia;
 using Calendar = Persia.Calendar;
 
 namespace OnlineShop.Helper;
@@ -15,9 +15,9 @@ public static class Helper
 
         try
         {
-            var arabicDigits = new char[10] {'٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'};
-            var persianDigits = new char[10] {'۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'};
-            var englishDigits = new char[10] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+            var arabicDigits = new char[10] { '٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩' };
+            var persianDigits = new char[10] { '۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹' };
+            var englishDigits = new char[10] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             if (!string.IsNullOrEmpty(number))
                 for (var i = 0; i < persianDigits.Length; i++)
                     number = number.Replace(persianDigits[i], englishDigits[i])
@@ -39,7 +39,7 @@ public static class Helper
 
         try
         {
-            var enumValue = (T) Enum.Parse(typeof(T), stringValue, true);
+            var enumValue = (T)Enum.Parse(typeof(T), stringValue, true);
 
             //Log.Trace(ProjectValues.SuccessfulLog, sw.Elapsed.TotalMilliseconds);
             return enumValue;
@@ -221,7 +221,7 @@ public static class Helper
 
         try
         {
-            var dateTimeParts = dateTime.Split(new[] {splitter}, StringSplitOptions.RemoveEmptyEntries);
+            var dateTimeParts = dateTime.Split(new[] { splitter }, StringSplitOptions.RemoveEmptyEntries);
             var date = dateTimeParts[0].Split('/');
             var time = dateTimeParts[1].Split(':');
             var gregorianDateTime = Calendar.ConvertToGregorian(Convert.ToInt32(date[0]), Convert.ToInt32(date[1]),
@@ -247,7 +247,7 @@ public static class Helper
             if (temp.Contains("فوری"))
                 return null;
 
-            var dateTimeParts = dateTime.Split(new[] {splitter}, StringSplitOptions.RemoveEmptyEntries);
+            var dateTimeParts = dateTime.Split(new[] { splitter }, StringSplitOptions.RemoveEmptyEntries);
             var date = dateTimeParts[0].Split('/');
             var time = dateTimeParts[1].Split(':');
             var gregorianDateTime = Calendar.ConvertToGregorian(ParseShamsiYear(date[0]), Convert.ToInt32(date[1]),
@@ -416,7 +416,7 @@ public static class Helper
     {
         if (number == null) return string.Empty;
 
-        return ((long) number).ToString("#,##0;-#,##0;0");
+        return ((long)number).ToString("#,##0;-#,##0;0");
     }
 
     public static string AddRials(this string str)
