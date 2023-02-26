@@ -1,8 +1,11 @@
-﻿namespace OnlineShop.Data;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace OnlineShop.Data;
 
 public interface IProductRepository
 {
-    public IEnumerable<Product> GetProductsList();
+    IEnumerable<Product> GetProductsList();
+    IEnumerable<Product> GetProductsList(string category);
 }
 public class ProductRepository : IProductRepository
 {
@@ -13,6 +16,10 @@ public class ProductRepository : IProductRepository
     }
     public IEnumerable<Product> GetProductsList()
     {
-        return _context.Products.Select(x => x);
+        return _context.Products;
+    }
+    public IEnumerable<Product> GetProductsList(string category)
+    {
+        return _context.Products.Include(x => x.Category).Where(x => x.Category.Name == category);
     }
 }

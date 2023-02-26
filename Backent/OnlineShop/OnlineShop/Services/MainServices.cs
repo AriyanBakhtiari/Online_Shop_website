@@ -13,5 +13,9 @@ namespace OnlineShop.Services
         {
             return _productRepository.GetProductsList().ToList();
         }
+        public List<Product> GetProductsList(string category)
+        {
+            return _productRepository.GetProductsList(category).ToList();
+        }
     }
 }

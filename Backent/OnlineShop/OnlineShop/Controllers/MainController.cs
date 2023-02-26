@@ -19,4 +19,11 @@ public class MainController : Controller
     {
         return await Task.Run(() => MainServices.GetProductsList());
     }
+
+    [HttpGet]
+    [Route("/Products/{categoryName}")]
+    public async Task<List<Product>> GetProductsList([FromRoute]string categoryName)
+    {
+        return await Task.Run(() => MainServices.GetProductsList(categoryName));
+    }
 }
