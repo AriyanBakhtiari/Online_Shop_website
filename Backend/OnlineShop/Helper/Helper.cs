@@ -91,7 +91,7 @@ public static class Helper
         }
     }
 
-    public static T? JsonDeserializer<T>(string jsonString, [CallerFilePath] string callerFilePath = "",
+    public static T JsonDeserializer<T>(string jsonString, [CallerFilePath] string callerFilePath = "",
         [CallerMemberName] string callerMemberName = "", [CallerLineNumber] int callerLineNumber = 0)
     {
         var sw = Stopwatch.StartNew();

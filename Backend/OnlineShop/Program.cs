@@ -10,12 +10,23 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.Configuration;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n 
+                      Enter 'Bearer' [space] and then your token in the text input below.
+                      \r\n\r\nExample: 'Bearer 12345abcdef'",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    }));
 
 builder.Services.AddDbContext<OnlineShopeDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SQLDB")));
@@ -29,7 +40,6 @@ builder.Services.AddScoped<AthenticationServices, AthenticationServices>();
 builder.Services.AddScoped<UserServices, UserServices>();
 
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
-
 
 
 ////serilog
@@ -84,11 +94,11 @@ builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 //jwt token 
 builder.Services.AddAuthentication(option =>
-{
-    option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-})
+    {
+        option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
     .AddJwtBearer(o =>
     {
         o.TokenValidationParameters = new TokenValidationParameters
@@ -96,7 +106,7 @@ builder.Services.AddAuthentication(option =>
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey
-            (Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+                (Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)),
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidateLifetime = false,
@@ -104,7 +114,6 @@ builder.Services.AddAuthentication(option =>
         };
     });
 builder.Services.AddAuthorization();
-
 
 
 var app = builder.Build();

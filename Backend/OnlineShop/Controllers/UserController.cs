@@ -11,7 +11,7 @@ using System.Net.Http.Headers;
 namespace OnlineShop.Controllers;
 
 [Route("/User")]
-public class UserController
+public class UserController : ControllerBase
 {
     public UserServices UserServices { get; set; }
 
@@ -22,8 +22,9 @@ public class UserController
 
     [HttpGet]
     [Authorize]
-    public async Task<UserModel> GetUserInfo([FromHeader]string Authorization)
+    public async Task<UserModel> GetUserInfo()
     {
-        return await Task.FromResult(UserServices.GetUserInfo(Authorization));
+        var token = Request.Headers.Authorization;
+        return await Task.FromResult(UserServices.GetUserInfo(token));
     }
 }
