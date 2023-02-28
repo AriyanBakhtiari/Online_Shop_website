@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Data;
 using OnlineShop.Services;
+using OnlineShop.ViewModel;
 
 namespace OnlineShop.Controllers;
 
@@ -15,15 +16,22 @@ public class MainController : Controller
 
     [HttpGet]
     [Route("/Products")]
-    public async Task<List<Product>> GetProductsList()
+    public async Task<List<ProductCartViewModel>> GetProductsList()
     {
-        return await Task.Run(() => MainServices.GetProductsList());
+        return await Task.Run(MainServices.GetProductsList);
     }
 
     [HttpGet]
-    [Route("/Products/{categoryName}")]
-    public async Task<List<Product>> GetProductsList([FromRoute]string categoryName)
+    [Route("/Products/Category/{categoryName}")]
+    public async Task<List<ProductCartViewModel>> GetProductsList([FromRoute]string categoryName)
     {
         return await Task.Run(() => MainServices.GetProductsList(categoryName));
+    }
+
+    [HttpGet]
+    [Route("/Products/Id/{productId}")]
+    public async Task<Product> GetProductsDetail([FromRoute] long productId)
+    {
+        return await Task.Run(() => MainServices.GetProductsDetail(productId));
     }
 }
