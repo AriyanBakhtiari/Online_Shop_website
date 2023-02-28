@@ -1,11 +1,14 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Persia;
 using System.Diagnostics;
 using System.Globalization;
+using System.IdentityModel.Tokens.Jwt;
 using System.Runtime.CompilerServices;
+using System.Security.Claims;
 using Calendar = Persia.Calendar;
 
-namespace OnlineShop.Helper;
+namespace OnlineShop;
 
 public static class Helper
 {
@@ -479,6 +482,21 @@ public static class Helper
         catch (Exception)
         {
             return string.Empty;
+        }
+    }
+
+    public static string GetUserEmailViaToken(string token)
+    {
+        try
+        {
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            JwtSecurityToken securityToken = (JwtSecurityToken)tokenHandler.ReadToken(token.Replace("Bearer ", ""));
+            IEnumerable<Claim> claims = securityToken.Claims;
+            return claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Email)?.Value;
+        }
+        catch (Exception)
+        {
+            return null;
         }
     }
 }

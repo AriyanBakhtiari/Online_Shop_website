@@ -1,5 +1,4 @@
 ﻿using OnlineShop.Data;
-using OnlineShop.Helper;
 using OnlineShop.ViewModel;
 
 namespace OnlineShop.Services

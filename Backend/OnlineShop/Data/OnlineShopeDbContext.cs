@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OnlineShop.Data;
 
@@ -16,6 +16,12 @@ public class OnlineShopeDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<User>(b =>
+        {
+            b.ToTable("Users");
+            b.Property(x => x.Id).ValueGeneratedOnAdd().UseIdentityColumn(1000, 1);
+        });
+
         modelBuilder.ApplyConfiguration(new UserSeedData());
         modelBuilder.ApplyConfiguration(new ProductSeedData());
         modelBuilder.ApplyConfiguration(new CategorySeedData());

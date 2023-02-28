@@ -6,13 +6,11 @@ namespace OnlineShop.Data;
 [Table("Users")]
 public class User
 {
-    public long Id { get; set; }
+    public long? Id { get; set; }
     [DataType("Nvarchar(20)")]
     public string FirstName { get; set; }
     [DataType("Nvarchar(20)")]
     public string LastName { get; set; }
-    public int NationalId { get; set; }
-    public DateTime BirthDate { get; set; }
     [DataType("Nvarchar(100)")]
     public string Address { get; set; }
     public GenderEnum Gender { get; set; }
@@ -27,6 +25,8 @@ public class User
     public double Wallet { get; set; }
     public bool IsAdmin { get; set; }
     public DateTime RegisterDate { get; set; }
+    public int? NationalId { get; set; }
+    public DateTime? BirthDate { get; set; }
 
     public List<Order> Orders { get; set; }
 }

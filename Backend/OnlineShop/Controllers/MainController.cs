@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Data;
 using OnlineShop.Services;
@@ -16,6 +17,7 @@ public class MainController : Controller
 
     [HttpGet]
     [Route("/Products")]
+    [Authorize]
     public async Task<List<ProductCartViewModel>> GetProductsList()
     {
         return await Task.Run(MainServices.GetProductsList);

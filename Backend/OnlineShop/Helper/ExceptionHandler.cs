@@ -1,4 +1,4 @@
-﻿namespace OnlineShop.Helper;
+﻿namespace OnlineShop;
 
 public class ExceptionHandler : Exception
 {
