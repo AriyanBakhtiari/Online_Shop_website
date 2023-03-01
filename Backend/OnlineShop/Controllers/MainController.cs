@@ -17,7 +17,6 @@ public class MainController : Controller
 
     [HttpGet]
     [Route("/Products")]
-    [Authorize]
     public async Task<List<ProductCartViewModel>> GetProductsList()
     {
         return await Task.Run(MainServices.GetProductsList);

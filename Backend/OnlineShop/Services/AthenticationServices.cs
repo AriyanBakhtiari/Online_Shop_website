@@ -27,9 +27,9 @@ namespace OnlineShop.Services
 
             return Results.Ok(token);
         }
-        public IResult SingUp(RegisterModel user)
+        public IResult SignUp(RegisterModel user)
         {
-            if (_userRepository.UserIsExist(user))
+            if (_userRepository.UserIsExist(user.Email))
                 return Results.Problem();
 
             var test = _userRepository.RegisterUser(user);

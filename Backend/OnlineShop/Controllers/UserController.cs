@@ -27,4 +27,12 @@ public class UserController : ControllerBase
         var token = Request.Headers.Authorization;
         return await Task.FromResult(UserServices.GetUserInfo(token));
     }
+
+    [HttpPost]
+    [Authorize]
+    public async Task<UserModel> EditUserInfo([FromBody] EditUserModel user)
+    {
+        var token = Request.Headers.Authorization;
+        return await Task.FromResult(UserServices.EditUserInfo(token,user));
+    }
 }

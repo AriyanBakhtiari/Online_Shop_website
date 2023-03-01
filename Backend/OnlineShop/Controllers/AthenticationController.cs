@@ -25,9 +25,9 @@ public class AthenticationController : Controller
 
     [HttpPost]
     [AllowAnonymous]
-    [Route("/SingUp")]
-    public async Task<IResult> SingUp([FromBody] RegisterModel user)
+    [Route("/SignUp")]
+    public async Task<IResult> SignUp([FromBody] RegisterModel user)
     {
-        return await Task.FromResult(AthenticationServices.SingUp(user));
+        return await Task.FromResult(AthenticationServices.SignUp(user));
     }
 }

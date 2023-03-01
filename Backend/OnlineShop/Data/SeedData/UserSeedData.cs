@@ -21,7 +21,7 @@ namespace OnlineShop.Data
                 LastName = "بختیاری",
                 Gender = GenderEnum.Male,
                 MobileNumber = "+989194888834",
-                NationalId = 0025566456,
+                NationalId = "0025566456",
                 ZapCode = "135649",
             });
         }

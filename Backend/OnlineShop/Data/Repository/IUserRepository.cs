@@ -5,9 +5,10 @@ namespace OnlineShop.Data;
 public interface IUserRepository
 {
     bool UsernamePasswordIsCorrect(LoginModel user);
-    bool UserIsExist(RegisterModel user);
+    bool UserIsExist(string userEmail);
     bool RegisterUser(RegisterModel user);
     User GetUserInfo(string userEmail);
+    User EditUserInfo(string userEmail, EditUserModel user);
 }
 public class UserRepository : IUserRepository
 {
@@ -31,15 +32,14 @@ public class UserRepository : IUserRepository
         return true;
     }
 
-    public bool UserIsExist(RegisterModel user)
+    public bool UserIsExist(string userEmail)
     {
-        return _context.Users.Any(x => x.Email == user.Email);
+        return _context.Users.Any(x => x.Email == userEmail);
     }
     public bool RegisterUser(RegisterModel user)
     {
         var userModel = new User
         {
-            Id = 10,
             Email = user.Email,
             Password = user.Password,
             FirstName = user.FirstName,
@@ -54,6 +54,23 @@ public class UserRepository : IUserRepository
     {
         var user = _context.Users.FirstOrDefault(x=> x.Email == userEmail);
        
+
+        return user;
+    }
+    public User EditUserInfo(string userEmail , EditUserModel userModel)
+    {
+        var user = _context.Users.FirstOrDefault(x => x.Email == userEmail);
+        
+        user.FirstName = userModel.FirstName ?? user.FirstName;
+        user.Address = userModel.Address ?? user.Address;
+        user.BirthDate = userModel.BirthDate ?? user.BirthDate;
+        user.MobileNumber = userModel.MobileNumber ?? user.MobileNumber;
+        user.Gender = userModel.Gender == GenderEnum.Unkhown ? user.Gender : userModel.Gender;
+        user.LastName = userModel.LastName ?? user.LastName;
+        user.ZapCode = userModel.ZapCode ?? user.ZapCode;
+        user.NationalId = userModel.NationalId ?? user.NationalId;
+
+        _context.SaveChanges();
 
         return user;
     }
