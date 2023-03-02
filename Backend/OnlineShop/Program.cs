@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
+using OnlineShop.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,13 +46,14 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<OnlineShopeDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SQLDB")));
 
+
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
-builder.Services.AddScoped<MainServices, MainServices>();
-builder.Services.AddScoped<AthenticationServices, AthenticationServices>();
-builder.Services.AddScoped<UserServices, UserServices>();
+builder.Services.AddScoped<MainServices>();
+builder.Services.AddScoped<AthenticationServices>();
+builder.Services.AddScoped<UserServices>();
 
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
@@ -134,7 +136,7 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
+app.UseCustomExceptionHandler();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();

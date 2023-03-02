@@ -5,13 +5,15 @@ using OnlineShop.ViewModel;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.Extensions.Options;
+using OnlineShop.Validation;
 
 namespace OnlineShop.Services
 {
     public class AthenticationServices 
     {
-        private IUserRepository _userRepository;
-        private IConfiguration _configuration;
+        private readonly IUserRepository _userRepository;
+        private readonly IConfiguration _configuration;
         public AthenticationServices(IUserRepository userRepository, IConfiguration configuration)
         {
             _userRepository = userRepository;
@@ -20,14 +22,21 @@ namespace OnlineShop.Services
 
         public IResult Login (LoginModel user)
         {
+            var loginValidator = new LoginValidation();
+            var validate = loginValidator.Validate(user);
+            if (!validate.IsValid)
+            {
+                throw new ExceptionHandler(validate.Errors[0].ErrorMessage,errorCode:400);
+            }
+            
             if (!_userRepository.UsernamePasswordIsCorrect(user))
-                return Results.Unauthorized();
+                throw new ExceptionHandler("ایمیل یا پسورد وارد شده معتبر نمیباشد",errorCode:400);
 
             var token = GetToken(user.Email);
 
             return Results.Ok(token);
         }
-        public IResult SignUp(RegisterModel user)
+        public IResult SignUp(SignUpModel user)
         {
             if (_userRepository.UserIsExist(user.Email))
                 return Results.Problem();
@@ -39,7 +48,7 @@ namespace OnlineShop.Services
             return Results.Ok(token);
         }
 
-        public string GetToken(string Email)
+        private string GetToken(string Email)
         {
             var issuer = _configuration["Jwt:Issuer"];
             var audience = _configuration["Jwt:Audience"];

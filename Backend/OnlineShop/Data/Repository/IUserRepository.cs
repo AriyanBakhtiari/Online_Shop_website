@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using OnlineShop.ViewModel;
 
 namespace OnlineShop.Data;
@@ -6,8 +7,8 @@ public interface IUserRepository
 {
     bool UsernamePasswordIsCorrect(LoginModel user);
     bool UserIsExist(string userEmail);
-    bool RegisterUser(RegisterModel user);
-    User GetUserInfo(string userEmail);
+    bool RegisterUser(SignUpModel user);
+    Task<User> GetUserInfoAsync(string userEmail);
     User EditUserInfo(string userEmail, EditUserModel user);
 }
 public class UserRepository : IUserRepository
@@ -21,12 +22,13 @@ public class UserRepository : IUserRepository
 
     public bool UsernamePasswordIsCorrect(LoginModel user)
     {
+        
         if (!_context.Users.Any(x => x.Email == user.Email))
             return false;
 
         var userAccount = _context.Users.FirstOrDefault(x => x.Email == user.Email);
 
-        if (userAccount.Password != user.Password)
+        if (userAccount?.Password != user.Password)
             return false;
 
         return true;
@@ -36,7 +38,7 @@ public class UserRepository : IUserRepository
     {
         return _context.Users.Any(x => x.Email == userEmail);
     }
-    public bool RegisterUser(RegisterModel user)
+    public bool RegisterUser(SignUpModel user)
     {
         var userModel = new User
         {
@@ -50,15 +52,13 @@ public class UserRepository : IUserRepository
         _context.SaveChanges();
         return true;
     }
-    public User GetUserInfo(string userEmail)
+    public Task<User> GetUserInfoAsync(string userEmail)
     {
-        var user = _context.Users.FirstOrDefault(x=> x.Email == userEmail);
-       
-
-        return user;
+        return _context.Users.FirstOrDefaultAsync(x=> x.Email == userEmail);
     }
     public User EditUserInfo(string userEmail , EditUserModel userModel)
     {
+       
         var user = _context.Users.FirstOrDefault(x => x.Email == userEmail);
         
         user.FirstName = userModel.FirstName ?? user.FirstName;

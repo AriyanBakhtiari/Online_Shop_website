@@ -1,6 +1,6 @@
 ﻿namespace OnlineShop.ViewModel;
 
-public class RegisterModel
+public class SignUpModel
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }

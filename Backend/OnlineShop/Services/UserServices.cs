@@ -5,31 +5,33 @@ namespace OnlineShop.Services
 {
     public class UserServices
     {
-        private IUserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
+
         public UserServices(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
-        public UserModel GetUserInfo(string token)
+        public async Task<UserModel> GetUserInfoAsync(string token)
         {
             string userEmail = Helper.GetUserEmailViaToken(token);
 
-            var user = _userRepository.GetUserInfo(userEmail);
+            var user = await _userRepository.GetUserInfoAsync(userEmail);
+            //automapper
             var userModel = new UserModel
             {
                 Email = user.Email,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                RegisterDate = user.RegisterDate,
-                NationalId = user.NationalId,
-                BirthDate = user.BirthDate,
-                Address = user.Address,
+                FirstName = user.FirstName ?? "-",
+                LastName = user.LastName ?? "-",
+                RegisterDate = Helper.ToPersianDateTime(user.RegisterDate),
+                NationalId = user.NationalId ?? "-",
+                BirthDate = Helper.ToPersianDateTime(user.BirthDate),
+                Address = user.Address ?? "-",
                 Gender = user.Gender,
                 IsAdmin = user.IsAdmin,
-                MobileNumber = user.MobileNumber,
+                MobileNumber = user.MobileNumber ?? "-",
                 Wallet = user.Wallet,
-                ZapCode = user.ZapCode,
+                ZapCode = user.ZapCode ?? "-",
             };
             return userModel;
         }
@@ -45,18 +47,18 @@ namespace OnlineShop.Services
 
             var user = new UserModel
             {
-                Email = userinfo.FirstName,
-                FirstName = userinfo.FirstName,
-                LastName = userinfo.LastName,
-                NationalId = userinfo.NationalId,
-                BirthDate = userinfo.BirthDate,
-                Address = userinfo.Address,
+                Email = userinfo.Email,
+                FirstName = userinfo.FirstName ?? "-",
+                LastName = userinfo.LastName ?? "-",
+                RegisterDate = Helper.ToPersianDateTime(userinfo.RegisterDate),
+                NationalId = userinfo.NationalId ?? "-",
+                BirthDate = Helper.ToPersianDate(userinfo.BirthDate.ToString()),
+                Address = userinfo.Address ?? "-",
                 Gender = userinfo.Gender,
-                MobileNumber = userinfo.MobileNumber,
+                IsAdmin = userinfo.IsAdmin,
+                MobileNumber = userinfo.MobileNumber ?? "-",
                 Wallet = userinfo.Wallet,
-                ZapCode = userinfo.ZapCode,
-                RegisterDate = userinfo.RegisterDate,
-                IsAdmin= userinfo.IsAdmin,
+                ZapCode = userinfo.ZapCode ?? "-",
             };
 
             return user;

@@ -13,7 +13,7 @@ namespace OnlineShop.Controllers;
 [Route("/User")]
 public class UserController : ControllerBase
 {
-    public UserServices UserServices { get; set; }
+    private  UserServices UserServices { get; set; }
 
     public UserController(UserServices userServices)
     {
@@ -25,7 +25,7 @@ public class UserController : ControllerBase
     public async Task<UserModel> GetUserInfo()
     {
         var token = Request.Headers.Authorization;
-        return await Task.FromResult(UserServices.GetUserInfo(token));
+        return await UserServices.GetUserInfoAsync(token);
     }
 
     [HttpPost]
