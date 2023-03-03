@@ -44,7 +44,7 @@ public class UserRepository : IUserRepository
         return true;
     }
 
-    public Task<User> GetUserInfoAsync(string userEmail)
+    public Task<User> GetUserInfo(string userEmail)
     {
         return _context.Users.FirstOrDefaultAsync(x => x.Email == userEmail);
     }

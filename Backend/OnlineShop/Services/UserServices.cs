@@ -1,4 +1,5 @@
-﻿using OnlineShop.Data.Repository.Interface;
+﻿using AutoMapper;
+using OnlineShop.Data.Repository.Interface;
 using OnlineShop.Validation;
 using OnlineShop.ViewModel;
 
@@ -6,18 +7,20 @@ namespace OnlineShop.Services;
 
 public class UserServices
 {
+    private readonly IMapper _mapper;
     private readonly IUserRepository _userRepository;
 
-    public UserServices(IUserRepository userRepository)
+    public UserServices(IUserRepository userRepository, IMapper mapper)
     {
         _userRepository = userRepository;
+        _mapper = mapper;
     }
 
     public async Task<UserViewModel> GetUserInfoAsync(string token)
     {
         var userEmail = Helper.GetUserEmailViaToken(token);
 
-        var user = await _userRepository.GetUserInfoAsync(userEmail);
+        var user = await _userRepository.GetUserInfo(userEmail);
         //automapper
         var userModel = new UserViewModel
         {

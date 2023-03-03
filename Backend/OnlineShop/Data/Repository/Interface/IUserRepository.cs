@@ -8,6 +8,6 @@ public interface IUserRepository
     Task<bool> UsernamePasswordIsCorrect(LoginModel user);
     Task<bool> UserIsExist(string userEmail);
     Task<bool> RegisterUser(SignUpViewModel user);
-    Task<User> GetUserInfoAsync(string userEmail);
+    Task<User> GetUserInfo(string userEmail);
     Task<User> EditUserInfo(string userEmail, EditUserModel user);
 }

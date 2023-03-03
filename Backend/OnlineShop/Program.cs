@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using OnlineShop.AutoMapper;
 using OnlineShop.Data;
 using OnlineShop.Data.Repository;
 using OnlineShop.Data.Repository.Interface;
@@ -53,6 +54,7 @@ builder.Services.AddScoped<UserServices>();
 
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 ////serilog
 //builder.Host.UseSerilog((webHostBuilderContext, loggerConfiguration) =>
