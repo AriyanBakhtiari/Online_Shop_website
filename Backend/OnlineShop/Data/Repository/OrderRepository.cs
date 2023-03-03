@@ -1,17 +1,13 @@
-﻿namespace OnlineShop.Data;
+using OnlineShop.Data.Repository.Interface;
 
-public interface IOrderRepository
-{
+namespace OnlineShop.Data.Repository;
 
-}
 public class OrderRepository : IOrderRepository
 {
     private OnlineShopeDbContext _context;
+
     public OrderRepository(OnlineShopeDbContext context)
     {
         _context = context;
-
     }
-
-
 }

@@ -1,8 +1,7 @@
 using System.Text;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using OnlineShop.Middleware.Models;
 
 namespace OnlineShop.Middleware;
 
@@ -26,13 +25,13 @@ public static class ExceptionHandlerMiddlewareExtension
                         var jsonString = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(
                             new ApiResponse<object>
                             {
-                                errorMessage = exceptionContext.Message,
-                                errorCode = exceptionContext.ErrorCode,
-                                dateNow = DateTime.Now,
-                                path = exceptionHandlerPathFeature.Path
+                                errorMessage = string.IsNullOrEmpty(exceptionContext.Message)
+                                    ? "متاسفانه مشکلی پیش امده است."
+                                    : exceptionContext.Message,
+                                errorCode = exceptionContext.ErrorCode
                             }));
 
-                        await context.Response.Body.WriteAsync(jsonString, 0, jsonString.Length);
+                        await context.Response.Body.WriteAsync(jsonString);
                     }
                     else
                     {
@@ -48,7 +47,7 @@ public static class ExceptionHandlerMiddlewareExtension
                                 }));
                     }
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     // ignored
                 }

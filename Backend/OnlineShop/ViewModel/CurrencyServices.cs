@@ -1,6 +1,5 @@
-﻿namespace OnlineShop.ViewModel
+﻿namespace OnlineShop.ViewModel;
+
+public class CurrencyServices
 {
-    public class CurrencyServices
-    {
-    }
 }

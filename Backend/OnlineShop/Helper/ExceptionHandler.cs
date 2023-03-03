@@ -2,7 +2,7 @@
 
 public class ExceptionHandler : Exception
 {
-    public ExceptionHandler(string message, string technicalMessage = "", int? errorCode = null)
+    public ExceptionHandler(string message = "", string technicalMessage = "", int? errorCode = null)
         : base(message)
     {
         ErrorCode = errorCode;

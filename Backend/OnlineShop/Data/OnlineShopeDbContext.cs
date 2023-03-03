@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations.Schema;
+using OnlineShop.Data.Models;
+using OnlineShop.Data.SeedData;
 
 namespace OnlineShop.Data;
 
@@ -8,6 +9,7 @@ public class OnlineShopeDbContext : DbContext
     public OnlineShopeDbContext(DbContextOptions<OnlineShopeDbContext> options) : base(options)
     {
     }
+
     public DbSet<Category> Categories { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<User> Users { get; set; }
@@ -19,7 +21,7 @@ public class OnlineShopeDbContext : DbContext
         modelBuilder.Entity<User>(b =>
         {
             b.ToTable("Users");
-            b.Property(x => x.Id).ValueGeneratedOnAdd().UseIdentityColumn(1000, 1);
+            b.Property(x => x.Id).ValueGeneratedOnAdd().UseIdentityColumn(1000);
         });
 
         modelBuilder.ApplyConfiguration(new UserSeedData());

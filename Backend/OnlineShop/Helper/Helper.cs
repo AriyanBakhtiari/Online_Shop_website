@@ -1,10 +1,10 @@
-using Newtonsoft.Json;
-using Persia;
 using System.Diagnostics;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using Persia;
 using Calendar = Persia.Calendar;
 
 namespace OnlineShop;
@@ -17,9 +17,9 @@ public static class Helper
 
         try
         {
-            var arabicDigits = new char[10] { '٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩' };
-            var persianDigits = new char[10] { '۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹' };
-            var englishDigits = new char[10] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            var arabicDigits = new char[10] {'٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'};
+            var persianDigits = new char[10] {'۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'};
+            var englishDigits = new char[10] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
             if (!string.IsNullOrEmpty(number))
                 for (var i = 0; i < persianDigits.Length; i++)
                     number = number.Replace(persianDigits[i], englishDigits[i])
@@ -41,7 +41,7 @@ public static class Helper
 
         try
         {
-            var enumValue = (T)Enum.Parse(typeof(T), stringValue, true);
+            var enumValue = (T) Enum.Parse(typeof(T), stringValue, true);
 
             //Log.Trace(ProjectValues.SuccessfulLog, sw.Elapsed.TotalMilliseconds);
             return enumValue;
@@ -223,7 +223,7 @@ public static class Helper
 
         try
         {
-            var dateTimeParts = dateTime.Split(new[] { splitter }, StringSplitOptions.RemoveEmptyEntries);
+            var dateTimeParts = dateTime.Split(new[] {splitter}, StringSplitOptions.RemoveEmptyEntries);
             var date = dateTimeParts[0].Split('/');
             var time = dateTimeParts[1].Split(':');
             var gregorianDateTime = Calendar.ConvertToGregorian(Convert.ToInt32(date[0]), Convert.ToInt32(date[1]),
@@ -249,7 +249,7 @@ public static class Helper
             if (temp.Contains("فوری"))
                 return null;
 
-            var dateTimeParts = dateTime.Split(new[] { splitter }, StringSplitOptions.RemoveEmptyEntries);
+            var dateTimeParts = dateTime.Split(new[] {splitter}, StringSplitOptions.RemoveEmptyEntries);
             var date = dateTimeParts[0].Split('/');
             var time = dateTimeParts[1].Split(':');
             var gregorianDateTime = Calendar.ConvertToGregorian(ParseShamsiYear(date[0]), Convert.ToInt32(date[1]),
@@ -418,7 +418,7 @@ public static class Helper
     {
         if (number == null) return string.Empty;
 
-        return ((long)number).ToString("#,##0;-#,##0;0");
+        return ((long) number).ToString("#,##0;-#,##0;0");
     }
 
     public static string AddRials(this string str)
@@ -485,55 +485,59 @@ public static class Helper
     }
 
     public static bool IsValidNationalID(string nationalID)
+    {
+        var sw = Stopwatch.StartNew();
+
+        try
         {
-            var sw = Stopwatch.StartNew();
-
-            try
-            {
-                if (string.IsNullOrEmpty(nationalID))
-                    return false;
-
-                if (nationalID.Length != 10)
-                    return false;
-
-                var regex = new Regex(@"\d{10}");
-                if (!regex.IsMatch(nationalID))
-                    return false;
-
-                var allDigitEqual = new[] { "0000000000", "1111111111", "2222222222", "3333333333", "4444444444", "5555555555", "6666666666", "7777777777", "8888888888", "9999999999" };
-                if (allDigitEqual.Contains(nationalID))
-                    return false;
-
-                var chArray = nationalID.ToCharArray();
-                var num0 = Convert.ToInt32(chArray[0].ToString()) * 10;
-                var num2 = Convert.ToInt32(chArray[1].ToString()) * 9;
-                var num3 = Convert.ToInt32(chArray[2].ToString()) * 8;
-                var num4 = Convert.ToInt32(chArray[3].ToString()) * 7;
-                var num5 = Convert.ToInt32(chArray[4].ToString()) * 6;
-                var num6 = Convert.ToInt32(chArray[5].ToString()) * 5;
-                var num7 = Convert.ToInt32(chArray[6].ToString()) * 4;
-                var num8 = Convert.ToInt32(chArray[7].ToString()) * 3;
-                var num9 = Convert.ToInt32(chArray[8].ToString()) * 2;
-                var a = Convert.ToInt32(chArray[9].ToString());
-                var b = num0 + num2 + num3 + num4 + num5 + num6 + num7 + num8 + num9;
-                var c = b % 11;
-                var isValid = ((c < 2) && (a == c)) || ((c >= 2) && ((11 - c) == a));
-
-                //Log.Trace("validating national code successfully completed.", sw.Elapsed.TotalMilliseconds);
-                return isValid;
-            }
-            catch (Exception ex)
-            {
+            if (string.IsNullOrEmpty(nationalID))
                 return false;
-            }
+
+            if (nationalID.Length != 10)
+                return false;
+
+            var regex = new Regex(@"\d{10}");
+            if (!regex.IsMatch(nationalID))
+                return false;
+
+            var allDigitEqual = new[]
+            {
+                "0000000000", "1111111111", "2222222222", "3333333333", "4444444444", "5555555555", "6666666666",
+                "7777777777", "8888888888", "9999999999"
+            };
+            if (allDigitEqual.Contains(nationalID))
+                return false;
+
+            var chArray = nationalID.ToCharArray();
+            var num0 = Convert.ToInt32(chArray[0].ToString()) * 10;
+            var num2 = Convert.ToInt32(chArray[1].ToString()) * 9;
+            var num3 = Convert.ToInt32(chArray[2].ToString()) * 8;
+            var num4 = Convert.ToInt32(chArray[3].ToString()) * 7;
+            var num5 = Convert.ToInt32(chArray[4].ToString()) * 6;
+            var num6 = Convert.ToInt32(chArray[5].ToString()) * 5;
+            var num7 = Convert.ToInt32(chArray[6].ToString()) * 4;
+            var num8 = Convert.ToInt32(chArray[7].ToString()) * 3;
+            var num9 = Convert.ToInt32(chArray[8].ToString()) * 2;
+            var a = Convert.ToInt32(chArray[9].ToString());
+            var b = num0 + num2 + num3 + num4 + num5 + num6 + num7 + num8 + num9;
+            var c = b % 11;
+            var isValid = (c < 2 && a == c) || (c >= 2 && 11 - c == a);
+
+            //Log.Trace("validating national code successfully completed.", sw.Elapsed.TotalMilliseconds);
+            return isValid;
         }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
 
     public static string GetUserEmailViaToken(string token)
     {
         try
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var securityToken = (JwtSecurityToken)tokenHandler.ReadToken(token.Replace("Bearer ", ""));
+            var securityToken = (JwtSecurityToken) tokenHandler.ReadToken(token.Replace("Bearer ", ""));
             var claims = securityToken.Claims;
             return claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Email)?.Value;
         }
@@ -542,5 +546,4 @@ public static class Helper
             return null;
         }
     }
-   
 }

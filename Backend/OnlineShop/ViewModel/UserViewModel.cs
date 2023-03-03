@@ -1,8 +1,8 @@
-﻿using OnlineShop.Data;
+﻿using OnlineShop.Data.Models;
 
 namespace OnlineShop.ViewModel;
 
-public class UserModel
+public class UserViewModel
 {
     public string? Email { get; set; }
     public string? FirstName { get; set; }

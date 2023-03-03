@@ -1,67 +1,69 @@
-﻿using OnlineShop.Data;
+﻿using OnlineShop.Data.Repository.Interface;
+using OnlineShop.Validation;
 using OnlineShop.ViewModel;
 
-namespace OnlineShop.Services
+namespace OnlineShop.Services;
+
+public class UserServices
 {
-    public class UserServices
+    private readonly IUserRepository _userRepository;
+
+    public UserServices(IUserRepository userRepository)
     {
-        private readonly IUserRepository _userRepository;
+        _userRepository = userRepository;
+    }
 
-        public UserServices(IUserRepository userRepository)
+    public async Task<UserViewModel> GetUserInfoAsync(string token)
+    {
+        var userEmail = Helper.GetUserEmailViaToken(token);
+
+        var user = await _userRepository.GetUserInfoAsync(userEmail);
+        //automapper
+        var userModel = new UserViewModel
         {
-            _userRepository = userRepository;
-        }
+            Email = user.Email,
+            FirstName = user.FirstName ?? "-",
+            LastName = user.LastName ?? "-",
+            RegisterDate = Helper.ToPersianDateTime(user.RegisterDate),
+            NationalId = user.NationalId ?? "-",
+            BirthDate = Helper.ToPersianDateTime(user.BirthDate),
+            Address = user.Address ?? "-",
+            Gender = user.Gender,
+            IsAdmin = user.IsAdmin,
+            MobileNumber = user.MobileNumber ?? "-",
+            Wallet = user.Wallet,
+            ZapCode = user.ZapCode ?? "-"
+        };
+        return userModel;
+    }
 
-        public async Task<UserModel> GetUserInfoAsync(string token)
+    public async Task<UserViewModel> EditUserInfo(string token, EditUserModel userModel)
+    {
+        var editUserValidation = new EditUserValidation();
+        var validResult = await editUserValidation.ValidateAsync(userModel);
+        if (!validResult.IsValid) throw new ExceptionHandler(validResult.Errors[0].ErrorMessage, errorCode: 400);
+
+        var userEmail = Helper.GetUserEmailViaToken(token);
+        if (!await _userRepository.UserIsExist(userEmail))
+            throw new ExceptionHandler("لطفا مجدد وارد سایت شوید");
+
+        var userinfo = await _userRepository.EditUserInfo(userEmail, userModel);
+        var user = new UserViewModel
         {
-            string userEmail = Helper.GetUserEmailViaToken(token);
+            Email = userinfo.Email,
+            FirstName = userinfo.FirstName ?? "-",
+            LastName = userinfo.LastName ?? "-",
+            RegisterDate = Helper.ToPersianDateTime(userinfo.RegisterDate),
+            NationalId = userinfo.NationalId ?? "-",
+            BirthDate = Helper.ToPersianDate(userinfo.BirthDate.ToString()),
+            Address = userinfo.Address ?? "-",
+            Gender = userinfo.Gender,
+            IsAdmin = userinfo.IsAdmin,
+            MobileNumber = userinfo.MobileNumber ?? "-",
+            Wallet = userinfo.Wallet,
+            ZapCode = userinfo.ZapCode ?? "-"
+        };
 
-            var user = await _userRepository.GetUserInfoAsync(userEmail);
-            //automapper
-            var userModel = new UserModel
-            {
-                Email = user.Email,
-                FirstName = user.FirstName ?? "-",
-                LastName = user.LastName ?? "-",
-                RegisterDate = Helper.ToPersianDateTime(user.RegisterDate),
-                NationalId = user.NationalId ?? "-",
-                BirthDate = Helper.ToPersianDateTime(user.BirthDate),
-                Address = user.Address ?? "-",
-                Gender = user.Gender,
-                IsAdmin = user.IsAdmin,
-                MobileNumber = user.MobileNumber ?? "-",
-                Wallet = user.Wallet,
-                ZapCode = user.ZapCode ?? "-",
-            };
-            return userModel;
-        }
-
-        public UserModel EditUserInfo(string token, EditUserModel userModel)
-        {
-            string userEmail = Helper.GetUserEmailViaToken(token);
-
-            if (!_userRepository.UserIsExist(userEmail))
-                return null;
-
-            var userinfo = _userRepository.EditUserInfo(userEmail, userModel);
-
-            var user = new UserModel
-            {
-                Email = userinfo.Email,
-                FirstName = userinfo.FirstName ?? "-",
-                LastName = userinfo.LastName ?? "-",
-                RegisterDate = Helper.ToPersianDateTime(userinfo.RegisterDate),
-                NationalId = userinfo.NationalId ?? "-",
-                BirthDate = Helper.ToPersianDate(userinfo.BirthDate.ToString()),
-                Address = userinfo.Address ?? "-",
-                Gender = userinfo.Gender,
-                IsAdmin = userinfo.IsAdmin,
-                MobileNumber = userinfo.MobileNumber ?? "-",
-                Wallet = userinfo.Wallet,
-                ZapCode = userinfo.ZapCode ?? "-",
-            };
-
-            return user;
-        }
+        return user;
     }
 }

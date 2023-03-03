@@ -1,17 +1,13 @@
-using Microsoft.EntityFrameworkCore;
-using OnlineShop.Data;
-using OnlineShop.Services;
-using Serilog;
-using Serilog.Events;
-using Serilog.Sinks.Elasticsearch;
-using Serilog.Sinks.SystemConsole.Themes;
-using System.Reflection;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using OnlineShop.Data;
+using OnlineShop.Data.Repository;
+using OnlineShop.Data.Repository.Interface;
 using OnlineShop.Middleware;
+using OnlineShop.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,7 +35,7 @@ builder.Services.AddSwaggerGen(c =>
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
-        { jwtSecurityScheme, Array.Empty<string>() }
+        {jwtSecurityScheme, Array.Empty<string>()}
     });
 });
 

@@ -1,6 +1,5 @@
-﻿namespace OnlineShop.Services
+﻿namespace OnlineShop.Services;
+
+public class OrderServices
 {
-    public class OrderServices
-    {
-    }
 }

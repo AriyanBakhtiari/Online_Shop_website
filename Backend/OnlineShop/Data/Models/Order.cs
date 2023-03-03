@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OnlineShop.Data;
+namespace OnlineShop.Data.Models;
 
 [Table("Orders")]
 public class Order

@@ -1,6 +1,5 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Data;
+using OnlineShop.Data.Models;
 using OnlineShop.Services;
 using OnlineShop.ViewModel;
 
@@ -8,31 +7,31 @@ namespace OnlineShop.Controllers;
 
 public class MainController : Controller
 {
-    public MainServices MainServices { get; set; }
-
     public MainController(MainServices mainServices)
     {
         MainServices = mainServices;
     }
 
+    private MainServices MainServices { get; }
+
     [HttpGet]
     [Route("/Products")]
     public async Task<List<ProductCartViewModel>> GetProductsList()
     {
-        return await Task.Run(MainServices.GetProductsList);
+        return await MainServices.GetProductsList();
     }
 
     [HttpGet]
     [Route("/Products/Category/{categoryName}")]
-    public async Task<List<ProductCartViewModel>> GetProductsList([FromRoute]string categoryName)
+    public async Task<List<ProductCartViewModel>> GetProductsList([FromRoute] string categoryName)
     {
-        return await Task.Run(() => MainServices.GetProductsList(categoryName));
+        return await MainServices.GetProductsList(categoryName);
     }
 
     [HttpGet]
-    [Route("/Products/Id/{productId}")]
+    [Route("/Products/Id/{productId:long}")]
     public async Task<Product> GetProductsDetail([FromRoute] long productId)
     {
-        return await Task.Run(() => MainServices.GetProductsDetail(productId));
+        return await MainServices.GetProductsDetail(productId);
     }
 }

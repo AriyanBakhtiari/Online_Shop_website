@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using OnlineShop.Data.Models;
 
-namespace OnlineShop.Data
+namespace OnlineShop.Data.SeedData;
+
+public class CategorySeedData : IEntityTypeConfiguration<Category>
 {
-    public class CategorySeedData : IEntityTypeConfiguration<Category>
+    public void Configure(EntityTypeBuilder<Category> builder)
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
-        {
-            builder.HasData(new Category
+        builder.HasData(new Category
             {
                 Id = 1,
                 Name = "Mens_Clothes",
@@ -43,8 +44,5 @@ namespace OnlineShop.Data
                 Name = "Accesory",
                 ShowName = "لوازم جانبی"
             });
-
-
-        }
     }
 }

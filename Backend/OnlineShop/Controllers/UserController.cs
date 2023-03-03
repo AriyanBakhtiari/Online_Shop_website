@@ -1,28 +1,23 @@
-﻿using Azure.Core;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.Headers;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives;
 using OnlineShop.Services;
 using OnlineShop.ViewModel;
-using System.Net;
-using System.Net.Http.Headers;
 
 namespace OnlineShop.Controllers;
 
 [Route("/User")]
 public class UserController : ControllerBase
 {
-    private  UserServices UserServices { get; set; }
-
     public UserController(UserServices userServices)
     {
         UserServices = userServices;
     }
 
+    private UserServices UserServices { get; }
+
     [HttpGet]
     [Authorize]
-    public async Task<UserModel> GetUserInfo()
+    public async Task<UserViewModel> GetUserInfo()
     {
         var token = Request.Headers.Authorization;
         return await UserServices.GetUserInfoAsync(token);
@@ -30,9 +25,9 @@ public class UserController : ControllerBase
 
     [HttpPost]
     [Authorize]
-    public async Task<UserModel> EditUserInfo([FromBody] EditUserModel user)
+    public async Task<UserViewModel> EditUserInfo([FromBody] EditUserModel user)
     {
         var token = Request.Headers.Authorization;
-        return await Task.FromResult(UserServices.EditUserInfo(token,user));
+        return await UserServices.EditUserInfo(token, user);
     }
 }
