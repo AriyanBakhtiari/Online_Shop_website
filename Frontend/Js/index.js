@@ -1,9 +1,63 @@
-import { postRequest } from "./apiCall.js";
+import { getRequest, postRequest } from "./apiCall.js";
 
-window.onload = CurrencyApiCall();
-window.onload = CryptoCurrencyApiCall();
-window.onload = GoldCurrencyApiCall();
+// window.onload = CurrencyApiCall();
+// window.onload = CryptoCurrencyApiCall();
+// window.onload = GoldCurrencyApiCall();
+window.onload = getProductList();
 
+async function getProductList() {
+    const res = await getRequest('Products');
+    createProductCart(res);
+}
+function createProductCart(res) {
+    const element = document.getElementById("product-row-list");
+
+    for (let i = 0; i < res.length; i++) {
+
+        const div = document.createElement("div");
+        div.classList = "col-3";
+
+        const div2 = document.createElement("div");
+        div2.classList = "card border-dark mb-3 card text-center";
+
+        const image = document.createElement("img");
+        image.setAttribute("src", res[i].imagePath);
+        image.setAttribute("width", "250");
+        image.setAttribute("height", "250");
+        image.classList = "card-img-top";
+
+        const div3 = document.createElement("div");
+        div3.classList = "card-body";
+
+        const title = document.createElement("h6");
+        title.classList = "card-title";
+        title.innerText = res[i].name;
+
+        const p = document.createElement("p");
+        p.classList = "card-text";
+        const price = document.createElement("span");
+        price.classList = "badge badge-light";
+        price.innerText = res[i].price + "تومان";
+        p.appendChild(price);
+
+        const link = document.createElement("a");
+        link.classList = "btn btn-dark";
+        link.setAttribute("href", "./product/" + res[i].id)
+        link.innerText = "جزییات محصول";
+
+        div3.appendChild(title);
+        div3.appendChild(p);
+        div3.appendChild(link);
+
+        div2.appendChild(image);
+        div2.appendChild(div3);
+
+        div.appendChild(div2);
+
+        element.appendChild(div);
+    }
+
+}
 
 
 async function CurrencyApiCall() {
