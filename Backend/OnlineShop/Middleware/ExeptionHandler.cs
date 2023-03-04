@@ -42,7 +42,7 @@ public static class ExceptionHandlerMiddlewareExtension
                                 new ApiResponse<object>
                                 {
                                     errorMessage = "متاسفانه مشکلی پیش امده است.",
-                                    // data = exceptionHandlerPathFeature.Error,
+                                     data = exceptionHandlerPathFeature.Error,
                                     errorCode = 500
                                 }));
                     }

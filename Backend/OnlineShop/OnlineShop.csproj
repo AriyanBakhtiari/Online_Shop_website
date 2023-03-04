@@ -3,39 +3,40 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>49cd9d3c-95a8-454c-8fd5-dd1b0c464b99</UserSecretsId>
     </PropertyGroup>
 
-    <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' "/>
-    <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' "/>
+    <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+    <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
     <ItemGroup>
-        <PackageReference Include="AutoMapper" Version="12.0.1"/>
-        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0"/>
-        <PackageReference Include="FluentValidation" Version="11.5.1"/>
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.3"/>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="7.0.3"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.3"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3"/>
+        <PackageReference Include="AutoMapper" Version="12.0.1" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+        <PackageReference Include="FluentValidation" Version="11.5.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="7.0.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.3">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0"/>
-        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0"/>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.2"/>
-        <PackageReference Include="Persia.NET" Version="3.0.4727"/>
-        <PackageReference Include="Serilog" Version="2.12.0"/>
-        <PackageReference Include="Serilog.AspNetCore" Version="6.1.0"/>
-        <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0"/>
-        <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0"/>
-        <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="9.0.0"/>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+        <PackageReference Include="Persia.NET" Version="3.0.4727" />
+        <PackageReference Include="Serilog" Version="2.12.0" />
+        <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+        <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+        <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+        <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="9.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Data\Models\"/>
-        <Folder Include="Migrations\"/>
+        <Folder Include="Data\Models\" />
+        <Folder Include="Migrations\" />
     </ItemGroup>
 
 </Project>
