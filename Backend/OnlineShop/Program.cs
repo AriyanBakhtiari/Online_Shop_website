@@ -43,6 +43,16 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<OnlineShopeDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SQLDB")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+                      policy =>
+                      {
+                          policy.WithOrigins("*").AllowAnyHeader()
+                                                  .AllowAnyMethod(); 
+                          
+                      });
+});
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -136,6 +146,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 app.UseCustomExceptionHandler();
 app.UseHttpsRedirection();
+app.UseCors();
 
 app.UseAuthentication();
 app.UseAuthorization();
