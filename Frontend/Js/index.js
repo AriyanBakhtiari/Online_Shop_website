@@ -12,17 +12,19 @@ async function getProductList() {
 async function createProductCart(res) {
     const response = await fetch("ComponentView/productcart.html");
     const text = await response.text();
+    const element = document.getElementById('product-row-list');
+    element.innerHTML = "";
 
     for (let i = 0; i < res.length; i++) {
+        const name = res[i].name.length > 28 ? res[i].name.substring(0, 25) + "..." : res[i].name;
         const defaultbody = text.replace("Image", res[i].imagePath)
-            .replace("##Name##", res[i].name)
+            .replace("##Name##", name)
             .replace("##Id##", res[i].id)
             .replace("##Price##", res[i].price);
-        document.getElementById('product-row-list').insertAdjacentHTML('beforeend', defaultbody);
+        element.insertAdjacentHTML('beforeend', defaultbody);
     }
 
 }
-
 
 async function CurrencyApiCall() {
     const res = await postRequest('CurrencyInquiry');

@@ -21,20 +21,20 @@
         <div class="text-center">
             <h5>ورود</h5>
         </div>
-        <form class="form-body">
+        <form class="form-body" id="login-form-inputs">
             <div class="form-group">
                 <label for="InputEmail1">ایمیل کاربری</label>
-                <input dir="rtl" type="text" class="form-control" id="InputEmail1" placeholder="">
+                <input dir="rtl" type="text" class="form-control" id="InputEmail1" placeholder="" name="InputEmail1">
                 <span dir="rtl" class="error" aria-live="polite"></span>
             </div>
             <div class="form-group">
                 <label for="InputPassword1">رمز عبور</label>
-                <input dir="rtl" type="password" class="form-control" id="InputPassword1">
+                <input dir="rtl" type="password" class="form-control" id="InputPassword1" name="InputPassword1">
                 <span dir="rtl" class="error" aria-live="polite"></span>
             </div>
             <div class="form-check">
                 <label class="form-check-label rememberme-label" for="exampleCheck1">مرا به خاطر بسپار</label>
-                <input dir="rtl" type="checkbox" class="form-check-input" id="exampleCheck1">
+                <input dir="rtl" type="checkbox" class="form-check-input" id="Remember-me" name="Remember-me">
             </div>
             <div class="login-button mt-3">
                 <button type="submit" class="btn btn-primary login-button">ورود</button>
@@ -94,9 +94,10 @@
     </div>
 
     <script src="Resource/lib/jquery/dist/jquery.min.js"></script>
+    <script src="Resource/axios/node_modules/axios/dist/axios.min.js"></script>
     <script src="Resource/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="Js/login-form.js"></script>
-    <script src="Js/loginvalidation.js"></script>
+    <script type="module" src="Js/login-form.js"></script>
+
 </body>
 
 </html>

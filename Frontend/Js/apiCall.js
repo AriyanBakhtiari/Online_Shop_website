@@ -1,14 +1,27 @@
-//import axios from "";
 
 const baseURL = "http://zhatis.com/";
 
-// console.log(postRequest("CurrencyInquiry", body));
-function postRequest(serviceName, body = {}) {
+function postRequest(serviceName, body) {
+    const config = {
+        withCredentials: false,
+        headers: {
+            "Content-Type": "application/json",
+            "Athentication": localStorage.getItem("Token")
+        }
+    }
     const axiosInstance = axios.create({ baseURL });
-    return axiosInstance.post(serviceName, body)
+
+    return axiosInstance.post(serviceName, body, config)
         .then(function (response) {
-            console.log(response.data);
             return response.data;
+        })
+        .catch((e) => {
+            console.log(e.response);
+            if (e.response.status == 404) {
+                localStorage.removeItem("Token");
+            }
+            alert(e.response.data.errorMessage)
+            return false;
         });
 }
 

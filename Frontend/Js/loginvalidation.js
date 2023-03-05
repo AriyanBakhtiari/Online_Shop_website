@@ -2,7 +2,6 @@ const form = document.getElementsByTagName("form");
 const email1 = document.getElementById("InputEmail1");
 const email1error = email1.nextElementSibling;
 
-// As per the HTML Specification
 const emailRegExp =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -29,21 +28,7 @@ email1.addEventListener("input", () => {
     }
 });
 
-// This defines what happens when the user tries to submit the data
-form[0].addEventListener("submit", (event) => {
-    event.preventDefault();
 
-    const isValid = emailRegExp.test(email1.value);
-    if (!isValid) {
-        email1.className = "form-control invalid";
-        email1error.textContent = "◉ " + "ایمیل وارد شده معتبر نمیباشد.";
-        email1error.style.display = "block";
-    } else {
-        email1.className = "form-control valid";
-        email1error.textContent = "";
-        email1error.style.display = "none";
-    }
-});
 
 const email2 = document.getElementById("InputEmail2");
 const email2error = email2.nextElementSibling;
@@ -128,7 +113,6 @@ form[1].addEventListener("submit", (event) => {
     }
 });
 
-
 const password2Repeat = document.getElementById("InputPassword2-repeat");
 const password2Repeaterror = password2Repeat.nextElementSibling;
 
@@ -197,7 +181,7 @@ form[1].addEventListener("submit", (event) => {
         Name.className = "form-control invalid";
         Nameerror.textContent = "◉ " + "نام را وارد نمایید.";
         Nameerror.style.display = "block";
-
+        return false;
     } else {
         Name.className = "form-control valid";
         Nameerror.textContent = "";
@@ -230,7 +214,7 @@ Family.addEventListener("input", () => {
 form[1].addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const isValid = password2.value.length > 2;
+    const isValid = Family.value.length > 2;
     if (!isValid) {
         Family.className = "form-control invalid";
         Familyerror.textContent = "◉ " + "نام خانوادگی را وارد نمایید.";
@@ -242,3 +226,22 @@ form[1].addEventListener("submit", (event) => {
         Familyerror.style.display = "none";
     }
 });
+
+function loginValidation() {
+    const email = form[0].elements.InputEmail1;
+    const emailerror = email.nextElementSibling;
+    let isValid = emailRegExp.test(email.value);
+    if (!isValid) {
+        email.className = "form-control invalid";
+        emailerror.textContent = "◉ " + "ایمیل وارد شده معتبر نمیباشد.";
+        emailerror.style.display = "block";
+        return false;
+    } else {
+        email.className = "form-control valid";
+        emailerror.textContent = "";
+        emailerror.style.display = "none";
+    }
+    return true;
+}
+
+export { loginValidation };
