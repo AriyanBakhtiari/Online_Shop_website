@@ -30,7 +30,7 @@ public class MainController : Controller
 
     [HttpGet]
     [Route("/Products/Id/{productId:long}")]
-    public async Task<Product> GetProductsDetail([FromRoute] long productId)
+    public async Task<ProductDetailModel> GetProductsDetail([FromRoute] long productId)
     {
         return await MainServices.GetProductsDetail(productId);
     }

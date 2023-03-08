@@ -1,6 +1,6 @@
 import { getRequest } from "./apiCall.js";
 
-window.onload(getProductDetail());
+setTimeout(getProductDetail, 5 * 100);
 async function getProductDetail() {
     const urlParams = new URLSearchParams(window.location.search);
     const myParam = urlParams.get('id');
@@ -32,11 +32,12 @@ async function analyzeProductDetail(res) {
         else {
             let icon = document.createElement("i");
             icon.classList = "fa fa-exclamation-triangle fa-6x error-icon middle";
-            element.appendChild(icon);
+            navbarElement.appendChild(icon);
+            alert("محصولی یافت نشد.");
         }
     } catch (error) {
         let icon = document.createElement("i");
         icon.classList = "fa fa-exclamation-triangle fa-6x error-icon middle";
-        element.appendChild(icon);
+        document.getElementById("product-detail-body").appendChild(icon);
     }
 }

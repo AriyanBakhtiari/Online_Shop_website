@@ -29,10 +29,21 @@ public class MainServices
         return product;
     }
 
-    public async Task<Product> GetProductsDetail(long productId)
+    public async Task<ProductDetailModel> GetProductsDetail(long productId)
     {
         var product = await _productRepository.GetProductDetail(productId);
         if (product == null) throw new ExceptionHandler(" محصولی یافت نشد");
-        return product;
+
+        var productDetail = new ProductDetailModel()
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Description = product.Description,
+            CategoryName = product.Category.ShowName,
+            Price = product.Price.ToString().ToThousandSepratedInt(),
+            ImagePath = product.ImagePath,
+            QuantityInStock = product.QuantityInStock,
+        };
+        return productDetail;
     }
 }
