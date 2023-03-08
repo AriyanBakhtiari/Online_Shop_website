@@ -34,7 +34,7 @@ public class UserServices
             Gender = user.Gender,
             IsAdmin = user.IsAdmin,
             MobileNumber = user.MobileNumber ?? "-",
-            Wallet = user.Wallet,
+            Wallet = user.Wallet.ToString().ToThousandSepratedInt(),
             ZapCode = user.ZapCode ?? "-"
         };
         return userModel;
@@ -63,7 +63,7 @@ public class UserServices
             Gender = userinfo.Gender,
             IsAdmin = userinfo.IsAdmin,
             MobileNumber = userinfo.MobileNumber ?? "-",
-            Wallet = userinfo.Wallet,
+            Wallet = userinfo.Wallet.ToString().ToThousandSepratedInt(),
             ZapCode = userinfo.ZapCode ?? "-"
         };
 

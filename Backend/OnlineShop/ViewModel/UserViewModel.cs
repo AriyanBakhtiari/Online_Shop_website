@@ -13,7 +13,7 @@ public class UserViewModel
     public GenderEnum Gender { get; set; }
     public string? ZapCode { get; set; }
     public string? MobileNumber { get; set; }
-    public double Wallet { get; set; }
+    public string Wallet { get; set; }
     public bool IsAdmin { get; set; }
     public string? RegisterDate { get; set; }
 }
