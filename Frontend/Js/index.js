@@ -8,22 +8,31 @@ window.onload = getProductList();
 async function getProductList() {
     const res = await getRequest('Products');
     createProductCart(res);
+
 }
 async function createProductCart(res) {
-    const response = await fetch("ComponentView/productcart.html");
-    const text = await response.text();
     const element = document.getElementById('product-row-list');
     element.innerHTML = "";
 
-    for (let i = 0; i < res.length; i++) {
-        const name = res[i].name.length > 28 ? res[i].name.substring(0, 25) + "..." : res[i].name;
-        const defaultbody = text.replace("Image", res[i].imagePath)
-            .replace("##Name##", name)
-            .replace("##Id##", res[i].id)
-            .replace("##Price##", res[i].price);
-        element.insertAdjacentHTML('beforeend', defaultbody);
-    }
+    if (res.status == 200) {
+        const componentView = await (await fetch("ComponentView/productcart.html")).text();
+        const element = document.getElementById('product-row-list');
+        element.innerHTML = "";
 
+        for (let i = 0; i < res.data.length; i++) {
+            const name = res.data[i].name.length > 28 ? res.data[i].name.substring(0, 25) + "..." : res.data[i].name;
+            const defaultbody = componentView.replace("Image", res.data[i].imagePath)
+                .replace("##Name##", name)
+                .replace("##Id##", res.data[i].id)
+                .replace("##Price##", res.data[i].price);
+            element.insertAdjacentHTML('beforeend', defaultbody);
+        }
+    }
+    else {
+        let icon = document.createElement("i");
+        icon.classList = "fa fa-exclamation-triangle fa-6x error-icon middle";
+        element.appendChild(icon);
+    }
 }
 
 async function CurrencyApiCall() {

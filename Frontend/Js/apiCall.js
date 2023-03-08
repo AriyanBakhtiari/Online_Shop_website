@@ -12,27 +12,34 @@ function postRequest(serviceName, body) {
         }
     }
     const axiosInstance = axios.create({ baseURL });
-
+    let data;
+    let status;
     return axiosInstance.post(serviceName, body, config)
         .then(function (response) {
-            return response.data;
-        })
-        .catch((e) => {
-            console.log(e.response);
-            if (e.response.status == 404) {
-                localStorage.removeItem("Token");
-            }
-            alert(e.response.data.errorMessage)
-            return false;
+            data = response.data;
+            status = response.status;
+        }).catch(function (error) {
+            data = error.response.data;
+            status = error.response.status;
+        }).then(function () {
+            return { data, status };
         });
 }
 
 function getRequest(serviceName) {
+    let data;
+    let status;
+
     const axiosInstance = axios.create({ baseURL });
     return axiosInstance.get(serviceName)
         .then(function (response) {
-            console.log(response.data);
-            return response.data;
+            data = response.data;
+            status = response.status;
+        }).catch(function () {
+            data = response.data;
+            status = response.status;
+        }).then(function () {
+            return { data, status };
         });
 }
 

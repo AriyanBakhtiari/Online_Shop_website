@@ -43,11 +43,15 @@ async function loginrequest(formElements) {
             email: formElements.InputEmail1.value,
             password: formElements.InputPassword1.value
         });
-    if (!res) {
+    if (res.status == 200) {
+        localStorage.setItem("Token", "Bearer " + res.data);
+        window.location.href = "http://127.0.0.1:5500/";
+        return true;
+    }
+    else {
+        alert(res.data.errorMessage);
         return false;
     }
-    localStorage.setItem("Token", "Bearer " + res);
-    window.location.href = "http://127.0.0.1:5500/";
 }
 
 async function signupRequest(formElements) {
@@ -58,9 +62,9 @@ async function signupRequest(formElements) {
             email: formElements.InputEmail2.value,
             password: formElements.InputPassword2.value
         });
-    if (!res) {
+    if (!res.status) {
         return false;
     }
-    localStorage.setItem("Token", "Bearer " + res);
+    localStorage.setItem("Token", "Bearer " + res.response.data);
     window.location.href = "http://127.0.0.1:5500/";
 }
