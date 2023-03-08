@@ -1,3 +1,5 @@
+import { getRequest, postRequest } from "./apiCall.js";
+
 function toFarsiNumber(n) {
 
     const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
@@ -39,14 +41,42 @@ function toFarsiNumber(n) {
     }
     return num;
 }
+partiaViewManger();
 
-$(function () {
-    var includes = $('[data-include]')
-    $.each(includes, function () {
-        var file = 'PartialViews/' + $(this).data('include') + '.html'
-        $(this).load(file)
-    })
-})
+window.onload = getUserInfo();
+
+function partiaViewManger() {
+    var includes = document.querySelectorAll('[data-include]')
+    includes.forEach(
+        async element => {
+            const path = 'PartialViews/' + element.getAttribute("data-include") + '.html';
+            const html = await (await fetch(path)).text();
+            element.insertAdjacentHTML("afterbegin", html)
+        }
+    )
+}
+
+async function getUserInfo() {
+    const res = await getRequest('User');
+    analyseUserInfo(res);
+}
+async function analyseUserInfo(res) {
+    const navbarElement = document.getElementById("left-navbar");
+    if (res.status == 200) {
+        let userInfoComponent = await (await fetch("ComponentView/UserInfoDropDown.html")).text();
+
+        userInfoComponent = userInfoComponent
+            .replace("##Name##", res.data.firstName == null ? res.data.email : res.data.firstName)
+            .replace("##Wallet##", res.data.wallet)
+
+        navbarElement.removeChild(navbarElement.lastElementChild);
+        navbarElement.insertAdjacentHTML("beforeend", userInfoComponent);
+
+    }
+    else {
+        localStorage.removeItem("Token");
+    }
+}
 
 function toPersianDate(date) {
     const datetime = new Date(date);

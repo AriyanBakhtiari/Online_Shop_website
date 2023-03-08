@@ -8,7 +8,7 @@ function postRequest(serviceName, body) {
         withCredentials: false,
         headers: {
             "Content-Type": "application/json",
-            "Athentication": localStorage.getItem("Token")
+            "Authorization": localStorage.getItem("Token")
         }
     }
     const axiosInstance = axios.create({ baseURL });
@@ -29,15 +29,19 @@ function postRequest(serviceName, body) {
 function getRequest(serviceName) {
     let data;
     let status;
-
+    const config = {
+        headers: {
+            "Authorization": localStorage.getItem("Token")
+        }
+    }
     const axiosInstance = axios.create({ baseURL });
-    return axiosInstance.get(serviceName)
+    return axiosInstance.get(serviceName, config)
         .then(function (response) {
             data = response.data;
             status = response.status;
-        }).catch(function () {
-            data = response.data;
-            status = response.status;
+        }).catch(function (error) {
+            data = error.response.data;
+            status = error.response.status;
         }).then(function () {
             return { data, status };
         });

@@ -5,6 +5,9 @@ import { getRequest, postRequest } from "./apiCall.js";
 // window.onload = GoldCurrencyApiCall();
 window.onload = getProductList();
 
+
+
+
 async function getProductList() {
     const res = await getRequest('Products');
     createProductCart(res);
@@ -15,7 +18,7 @@ async function createProductCart(res) {
     element.innerHTML = "";
 
     if (res.status == 200) {
-        const componentView = await (await fetch("ComponentView/productcart.html")).text();
+        const componentView = await (await fetch("ComponentView/productCart.html")).text();
         const element = document.getElementById('product-row-list');
         element.innerHTML = "";
 
@@ -34,6 +37,8 @@ async function createProductCart(res) {
         element.appendChild(icon);
     }
 }
+
+
 
 async function CurrencyApiCall() {
     const res = await postRequest('CurrencyInquiry');
