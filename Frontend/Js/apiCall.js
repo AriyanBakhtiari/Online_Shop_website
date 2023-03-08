@@ -1,5 +1,7 @@
 
-const baseURL = "http://zhatis.com/";
+//const baseURL = "http://zhatis.com/";
+const baseURL = "http://localhost:44373/";
+
 
 function postRequest(serviceName, body) {
     const config = {

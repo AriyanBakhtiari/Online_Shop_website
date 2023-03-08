@@ -66,6 +66,7 @@ builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+
 ////serilog
 //builder.Host.UseSerilog((webHostBuilderContext, loggerConfiguration) =>
 //{

@@ -17,13 +17,13 @@ public class ProductRepository : IProductRepository
     public Task<List<ProductCartViewModel>> GetProductsList()
     {
         return _context.Products.Select(x => new ProductCartViewModel
-            {Name = x.Name, Id = x.Id, ImagePath = x.ImagePath, Price = x.Price}).ToListAsync();
+            {Name = x.Name, Id = x.Id, ImagePath = x.ImagePath, Price = x.Price.ToString().ToThousandSepratedInt()}).ToListAsync();
     }
 
     public Task<List<ProductCartViewModel>> GetProductsList(string category)
     {
         return _context.Products.Include(x => x.Category).Where(x => x.Category.Name == category).Select(x =>
-                new ProductCartViewModel {Name = x.Name, Id = x.Id, ImagePath = x.ImagePath, Price = x.Price})
+                new ProductCartViewModel {Name = x.Name, Id = x.Id, ImagePath = x.ImagePath, Price = x.Price.ToString().ToThousandSepratedInt()})
             .ToListAsync();
     }
 

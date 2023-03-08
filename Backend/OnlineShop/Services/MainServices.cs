@@ -15,6 +15,7 @@ public class MainServices
 
     public async Task<List<ProductCartViewModel>> GetProductsList()
     {
+        // throw new ExceptionHandler("محصولی یافت نشد");
         var product = await _productRepository.GetProductsList();
         if (product == null || product.Count == 0) throw new ExceptionHandler("محصولی یافت نشد");
         return product;

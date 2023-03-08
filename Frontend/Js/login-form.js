@@ -1,4 +1,4 @@
-import { loginValidation } from "./loginvalidation.js";
+import { loginValidation, signUpValidation } from "./loginvalidation.js";
 import { postRequest, getRequest } from "./apiCall.js";
 
 document.getElementById("login-form-button").addEventListener("click", showLoginForm);
@@ -16,14 +16,24 @@ function showLoginForm() {
 
 window.addEventListener("load", () => {
     const form = document.getElementsByTagName("form");
+
     form[0].addEventListener("submit", function () {
         event.preventDefault();
-        var validation = loginValidation();
 
-        if (!validation) {
+        var validation = loginValidation();
+        if (!validation)
             return false;
-        }
+
         loginrequest(this.elements);
+    });
+
+    form[1].addEventListener("submit", function () {
+        event.preventDefault();
+        var validation = signUpValidation();
+        if (!validation)
+            return false;
+
+        signupRequest(this.elements);
     });
 });
 
@@ -32,6 +42,21 @@ async function loginrequest(formElements) {
         {
             email: formElements.InputEmail1.value,
             password: formElements.InputPassword1.value
+        });
+    if (!res) {
+        return false;
+    }
+    localStorage.setItem("Token", "Bearer " + res);
+    window.location.href = "http://127.0.0.1:5500/";
+}
+
+async function signupRequest(formElements) {
+    var res = await postRequest("SignUp",
+        {
+            firstName: formElements.inputName.value,
+            lastName: formElements.InputFamily.value,
+            email: formElements.InputEmail2.value,
+            password: formElements.InputPassword2.value
         });
     if (!res) {
         return false;
