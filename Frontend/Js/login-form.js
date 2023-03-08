@@ -8,7 +8,6 @@ function showSignInForm() {
     document.getElementsByClassName("signup-form")[0].classList.remove("active");
     document.getElementsByClassName("login-form")[0].classList.add("active");
 };
-
 function showLoginForm() {
     document.getElementsByClassName("signup-form")[0].classList.add("active");
     document.getElementsByClassName("login-form")[0].classList.remove("active");
@@ -38,33 +37,45 @@ window.addEventListener("load", () => {
 });
 
 async function loginrequest(formElements) {
-    var res = await postRequest("Login",
-        {
-            email: formElements.InputEmail1.value,
-            password: formElements.InputPassword1.value
-        });
-    if (res.status == 200) {
-        localStorage.setItem("Token", "Bearer " + res.data);
-        window.location.href = "http://127.0.0.1:5500/";
-        return true;
-    }
-    else {
-        alert(res.data.errorMessage);
+    try {
+        var res = await postRequest("Login",
+            {
+                email: formElements.InputEmail1.value,
+                password: formElements.InputPassword1.value
+            });
+        if (res.status == 200) {
+            localStorage.setItem("Token", "Bearer " + res.data);
+            window.location.href = "http://127.0.0.1:5500/";
+            return true;
+        }
+        else {
+            alert(res?.data?.errorMessage ?? "متاسفانه مشکلی پیش امده است");
+            return false;
+        }
+    } catch (error) {
+        alert(res?.data?.errorMessage ?? "متاسفانه مشکلی پیش امده است");
         return false;
     }
 }
-
 async function signupRequest(formElements) {
-    var res = await postRequest("SignUp",
-        {
-            firstName: formElements.inputName.value,
-            lastName: formElements.InputFamily.value,
-            email: formElements.InputEmail2.value,
-            password: formElements.InputPassword2.value
-        });
-    if (!res.status) {
+    try {
+        var res = await postRequest("SignUp",
+            {
+                firstName: formElements.inputName.value,
+                lastName: formElements.InputFamily.value,
+                email: formElements.InputEmail2.value,
+                password: formElements.InputPassword2.value
+            });
+        if (res.status == 200) {
+            localStorage.setItem("Token", "Bearer " + res.response.data);
+            window.location.href = "http://127.0.0.1:5500/";
+        }
+        else {
+            alert(res?.data?.errorMessage ?? "متاسفانه مشکلی پیش امده است");
+            return false;
+        }
+    } catch (error) {
+        alert(res?.data?.errorMessage ?? "متاسفانه مشکلی پیش امده است");
         return false;
     }
-    localStorage.setItem("Token", "Bearer " + res.response.data);
-    window.location.href = "http://127.0.0.1:5500/";
 }

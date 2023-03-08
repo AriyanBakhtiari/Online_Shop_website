@@ -317,3 +317,11 @@
     background: transparent;
   }
 }
+
+.product-card-image {
+  border-radius: 10px;
+  margin : 5px;
+  height: 240px !important;
+  width: 240px !important;
+  border: 1px #00000032 solid;
+}

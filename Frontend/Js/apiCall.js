@@ -2,8 +2,8 @@
 //const baseURL = "http://zhatis.com/";
 const baseURL = "http://localhost:44373/";
 
-
 function postRequest(serviceName, body) {
+
     const config = {
         withCredentials: false,
         headers: {
@@ -27,6 +27,7 @@ function postRequest(serviceName, body) {
 }
 
 function getRequest(serviceName) {
+
     let data;
     let status;
     const config = {
@@ -40,12 +41,11 @@ function getRequest(serviceName) {
             data = response.data;
             status = response.status;
         }).catch(function (error) {
-            data = error.response.data;
-            status = error.response.status;
+            data = error?.response?.data;
+            status = error?.response?.status;
         }).then(function () {
             return { data, status };
         });
 }
-
 
 export { postRequest, getRequest };
