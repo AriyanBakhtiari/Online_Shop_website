@@ -38,7 +38,7 @@ async function createProductCart(res) {
     } catch (error) {
         let icon = document.createElement("i");
         icon.classList = "fa fa-exclamation-triangle fa-6x error-icon middle";
-        element.appendChild(icon);
+        document.getElementById('product-row-list').appendChild(icon);
     }
 }
 

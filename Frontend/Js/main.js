@@ -1,11 +1,7 @@
 import { getRequest, postRequest } from "./apiCall.js";
 
-
-window.onload = initBase();
-async function initBase() {
-    await partiaViewManger();
-    await getUserInfo();
-}
+window.onload = partiaViewManger()
+setTimeout(getUserInfo, 5 * 100);
 
 async function partiaViewManger() {
     var includes = document.querySelectorAll('[data-include]')
@@ -37,12 +33,6 @@ async function analyseUserInfo(res) {
     else {
         localStorage.removeItem("Token");
     }
-}
-
-
-function SignOut() {
-    localStorage.removeItem("Token");
-    location.reload();
 }
 
 //helper
