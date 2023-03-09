@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.OpenApi.Extensions;
 using OnlineShop.Data.Repository.Interface;
 using OnlineShop.Validation;
 using OnlineShop.ViewModel;
@@ -31,11 +32,11 @@ public class UserServices
             NationalId = user.NationalId ?? "-",
             BirthDate = Helper.ToPersianDateTime(user.BirthDate),
             Address = user.Address ?? "-",
-            Gender = user.Gender,
+            Gender = user.Gender.GetDisplayName(),
             IsAdmin = user.IsAdmin,
             MobileNumber = user.MobileNumber ?? "-",
             Wallet = user.Wallet.ToString().ToThousandSepratedInt(),
-            ZapCode = user.ZapCode ?? "-"
+            ZipCode = user.ZapCode ?? "-"
         };
         return userModel;
     }
@@ -60,11 +61,11 @@ public class UserServices
             NationalId = userinfo.NationalId ?? "-",
             BirthDate = Helper.ToPersianDate(userinfo.BirthDate.ToString()),
             Address = userinfo.Address ?? "-",
-            Gender = userinfo.Gender,
+            Gender = userinfo.Gender.GetDisplayName(),
             IsAdmin = userinfo.IsAdmin,
             MobileNumber = userinfo.MobileNumber ?? "-",
             Wallet = userinfo.Wallet.ToString().ToThousandSepratedInt(),
-            ZapCode = userinfo.ZapCode ?? "-"
+            ZipCode = userinfo.ZapCode ?? "-"
         };
 
         return user;

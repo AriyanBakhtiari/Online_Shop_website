@@ -320,7 +320,7 @@ namespace OnlineShop.Migrations
                     b.Property<double>("Wallet")
                         .HasColumnType("float");
 
-                    b.Property<string>("ZapCode")
+                    b.Property<string>("ZipCode")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

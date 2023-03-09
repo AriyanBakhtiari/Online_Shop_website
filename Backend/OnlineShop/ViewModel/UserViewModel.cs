@@ -10,8 +10,8 @@ public class UserViewModel
     public string? NationalId { get; set; }
     public string? BirthDate { get; set; }
     public string? Address { get; set; }
-    public GenderEnum Gender { get; set; }
-    public string? ZapCode { get; set; }
+    public string Gender { get; set; }
+    public string? ZipCode { get; set; }
     public string? MobileNumber { get; set; }
     public string Wallet { get; set; }
     public bool IsAdmin { get; set; }
