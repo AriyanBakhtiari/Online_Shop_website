@@ -1,6 +1,6 @@
 import { getRequest } from "./apiCall.js";
 
-setTimeout(getProductDetail, 5 * 100);
+setTimeout(getProductDetail, 1);
 async function getProductDetail() {
     const urlParams = new URLSearchParams(window.location.search);
     const myParam = urlParams.get('id');
@@ -20,7 +20,7 @@ async function analyzeProductDetail(res) {
                 .replace("##Description##", res.data.description)
                 .replace("##Image##", res.data.imagePath)
                 .replace("##Price##", res.data.price)
-                .replace("##Category##", res.data.category.showName)
+                .replace("##Category##", res.data.categoryName)
 
             navbarElement.insertAdjacentHTML("beforeend", productDeatilComponent);
 

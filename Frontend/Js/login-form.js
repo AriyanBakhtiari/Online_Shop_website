@@ -67,7 +67,7 @@ async function signupRequest(formElements) {
                 password: formElements.InputPassword2.value
             });
         if (res.status == 200) {
-            localStorage.setItem("Token", "Bearer " + res.response.data);
+            localStorage.setItem("Token", "Bearer " + res.data);
             window.location.href = "http://127.0.0.1:5500/";
         }
         else {
