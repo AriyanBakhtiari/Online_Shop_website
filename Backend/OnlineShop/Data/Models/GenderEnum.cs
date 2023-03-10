@@ -6,5 +6,5 @@ public enum GenderEnum : short
 {
     [Display(Name = "نامشخص")] Unkhown,
     [Display(Name = "مرد")] Male,
-    [Display(Name = "زن")] Female
+    [Display(Name = "زن")] Female,
 }

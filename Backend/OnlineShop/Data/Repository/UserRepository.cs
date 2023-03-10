@@ -17,10 +17,7 @@ public class UserRepository : IUserRepository
     public async Task<bool> UsernamePasswordIsCorrect(LoginModel user)
     {
         var userAccount = await _context.Users.FirstOrDefaultAsync(x => x.Email == user.Email);
-        if (userAccount == null || userAccount?.Password != user.Password)
-            return false;
-
-        return true;
+        return userAccount != null && PasswordHashManager.VerifyHash(user.Password ,"SHA512",userAccount?.Password);
     }
 
     public Task<bool> UserIsExist(string userEmail)
@@ -33,7 +30,7 @@ public class UserRepository : IUserRepository
         var userModel = new User
         {
             Email = user.Email,
-            Password = user.Password,
+            Password = PasswordHashManager.ComputeHash(user.Password,"SHA512"),
             FirstName = user.FirstName.ToSafePersianString(),
             LastName = user.LastName.ToSafePersianString(),
             RegisterDate = DateTime.Now

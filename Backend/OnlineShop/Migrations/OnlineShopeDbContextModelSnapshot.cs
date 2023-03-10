@@ -22,7 +22,7 @@ namespace OnlineShop.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("OnlineShop.Data.Category", b =>
+            modelBuilder.Entity("OnlineShop.Data.Models.Category", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,7 +79,7 @@ namespace OnlineShop.Migrations
                         });
                 });
 
-            modelBuilder.Entity("OnlineShop.Data.Order", b =>
+            modelBuilder.Entity("OnlineShop.Data.Models.Order", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -106,7 +106,7 @@ namespace OnlineShop.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("OnlineShop.Data.OrderDetail", b =>
+            modelBuilder.Entity("OnlineShop.Data.Models.OrderDetail", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -141,7 +141,7 @@ namespace OnlineShop.Migrations
                     b.ToTable("OrderDetails");
                 });
 
-            modelBuilder.Entity("OnlineShop.Data.Product", b =>
+            modelBuilder.Entity("OnlineShop.Data.Models.Product", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -276,7 +276,7 @@ namespace OnlineShop.Migrations
                         });
                 });
 
-            modelBuilder.Entity("OnlineShop.Data.User", b =>
+            modelBuilder.Entity("OnlineShop.Data.Models.User", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -320,7 +320,7 @@ namespace OnlineShop.Migrations
                     b.Property<double>("Wallet")
                         .HasColumnType("float");
 
-                    b.Property<string>("ZipCode")
+                    b.Property<string>("ZapCode")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -340,29 +340,29 @@ namespace OnlineShop.Migrations
                             LastName = "بختیاری",
                             MobileNumber = "+989194888834",
                             NationalId = "0025566456",
-                            Password = "admin",
-                            RegisterDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Password = "Xsbo+7j1lhtE1WnWOEga2/sxLjo05mKAetantUEtXELrq+KM5MRnsf0E0+HjDQ+6z+Qf5guoAgkJe1znAM5Y5pVrN7omXw==",
+                            RegisterDate = new DateTime(2001, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Wallet = 10000000.0,
                             ZapCode = "135649"
                         });
                 });
 
-            modelBuilder.Entity("OnlineShop.Data.Order", b =>
+            modelBuilder.Entity("OnlineShop.Data.Models.Order", b =>
                 {
-                    b.HasOne("OnlineShop.Data.User", "User")
+                    b.HasOne("OnlineShop.Data.Models.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId1");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("OnlineShop.Data.OrderDetail", b =>
+            modelBuilder.Entity("OnlineShop.Data.Models.OrderDetail", b =>
                 {
-                    b.HasOne("OnlineShop.Data.Order", "Order")
+                    b.HasOne("OnlineShop.Data.Models.Order", "Order")
                         .WithMany("OrderDatail")
                         .HasForeignKey("OrderId1");
 
-                    b.HasOne("OnlineShop.Data.Product", "Product")
+                    b.HasOne("OnlineShop.Data.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId1");
 
@@ -371,9 +371,9 @@ namespace OnlineShop.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("OnlineShop.Data.Product", b =>
+            modelBuilder.Entity("OnlineShop.Data.Models.Product", b =>
                 {
-                    b.HasOne("OnlineShop.Data.Category", "Category")
+                    b.HasOne("OnlineShop.Data.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -382,12 +382,12 @@ namespace OnlineShop.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("OnlineShop.Data.Order", b =>
+            modelBuilder.Entity("OnlineShop.Data.Models.Order", b =>
                 {
                     b.Navigation("OrderDatail");
                 });
 
-            modelBuilder.Entity("OnlineShop.Data.User", b =>
+            modelBuilder.Entity("OnlineShop.Data.Models.User", b =>
                 {
                     b.Navigation("Orders");
                 });

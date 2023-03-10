@@ -140,8 +140,8 @@ namespace OnlineShop.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Address", "BirthDate", "Email", "FirstName", "Gender", "IsAdmin", "LastName", "MobileNumber", "NationalId", "Password", "RegisterDate", "Wallet", "ZipCode" },
-                values: new object[] { 1L, "تهران", new DateTime(2001, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@admin.com", "ارین", (short)1, true, "بختیاری", "+989194888834", "0025566456", "admin", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 10000000.0, "135649" });
+                columns: new[] { "Id", "Address", "BirthDate", "Email", "FirstName", "Gender", "IsAdmin", "LastName", "MobileNumber", "NationalId", "Password", "RegisterDate", "Wallet", "ZapCode" },
+                values: new object[] { 1L, "تهران", new DateTime(2001, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@admin.com", "ارین", (short)1, true, "بختیاری", "+989194888834", "0025566456", "Xsbo+7j1lhtE1WnWOEga2/sxLjo05mKAetantUEtXELrq+KM5MRnsf0E0+HjDQ+6z+Qf5guoAgkJe1znAM5Y5pVrN7omXw==", new DateTime(2001, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 10000000.0, "135649" });
 
             migrationBuilder.InsertData(
                 table: "Products",
