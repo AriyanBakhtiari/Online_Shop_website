@@ -58,9 +58,11 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
+
 builder.Services.AddScoped<MainServices>();
 builder.Services.AddScoped<AthenticationServices>();
 builder.Services.AddScoped<UserServices>();
+builder.Services.AddScoped<OrderServices>();
 
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 

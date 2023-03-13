@@ -19,7 +19,7 @@ public class PasswordHashManager
 
             saltBytes = new byte[saltSize];
 
-            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            RNGCryptoServiceProvider rng = new();
 
             rng.GetNonZeroBytes(saltBytes); 
         }

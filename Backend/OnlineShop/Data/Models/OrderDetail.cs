@@ -6,8 +6,8 @@ namespace OnlineShop.Data.Models;
 public class OrderDetail
 {
     public long Id { get; set; }
-    public int OrderId { get; set; }
-    public int ProductId { get; set; }
+    public long OrderId { get; set; }
+    public long ProductId { get; set; }
     public decimal Price { get; set; }
     public int Count { get; set; }
 

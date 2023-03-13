@@ -6,7 +6,7 @@ namespace OnlineShop.Data.Models;
 public class Order
 {
     public long Id { get; set; }
-    public int UserId { get; set; }
+    public long UserId { get; set; }
     public bool IsFinaly { get; set; }
     public DateTime CreateDate { get; set; }
 

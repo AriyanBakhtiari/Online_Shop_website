@@ -5,7 +5,8 @@ using OnlineShop.ViewModel;
 
 namespace OnlineShop.Controllers;
 
-[Route("/User")]
+[Authorize]
+[Route("/[controller]")]
 public class UserController : ControllerBase
 {
     public UserController(UserServices userServices)
@@ -16,7 +17,6 @@ public class UserController : ControllerBase
     private UserServices UserServices { get; }
 
     [HttpGet]
-    [Authorize]
     public async Task<UserViewModel> GetUserInfo()
     {
         var token = Request.Headers.Authorization;
@@ -24,7 +24,6 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize]
     public async Task<UserViewModel> EditUserInfo([FromBody] EditUserModel user)
     {
         var token = Request.Headers.Authorization;

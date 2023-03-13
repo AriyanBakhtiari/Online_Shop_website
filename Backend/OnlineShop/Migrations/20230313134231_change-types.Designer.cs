@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineShop.Data;
 
@@ -11,9 +12,11 @@ using OnlineShop.Data;
 namespace OnlineShop.Migrations
 {
     [DbContext(typeof(OnlineShopeDbContext))]
-    partial class OnlineShopeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230313134231_change-types")]
+    partial class changetypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -152,8 +155,8 @@ namespace OnlineShop.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("QuantityInStock")
                         .HasColumnType("int");
@@ -172,7 +175,7 @@ namespace OnlineShop.Migrations
                             Description = "تی شرت مردانه طرح مارشملو",
                             ImagePath = "./Resource/Images/1.jpg",
                             Name = "تی شرت مردانه طرح مارشملو",
-                            Price = 40500,
+                            Price = 40500m,
                             QuantityInStock = 10
                         },
                         new
@@ -182,7 +185,7 @@ namespace OnlineShop.Migrations
                             Description = "تی شرت های نخی فلوریزا همواره از محبوبترین تی شرت ها بوده است و چون با کیفیت جنس بالا (100 درصد نخی پنبه ای و بدون پلی استر) تولیدمی شود همواره طرفداران زیادی دارد. ساده و شیک بودن آن در کنار تنوع در سایز بندی، این نوع تی شرت را همواره به عنوان یکی از محبوبترین کادوها به خصوص در میان مردم مطرح کرده است.این محصول در تمامی سایزهای S، M، L، XL، XXL، XXXL ارائه می گردد. .................................................................................................به سایزبندی تی شرت توجه شود که فقط و فقط مختص پنل فلوریزا می باشد .",
                             ImagePath = "./Resource/Images/2.jpg",
                             Name = "تی شرت مردانه فلوریزا مدل ساده",
-                            Price = 37000,
+                            Price = 37000m,
                             QuantityInStock = 10
                         },
                         new
@@ -192,7 +195,7 @@ namespace OnlineShop.Migrations
                             Description = "تی شرت مردانه",
                             ImagePath = "./Resource/Images/3.jpg",
                             Name = "تی شرت مردانه",
-                            Price = 34500,
+                            Price = 34500m,
                             QuantityInStock = 10
                         },
                         new
@@ -202,7 +205,7 @@ namespace OnlineShop.Migrations
                             Description = "تیشرت مردانه مدل سرنوشت",
                             ImagePath = "./Resource/Images/4.jpg",
                             Name = "تیشرت مردانه مدل سرنوشت",
-                            Price = 35000,
+                            Price = 35000m,
                             QuantityInStock = 10
                         },
                         new
@@ -212,7 +215,7 @@ namespace OnlineShop.Migrations
                             Description = "تیشرت زنانه",
                             ImagePath = "./Resource/Images/5.jpg",
                             Name = "تیشرت زنانه",
-                            Price = 35000,
+                            Price = 35000m,
                             QuantityInStock = 10
                         },
                         new
@@ -222,7 +225,7 @@ namespace OnlineShop.Migrations
                             Description = "رویه این کفش از جنس پارچه مش می باشد که باعت می شود هوا در داخل کفش جریان پیدا کند و در نتیجه از بو گرفتن پا جلوگیری می کند. زیره این کفش از جنس EVA و لاستیک می باشد که سبب نرمی و راحتی زیاد کفش شده است که در نتیجه در پیاده روی یا رانینگ های طولانی سبب می شود پا کمتر احساس خستگی کند. این کفش مناسب برای پیاده روی و رانینگ های طولانی می باشد و همچنین برای استفاده روزمره نیز مناسب می باشد. زیره لاستیکی که بسیار مقاوم است در برابر سایش سبب افزایش طول عمر کفش می شود",
                             ImagePath = "./Resource/Images/6.jpg",
                             Name = "کفش مخصوص دویدن هوکا",
-                            Price = 5800000,
+                            Price = 5800000m,
                             QuantityInStock = 10
                         },
                         new
@@ -232,7 +235,7 @@ namespace OnlineShop.Migrations
                             Description = "این کفش با طرح رنگ چشم نواز دارای متریال و دوخت بسیار با کیفیت است. زیره لاستیکی مورد استفاده در این کفش باعث دوام بالا می گردد. طراحی کفش بگونه ای است که راحتی پای شما را در تمام مدت روز به همراه دارد.",
                             ImagePath = "./Resource/Images/7.jpg",
                             Name = "کفش پیاده روی زنانه مدل Rebound Joy",
-                            Price = 9995000,
+                            Price = 9995000m,
                             QuantityInStock = 10
                         },
                         new
@@ -242,7 +245,7 @@ namespace OnlineShop.Migrations
                             Description = "این کفش فوق العاده راحت بوده و راحتی را با یک زیره میانی متمایز EVA و Boost آدیداس افزایش می دهد. رویه این کفش Ripstop آدیداس با روکش های جیر مصنوعی می باشد. زیره لاستیکی برای استیبل بودن و احساس پایداری شما در انواع حرکات ورزشی می باشد.",
                             ImagePath = "./Resource/Images/8.jpg",
                             Name = "کفش پیاده روی زنانه مدل BST ADDS",
-                            Price = 9675000,
+                            Price = 9675000m,
                             QuantityInStock = 10
                         },
                         new
@@ -252,7 +255,7 @@ namespace OnlineShop.Migrations
                             Description = "اپل همواره توانسته است گوشی‌های هوشمند قدرتمند و بسیار باکیفیتی را روانه بازار کند و پرچمداران سری 13 هم توانستند با بهره بردن از مشخصات فنی قدرتمند، نه‌تنها به نسبت نسل قبلی یعنی خانواده iPhone12، بلکه به نسبت پرچمداران مدعی دیگر هم عملکرد بسیار درخشانی داشته باشند. iPhone 13 Pro از لحاظ مشخصات فنی در نظر گرفته شده چیزی کم از گل سرسبد این سری یعنی iPhone 13 Pro Max ندارد. در نمای روبه‌رویی این گوشی به صفحه‌نمایش با ابعاد 6.1 اینچ و رزولوشن 2532x1170 از نوع Super Retina XDR OLED مجهز شده است. صفحه‌نمایش بسیار باکیفیت که از جمله قابلیت‌های قدرتمند آن، می‌توانیم به نرخ بروزرسانی 120 هرتز و البته حداکثر روشنایی 1200 نیت (nits) اشاره کنیم. در بخش سنسور‌های دوربین هم قرارگیری سه سنسور با رزولوشن 12 مگاپیکسل به ترتیب از نوع عریض، تله‌فوتو و فوق عریض یا همان ultrawide هستیم که البته سنسور TOF 3D LiDAR هم با عملکردی مشابه با سنسورهای سنجش عمق و البته بهتر، این گوشی را همراه می‌کنند. برای دوربین سلفی هم سنسور با رزولوشن 12 مگاپیکسل در نظر گرفته شده است. در بخش فیلمبرداری هم مثل همیشه این بار اما به لطف توانایی ضبط ویدیو با نهایت کیفیت 4K و سرعت 60 فریم در ثانیه برای سنسور عریض و سلفی، این گوشی عملکرد بی‌نظیری را به شما ارائه می‌کند که کمتر پرچمداری توانایی رقابت با آن را دارد. حضور پردازنده قدرتمند Apple A15 هم سبب شده تا این گوشی به‎‌راحتی از پس اجرای سنگین‌ترین بازی‌های روز دنیا بربیاید. باتری با میزان ظرفیت 3095 میلی‌آمپر‌ساعت دیگر مشخصات در نظر گرفته شده برای این پرچمدار قدرتمند است. البته باید بدانید که خبری از آداپتور شارژر درون جعبه این گوشی نیست.",
                             ImagePath = "./Resource/Images/9.jpg",
                             Name = "گوشی موبایل اپل مدل iPhone 13 Pro AAA",
-                            Price = 82900000,
+                            Price = 82900000m,
                             QuantityInStock = 10
                         },
                         new
@@ -262,7 +265,7 @@ namespace OnlineShop.Migrations
                             Description = "قاب ونزو مدل Apollo مناسب برای گوشی موبایل شما، با توجه به طراحی مهندسی شده احساس فوق‌العاده ای به وجود می آورد و با داشتن استانداد نظامی سقوط از ارتفاع 3 متر باعث محافظت کامل از گوشی همراه شما می شود. این قاب به گونه ای طراحی شده است که داری ویژگی مقاومت در برابر ضربه به صورت 360 درجه ، محافظ لنزهای دوربین می باشد. همچنین پشت قاب پایه نگهدارنده تعبیه شده است که تماشای فیلم و سریال را برای شما لذت بخش تر می کند. به دلیل جنس و نوع طراحی این قاب شما می توانید به راحتی در هنگام ورزش های سرعتی مثل دوندگی بدون لیز خوردن گوشی حتی در هنگام عرق کردن دست از گوشی خود استفاده کنید.",
                             ImagePath = "./Resource/Images/10.jpg",
                             Name = "کاور ونزو مدل Apollo مناسب برای گوشی موبایل اپل iphone 13 pro",
-                            Price = 210000,
+                            Price = 210000m,
                             QuantityInStock = 10
                         });
                 });
@@ -331,7 +334,7 @@ namespace OnlineShop.Migrations
                             LastName = "بختیاری",
                             MobileNumber = "+989194888834",
                             NationalId = "0025566456",
-                            Password = "5HjnwMKPKwwCUF0m1hMztzVD2GjU83RuKnhvJ9haALwQ2OW1t6Gpq2mFQJL1aipj7fmAEjrNW76BQGOOJzTsK96KrdCy",
+                            Password = "HccME7tm+bfqvgbjuDtXkTW21iP9w3S9tqAoWdMteCi8PQF3JOzQDOv14bgd6lSfXQepIon6nHl90rDwopUSa1QjA/M=",
                             RegisterDate = new DateTime(2001, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Wallet = 10000000.0,
                             ZapCode = "135649"

@@ -7,12 +7,12 @@ namespace OnlineShop.Controllers;
 
 public class MainController : Controller
 {
+    private MainServices MainServices { get; }
+
     public MainController(MainServices mainServices)
     {
         MainServices = mainServices;
     }
-
-    private MainServices MainServices { get; }
 
     [HttpGet]
     [Route("/Products")]
