@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.OpenApi.Extensions;
 using OnlineShop.Data.Repository.Interface;
 using OnlineShop.Validation;
 using OnlineShop.ViewModel;

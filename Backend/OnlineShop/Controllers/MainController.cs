@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Data.Models;
 using OnlineShop.Services;
 using OnlineShop.ViewModel;
 
@@ -7,12 +6,12 @@ namespace OnlineShop.Controllers;
 
 public class MainController : Controller
 {
-    private MainServices MainServices { get; }
-
     public MainController(MainServices mainServices)
     {
         MainServices = mainServices;
     }
+
+    private MainServices MainServices { get; }
 
     [HttpGet]
     [Route("/Products")]

@@ -1,6 +1,4 @@
-﻿using OnlineShop.Data.Models;
-
-namespace OnlineShop.ViewModel;
+﻿namespace OnlineShop.ViewModel;
 
 public class UserViewModel
 {

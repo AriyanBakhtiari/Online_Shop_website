@@ -13,7 +13,7 @@ public class UserSeedData : IEntityTypeConfiguration<User>
             Id = 1,
             Email = "admin@admin.com",
             IsAdmin = true,
-            Password = PasswordHashManager.ComputeHash("admin","SHA512"),
+            Password = PasswordHashManager.ComputeHash("admin", "SHA512"),
             RegisterDate = new DateTime(2001, 1, 1),
             Wallet = 10000000,
             Address = "تهران",

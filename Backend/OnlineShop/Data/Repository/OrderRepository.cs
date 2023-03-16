@@ -6,7 +6,7 @@ namespace OnlineShop.Data.Repository;
 
 public class OrderRepository : IOrderRepository
 {
-    private OnlineShopeDbContext _context;
+    private readonly OnlineShopeDbContext _context;
 
     public OrderRepository(OnlineShopeDbContext context)
     {
@@ -37,43 +37,41 @@ public class OrderRepository : IOrderRepository
         var order = await _context.Orders.FirstOrDefaultAsync(x => !x.IsFinaly && x.User.Email == email);
         if (order != null)
         {
-            var orderDetail = await _context.OrderDetails.FirstOrDefaultAsync(x => x.OrderId == order.Id && x.ProductId == product.Id);
+            var orderDetail =
+                await _context.OrderDetails.FirstOrDefaultAsync(x =>
+                    x.OrderId == order.Id && x.ProductId == product.Id);
             if (orderDetail != null)
-            {
                 orderDetail.Count += quantity;
-            }
             else
-            {
-                await _context.OrderDetails.AddAsync(new OrderDetail()
+                await _context.OrderDetails.AddAsync(new OrderDetail
                 {
                     OrderId = order.Id,
                     ProductId = product.Id,
                     Price = product.Price,
-                    Count = quantity,
+                    Count = quantity
                 });
-            }
-
         }
         else
         {
-            order = new Order()
+            order = new Order
             {
                 CreateDate = DateTime.Now,
                 IsFinaly = false,
-                UserId = user.Id,
+                UserId = user.Id
             };
-            
+
             await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
 
-            await _context.OrderDetails.AddAsync(new OrderDetail()
+            await _context.OrderDetails.AddAsync(new OrderDetail
             {
                 OrderId = order.Id,
                 ProductId = product.Id,
                 Price = product.Price,
-                Count = quantity,
+                Count = quantity
             });
         }
+
         await _context.SaveChangesAsync();
 
         return Results.Ok();

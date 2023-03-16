@@ -7,12 +7,12 @@ namespace OnlineShop.Controllers;
 
 public class AthenticationController : Controller
 {
-    public AthenticationServices AthenticationServices { get; set; }
-
     public AthenticationController(AthenticationServices athenticationServices)
     {
         AthenticationServices = athenticationServices;
     }
+
+    private AthenticationServices AthenticationServices { get; set; }
 
     [HttpPost]
     [AllowAnonymous]

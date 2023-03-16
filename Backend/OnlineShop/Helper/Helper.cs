@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
@@ -7,7 +8,6 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Persia;
 using Calendar = Persia.Calendar;
-using System.ComponentModel.DataAnnotations;
 
 namespace OnlineShop;
 
@@ -548,7 +548,7 @@ public static class Helper
             return null;
         }
     }
-    
+
     public static string GetDisplayName(this Enum enumValue)
     {
         return enumValue.GetType()

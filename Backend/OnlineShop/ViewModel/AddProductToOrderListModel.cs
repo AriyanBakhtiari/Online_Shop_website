@@ -1,8 +1,7 @@
-﻿namespace OnlineShop.ViewModel
+﻿namespace OnlineShop.ViewModel;
+
+public class AddProductToOrderListModel
 {
-    public class AddProductToOrderListModel
-    {
-        public long ProductId { get; set; }
-        public int Quantity { get; set; }
-    }
+    public long ProductId { get; set; }
+    public int Quantity { get; set; }
 }

@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.Primitives;
-using OnlineShop.Data.Models;
-using OnlineShop.Data.Repository;
-using OnlineShop.Data.Repository.Interface;
+﻿using OnlineShop.Data.Repository.Interface;
 using OnlineShop.ViewModel;
 
 namespace OnlineShop.Services;
@@ -24,30 +21,31 @@ public class OrderServices
             throw new ExceptionHandler("سبد خرید شما خالی است");
 
 
-        var orderListModel = new OrderListModel()
+        var orderListModel = new OrderListModel
         {
             Id = orderList.Id,
             CreateDate = orderList.CreateDate,
             IsFinaly = orderList.IsFinaly,
-            OrderDatail = new List<OrderDetailModel>(),
+            OrderDatail = new List<OrderDetailModel>()
         };
 
-        foreach(var item in orderList.OrderDatail)
+        foreach (var item in orderList.OrderDatail)
         {
-            orderListModel.OrderDatail.Add(new OrderDetailModel()
+            orderListModel.OrderDatail.Add(new OrderDetailModel
             {
                 Count = item.Count,
                 Price = item.Price,
-                ProductDetail = new ProductCartViewModel()
+                ProductDetail = new ProductCartViewModel
                 {
                     Name = item.Product.Name,
                     Price = item.Product.Price.ToString().ToThousandSepratedPersianNumber(),
                     Id = item.Product.Id,
-                    ImagePath = item.Product.ImagePath,
+                    ImagePath = item.Product.ImagePath
                 }
-            }); ;
+            });
+            ;
         }
-        
+
 
         return orderListModel;
     }

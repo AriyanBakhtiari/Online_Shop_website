@@ -1,5 +1,4 @@
-﻿using OnlineShop.Data.Models;
-using OnlineShop.Data.Repository.Interface;
+﻿using OnlineShop.Data.Repository.Interface;
 using OnlineShop.ViewModel;
 
 namespace OnlineShop.Services;
@@ -34,7 +33,7 @@ public class MainServices
         var product = await _productRepository.GetProductDetail(productId);
         if (product == null) throw new ExceptionHandler(" محصولی یافت نشد");
 
-        var productDetail = new ProductDetailModel()
+        var productDetail = new ProductDetailModel
         {
             Id = product.Id,
             Name = product.Name,
@@ -42,7 +41,7 @@ public class MainServices
             CategoryName = product.Category.ShowName,
             Price = product.Price.ToString().ToThousandSepratedInt(),
             ImagePath = product.ImagePath,
-            QuantityInStock = product.QuantityInStock,
+            QuantityInStock = product.QuantityInStock
         };
         return productDetail;
     }

@@ -1,10 +1,7 @@
-﻿
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Data.Models;
 using OnlineShop.Services;
 using OnlineShop.ViewModel;
-using System.Diagnostics.Eventing.Reader;
 
 namespace OnlineShop.Controllers;
 
@@ -13,18 +10,18 @@ namespace OnlineShop.Controllers;
 [Route("/[controller]")]
 public class OrderController : Controller
 {
-    private OrderServices _orderServices { get; }
-
     public OrderController(OrderServices orderServices)
     {
-        _orderServices = orderServices;
+        OrderServices = orderServices;
     }
+
+    private OrderServices OrderServices { get; }
 
     [HttpGet]
     public async Task<OrderListModel> GetOrderList()
     {
         var token = Request.Headers.Authorization;
-        return await _orderServices.GetOrderList(token);
+        return await OrderServices.GetOrderList(token);
     }
 
     [HttpPost]
@@ -32,6 +29,7 @@ public class OrderController : Controller
     public async Task<IResult> AddProductToOrderList([FromBody] AddProductToOrderListModel addProductToOrderListModel)
     {
         var token = Request.Headers.Authorization;
-        return await _orderServices.AddProductToOrderList(token, addProductToOrderListModel.ProductId, addProductToOrderListModel.Quantity);
+        return await OrderServices.AddProductToOrderList(token, addProductToOrderListModel.ProductId,
+            addProductToOrderListModel.Quantity);
     }
 }

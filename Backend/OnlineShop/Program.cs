@@ -46,12 +46,11 @@ builder.Services.AddDbContext<OnlineShopeDbContext>(options =>
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(
-                      policy =>
-                      {
-                          policy.WithOrigins("*").AllowAnyHeader()
-                                                  .AllowAnyMethod(); 
-                          
-                      });
+        policy =>
+        {
+            policy.WithOrigins("*").AllowAnyHeader()
+                .AllowAnyMethod();
+        });
 });
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
