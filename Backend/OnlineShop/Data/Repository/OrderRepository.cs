@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Xml;
+using Microsoft.EntityFrameworkCore;
 using OnlineShop.Data.Models;
 using OnlineShop.Data.Repository.Interface;
 
@@ -41,13 +42,16 @@ public class OrderRepository : IOrderRepository
                 await _context.OrderDetails.FirstOrDefaultAsync(x =>
                     x.OrderId == order.Id && x.ProductId == product.Id);
             if (orderDetail != null)
+            {
                 orderDetail.Count += quantity;
+                orderDetail.Price += quantity * product.Price;
+            }
             else
                 await _context.OrderDetails.AddAsync(new OrderDetail
                 {
                     OrderId = order.Id,
                     ProductId = product.Id,
-                    Price = product.Price,
+                    Price = product.Price * quantity,
                     Count = quantity
                 });
         }
@@ -67,7 +71,7 @@ public class OrderRepository : IOrderRepository
             {
                 OrderId = order.Id,
                 ProductId = product.Id,
-                Price = product.Price,
+                Price = product.Price * quantity,
                 Count = quantity
             });
         }
@@ -93,6 +97,25 @@ public class OrderRepository : IOrderRepository
         else
             orderDetail.Count -= 1;
 
+        await _context.SaveChangesAsync();
+
+        return Results.Ok();
+    }
+
+    public async Task<IResult> FinalizePurches(string email, long orderId)
+    {
+        var user = await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
+        var order = await _context.Orders.Include(x => x.OrderDatail)
+            .SingleOrDefaultAsync(x => x.Id == orderId && x.UserId == user.Id);
+
+        if (order == null || order.IsFinaly)
+            throw new ExceptionHandler("متاسفانه مشکلی در دریافت سبد خرید رغ داده است مجددا تلاش قرمایید.");
+
+        if (user.Wallet < (double) order.OrderDatail.Sum(x => x.Price))
+            throw new ExceptionHandler("موجودی کیف پول کافی نمیباشد.");
+
+        user.Wallet -= (double) order.OrderDatail.Sum(x => x.Price);
+        order.IsFinaly = true;
         await _context.SaveChangesAsync();
 
         return Results.Ok();

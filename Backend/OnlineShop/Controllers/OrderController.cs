@@ -41,4 +41,13 @@ public class OrderController : Controller
         var token = Request.Headers.Authorization;
         return await OrderServices.RemoveProductFromOrderList(token, removeProductFromOrderListModel.OrderDetailId);
     }
+
+    [HttpPost]
+    [Route("FinalizePurchase")]
+    public async Task<IResult> FinalizePurches(
+        [FromBody] FinalizePurchesModel finalizePurchesModel)
+    {
+        var token = Request.Headers.Authorization;
+        return await OrderServices.FinalizePurches(token, finalizePurchesModel.OrderId);
+    }
 }

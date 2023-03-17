@@ -62,4 +62,10 @@ public class OrderServices
         var userEmail = Helper.GetUserEmailViaToken(token);
         return await _orderRepository.RemoveProductFromOrderList(userEmail, orderDeailId);
     }
+
+    public async Task<IResult> FinalizePurches(string token, long orderId)
+    {
+        var userEmail = Helper.GetUserEmailViaToken(token);
+        return await _orderRepository.FinalizePurches(userEmail, orderId);
+    }
 }
