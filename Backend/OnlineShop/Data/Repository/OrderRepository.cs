@@ -24,7 +24,7 @@ public class OrderRepository : IOrderRepository
 
     public async Task<IResult> AddProductToOrderList(string email, long productId, int quantity)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+        var user = await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
 
         var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == productId);
         if (product == null)
@@ -71,6 +71,27 @@ public class OrderRepository : IOrderRepository
                 Count = quantity
             });
         }
+
+        await _context.SaveChangesAsync();
+
+        return Results.Ok();
+    }
+
+    public async Task<IResult> RemoveProductFromOrderList(string email, long orderDetailId)
+    {
+        var user = await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
+        var order = await _context.Orders.Include(x => x.OrderDatail)
+            .SingleOrDefaultAsync(x => !x.IsFinaly && x.UserId == user.Id);
+
+        var orderDetail = order.OrderDatail.SingleOrDefault(x => x.Id == orderDetailId);
+
+        if (orderDetail == null)
+            throw new ExceptionHandler("این محصول در سبد خرید شما وجود ندارد");
+
+        if (orderDetail.Count == 1)
+            _context.OrderDetails.Remove(orderDetail);
+        else
+            orderDetail.Count -= 1;
 
         await _context.SaveChangesAsync();
 

@@ -32,4 +32,13 @@ public class OrderController : Controller
         return await OrderServices.AddProductToOrderList(token, addProductToOrderListModel.ProductId,
             addProductToOrderListModel.Quantity);
     }
+
+    [HttpPost]
+    [Route("RemoveProduct")]
+    public async Task<IResult> RemoveProductFromOrderList(
+        [FromBody] RemoveProductFromOrderListModel removeProductFromOrderListModel)
+    {
+        var token = Request.Headers.Authorization;
+        return await OrderServices.RemoveProductFromOrderList(token, removeProductFromOrderListModel.OrderDetailId);
+    }
 }

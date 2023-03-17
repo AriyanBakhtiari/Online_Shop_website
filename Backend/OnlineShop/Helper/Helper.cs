@@ -555,6 +555,6 @@ public static class Helper
             .GetMember(enumValue.ToString())
             .First()
             .GetCustomAttribute<DisplayAttribute>()
-            .GetName();
+            ?.GetName();
     }
 }

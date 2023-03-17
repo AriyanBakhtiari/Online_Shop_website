@@ -33,6 +33,7 @@ public class OrderServices
         {
             orderListModel.OrderDatail.Add(new OrderDetailModel
             {
+                Id = item.Id,
                 Count = item.Count,
                 Price = item.Price,
                 ProductDetail = new ProductCartViewModel
@@ -54,5 +55,11 @@ public class OrderServices
     {
         var userEmail = Helper.GetUserEmailViaToken(token);
         return await _orderRepository.AddProductToOrderList(userEmail, productId, quantity);
+    }
+
+    public async Task<IResult> RemoveProductFromOrderList(string token, long orderDeailId)
+    {
+        var userEmail = Helper.GetUserEmailViaToken(token);
+        return await _orderRepository.RemoveProductFromOrderList(userEmail, orderDeailId);
     }
 }

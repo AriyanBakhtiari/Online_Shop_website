@@ -11,6 +11,7 @@ public class OrderListModel
 
 public class OrderDetailModel
 {
+    public long Id { get; set; }
     public decimal Price { get; set; }
     public int Count { get; set; }
     public ProductCartViewModel ProductDetail { get; set; }

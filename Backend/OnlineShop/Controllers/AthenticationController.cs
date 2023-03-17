@@ -12,7 +12,7 @@ public class AthenticationController : Controller
         AthenticationServices = athenticationServices;
     }
 
-    private AthenticationServices AthenticationServices { get; set; }
+    private AthenticationServices AthenticationServices { get; }
 
     [HttpPost]
     [AllowAnonymous]
