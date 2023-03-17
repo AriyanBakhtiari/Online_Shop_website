@@ -8,7 +8,8 @@ public class Order
     public long Id { get; set; }
     public long UserId { get; set; }
     public bool IsFinaly { get; set; }
-    public DateTime CreateDate { get; set; }
+    public int TotalPrice { get; set; }
+    public DateTime? FinalizeDate { get; set; }
 
     public User User { get; set; }
     public List<OrderDetail> OrderDatail { get; set; }

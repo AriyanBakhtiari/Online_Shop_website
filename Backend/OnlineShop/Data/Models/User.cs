@@ -24,7 +24,7 @@ public class User
 
     [DataType("Varchar(50)")] public string Password { get; set; }
 
-    public double Wallet { get; set; }
+    public int Wallet { get; set; }
     public bool IsAdmin { get; set; }
     public DateTime RegisterDate { get; set; }
     public string? NationalId { get; set; }

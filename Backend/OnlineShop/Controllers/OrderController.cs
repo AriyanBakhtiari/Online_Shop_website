@@ -45,9 +45,17 @@ public class OrderController : Controller
     [HttpPost]
     [Route("FinalizePurchase")]
     public async Task<IResult> FinalizePurches(
-        [FromBody] FinalizePurchesModel finalizePurchesModel)
+        [FromBody] FinalizePurchaseModel finalizePurchaseModel)
     {
         var token = Request.Headers.Authorization;
-        return await OrderServices.FinalizePurches(token, finalizePurchesModel.OrderId);
+        return await OrderServices.FinalizePurchase(token, finalizePurchaseModel.OrderId);
+    }
+
+    [HttpGet]
+    [Route("OrderHistory")]
+    public async Task<OrderHistoryViewModel> GetOrderHistory()
+    {
+        var token = Request.Headers.Authorization;
+        return await OrderServices.GetOrderHistory(token);
     }
 }

@@ -1,6 +1,6 @@
 namespace OnlineShop.ViewModel;
 
-public class FinalizePurchesModel
+public class FinalizePurchaseModel
 {
     public long OrderId { get; set; }
 }

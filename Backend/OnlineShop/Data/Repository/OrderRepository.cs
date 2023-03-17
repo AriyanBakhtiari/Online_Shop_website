@@ -1,5 +1,4 @@
-﻿using System.Xml;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using OnlineShop.Data.Models;
 using OnlineShop.Data.Repository.Interface;
 
@@ -35,18 +34,21 @@ public class OrderRepository : IOrderRepository
         if (product.QuantityInStock < quantity)
             throw new ExceptionHandler("محصول به تعداد وارد شده موجود نمیباشد");
 
-        var order = await _context.Orders.FirstOrDefaultAsync(x => !x.IsFinaly && x.User.Email == email);
+        var order = await _context.Orders.Include(x => x.OrderDatail)
+            .FirstOrDefaultAsync(x => !x.IsFinaly && x.User.Email == email);
         if (order != null)
         {
             var orderDetail =
                 await _context.OrderDetails.FirstOrDefaultAsync(x =>
                     x.OrderId == order.Id && x.ProductId == product.Id);
+
             if (orderDetail != null)
             {
                 orderDetail.Count += quantity;
                 orderDetail.Price += quantity * product.Price;
             }
             else
+            {
                 await _context.OrderDetails.AddAsync(new OrderDetail
                 {
                     OrderId = order.Id,
@@ -54,12 +56,12 @@ public class OrderRepository : IOrderRepository
                     Price = product.Price * quantity,
                     Count = quantity
                 });
+            }
         }
         else
         {
             order = new Order
             {
-                CreateDate = DateTime.Now,
                 IsFinaly = false,
                 UserId = user.Id
             };
@@ -76,6 +78,7 @@ public class OrderRepository : IOrderRepository
             });
         }
 
+        order.TotalPrice = order.OrderDatail.Sum(x => x.Price);
         await _context.SaveChangesAsync();
 
         return Results.Ok();
@@ -85,6 +88,7 @@ public class OrderRepository : IOrderRepository
     {
         var user = await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
         var order = await _context.Orders.Include(x => x.OrderDatail)
+            .ThenInclude(x => x.Product)
             .SingleOrDefaultAsync(x => !x.IsFinaly && x.UserId == user.Id);
 
         var orderDetail = order.OrderDatail.SingleOrDefault(x => x.Id == orderDetailId);
@@ -93,16 +97,22 @@ public class OrderRepository : IOrderRepository
             throw new ExceptionHandler("این محصول در سبد خرید شما وجود ندارد");
 
         if (orderDetail.Count == 1)
+        {
             _context.OrderDetails.Remove(orderDetail);
+        }
         else
+        {
             orderDetail.Count -= 1;
+            orderDetail.Price = orderDetail.Product.Price * orderDetail.Count;
+        }
 
+        order.TotalPrice = order.OrderDatail.Sum(x => x.Price);
         await _context.SaveChangesAsync();
 
         return Results.Ok();
     }
 
-    public async Task<IResult> FinalizePurches(string email, long orderId)
+    public async Task<IResult> FinalizePurchase(string email, long orderId)
     {
         var user = await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
         var order = await _context.Orders.Include(x => x.OrderDatail)
@@ -114,10 +124,22 @@ public class OrderRepository : IOrderRepository
         if (user.Wallet < (double) order.OrderDatail.Sum(x => x.Price))
             throw new ExceptionHandler("موجودی کیف پول کافی نمیباشد.");
 
-        user.Wallet -= (double) order.OrderDatail.Sum(x => x.Price);
         order.IsFinaly = true;
+        order.FinalizeDate = DateTime.Now;
+        order.TotalPrice = order.OrderDatail.Sum(x => x.Price);
+        user.Wallet -= order.TotalPrice;
+
         await _context.SaveChangesAsync();
 
         return Results.Ok();
+    }
+
+    public async Task<List<Order>> GetOrderHistory(string email)
+    {
+        var user = await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
+        var orderList = await _context.Orders.Include(x => x.OrderDatail).ThenInclude(x => x.Product)
+            .Where(x => x.UserId == user.Id && x.IsFinaly)
+            .ToListAsync();
+        return orderList;
     }
 }
