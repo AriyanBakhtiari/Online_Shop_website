@@ -24,8 +24,8 @@ public class OrderServices
         var orderListModel = new OrderListModel
         {
             Id = orderList.Id,
-            IsFinaly = orderList.IsFinaly,
             TotalPrice = orderList.TotalPrice.ToString().ToThousandSepratedPersianNumber(),
+            ProductCount = orderList.OrderDatail.Count,
             OrderDatail = new List<OrderDetailModel>()
         };
 
