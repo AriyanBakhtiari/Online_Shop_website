@@ -1,7 +1,8 @@
 import { getRequest, postRequest } from "./apiCall.js";
 
 window.onload = partiaViewManger()
-setTimeout(getUserInfo, 5 * 100);
+setTimeout(getUserInfo, 1 * 100);
+setTimeout(getOrderCount, 1 * 100);
 
 async function partiaViewManger() {
     var includes = document.querySelectorAll('[data-include]')
@@ -13,6 +14,7 @@ async function partiaViewManger() {
         }
     )
 }
+
 async function getUserInfo() {
     const res = await getRequest('User');
     analyseUserInfo(res);
@@ -32,6 +34,20 @@ async function analyseUserInfo(res) {
     }
     else {
         localStorage.removeItem("Token");
+    }
+}
+
+async function getOrderCount() {
+    const res = await getRequest("Order");
+    analyseOrderCount(res);
+}
+function analyseOrderCount(res) {
+    const orderIcon = document.getElementById("order-count-badge");
+    if (res.status == 200) {
+        orderIcon.innerText = res.data.productCount;
+    }
+    else {
+        orderIcon.innerText = 0;
     }
 }
 
