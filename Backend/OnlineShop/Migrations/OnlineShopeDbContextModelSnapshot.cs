@@ -355,7 +355,7 @@ namespace OnlineShop.Migrations
             modelBuilder.Entity("OnlineShop.Data.Models.OrderDetail", b =>
                 {
                     b.HasOne("OnlineShop.Data.Models.Order", "Order")
-                        .WithMany("OrderDatail")
+                        .WithMany("OrderDetail")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -384,7 +384,7 @@ namespace OnlineShop.Migrations
 
             modelBuilder.Entity("OnlineShop.Data.Models.Order", b =>
                 {
-                    b.Navigation("OrderDatail");
+                    b.Navigation("OrderDetail");
                 });
 
             modelBuilder.Entity("OnlineShop.Data.Models.User", b =>

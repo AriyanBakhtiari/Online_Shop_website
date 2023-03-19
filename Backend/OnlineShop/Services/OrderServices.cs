@@ -26,15 +26,15 @@ public class OrderServices
             Id = orderList.Id,
             TotalPrice = orderList.TotalPrice.ToString().ToThousandSepratedPersianNumber(),
             ProductCount = orderList.OrderDatail.Count,
-            OrderDatail = new List<OrderDetailModel>()
+            OrderDetail = new List<OrderDetailModel>()
         };
 
         foreach (var item in orderList.OrderDatail)
-            orderListModel.OrderDatail.Add(new OrderDetailModel
+            orderListModel.OrderDetail.Add(new OrderDetailModel
             {
                 Id = item.Id,
-                Count = item.Count,
-                Price = item.Price,
+                Count = item.Count.ToString().ToPersianNumber(),
+                Price = item.Price.ToString().ToThousandSepratedPersianNumber(),
                 ProductDetail = new ProductCartViewModel
                 {
                     Name = item.Product.Name,

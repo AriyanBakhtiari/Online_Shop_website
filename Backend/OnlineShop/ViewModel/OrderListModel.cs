@@ -8,13 +8,13 @@ public class OrderListModel
     public int ProductCount { get; set; }
     
 
-    public List<OrderDetailModel> OrderDatail { get; set; }
+    public List<OrderDetailModel> OrderDetail { get; set; }
 }
 
 public class OrderDetailModel
 {
     public long Id { get; set; }
-    public decimal Price { get; set; }
-    public int Count { get; set; }
+    public string Price { get; set; }
+    public string Count { get; set; }
     public ProductCartViewModel ProductDetail { get; set; }
 }
