@@ -103,7 +103,35 @@ async function analyseUserOrderList(res) {
     }
 }
 
+document.getElementById("edit-user-form").addEventListener("submit", function () {
+    event.preventDefault();
+    editUserInfoPostRequst(this.elements);
+});
 
+async function editUserInfoPostRequst(formElements) {
+    if (formElements.inputBirthdateYear.value == "" || formElements.inputBirthdateMonth.value == "" || formElements.inputBirthdateDay.value == "") {
+        var birthDate = "";
+    } else {
+        var birthDate = `${formElements.inputBirthdateYear.value}/${formElements.inputBirthdateMonth.value}/${formElements.inputBirthdateDay.value}`
+    }
+    const res = await postRequest("User", {
+        firstName: formElements.inputName.value,
+        lastName: formElements.inputFamily.value,
+        nationalId: formElements.inputNationalID.value,
+        birthDate: birthDate,
+        address: formElements.InputAddress.value,
+        gender: formElements.inputSex.selectedIndex,
+        zapCode: formElements.inputZipCode.value,
+        mobileNumber: formElements.InputMobileNumber.value
+    })
+    if (res.status == 200) {
+        alert("درخواست با موفقیت انجام شد.");
+        location.reload();
+    }
+    else {
+        alert(res.data.errorMessage);
+    }
+}
 
 const sideButtonElement = document.querySelectorAll(".side-button");
 sideButtonElement.forEach(button => {

@@ -54,7 +54,7 @@ public class UserRepository : IUserRepository
             ? user.FirstName
             : userModel.FirstName.ToSafePersianString();
         user.Address = string.IsNullOrEmpty(userModel.Address) ? user.Address : userModel.Address.ToSafePersianString();
-        user.BirthDate = DateTime.TryParse(userModel.BirthDate, out var date) ? date : user.BirthDate;
+        user.BirthDate = string.IsNullOrEmpty(userModel.BirthDate) ?  user.BirthDate : Helper.ShamsiYYYYMMDDDateTimeToGregorianDateTime(userModel.BirthDate); 
         user.MobileNumber = string.IsNullOrEmpty(userModel.MobileNumber) ? user.MobileNumber : userModel.MobileNumber;
         user.Gender = userModel.Gender == GenderEnum.Unkhown ? user.Gender : userModel.Gender;
         user.LastName = string.IsNullOrEmpty(userModel.LastName)
