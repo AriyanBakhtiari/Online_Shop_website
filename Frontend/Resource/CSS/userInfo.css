@@ -176,6 +176,10 @@
 .card-img-order-history {
   width: 200px;
   height: 200spx;
+  display: flex;
+  align-items: center !important;
+  justify-content: center;
+  margin: auto;
 }
 
 .edit-user-form-input {
