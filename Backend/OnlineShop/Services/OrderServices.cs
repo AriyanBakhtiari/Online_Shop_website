@@ -69,27 +69,27 @@ public class OrderServices
     {
         var userEmail = Helper.GetUserEmailViaToken(token);
         var orderList = await _orderRepository.GetOrderHistory(userEmail);
-
+        var sortedOrderList = orderList.OrderByDescending(x => x.Id).ToList();
         var orderHistory = new OrderHistoryViewModel
         {
-            TotalOrderCount = orderList.Count,
-            TotalPayment = orderList.Sum(x => x.TotalPrice).ToString().ToThousandSepratedPersianNumber(),
-            OrderList = new OrderViewModel[orderList.Count]
+            TotalOrderCount = sortedOrderList.Count,
+            TotalPayment = sortedOrderList.Sum(x => x.TotalPrice).ToString().ToThousandSepratedPersianNumber(),
+            OrderList = new OrderViewModel[sortedOrderList.Count]
         };
 
-        for (var i = 0; i < orderList.Count; i++)
+        for (var i = 0; i < sortedOrderList.Count; i++)
         {
             orderHistory.OrderList[i] = new OrderViewModel
             {
-                Id = orderList[i].Id,
-                FinalizeDate = Helper.ToPersianDateTime(orderList[i].FinalizeDate),
-                TotalPrice = orderList[i].TotalPrice.ToString().ToThousandSepratedPersianNumber(),
-                OrderDetailList = new OrderDetailViewModel[orderList[i].OrderDatail.Count]
+                Id = sortedOrderList[i].Id,
+                FinalizeDate = Helper.ToPersianDateTime(sortedOrderList[i].FinalizeDate),
+                TotalPrice = sortedOrderList[i].TotalPrice.ToString().ToThousandSepratedPersianNumber(),
+                OrderDetailList = new OrderDetailViewModel[sortedOrderList[i].OrderDatail.Count]
             };
 
-            for (var j = 0; j < orderList[i].OrderDatail.Count; j++)
+            for (var j = 0; j < sortedOrderList[i].OrderDatail.Count; j++)
             {
-                var orderdetail = orderList[i].OrderDatail[j];
+                var orderdetail = sortedOrderList[i].OrderDatail[j];
                 orderHistory.OrderList[i].OrderDetailList[j] = new OrderDetailViewModel
                 {
                     Price = orderdetail.Price.ToString().ToThousandSepratedPersianNumber(),
