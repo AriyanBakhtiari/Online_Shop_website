@@ -53,6 +53,12 @@ builder.Services.AddCors(options =>
         });
 });
 
+builder.Services.AddHttpClient("CoreClient",x=>
+{
+    x.BaseAddress = new System.Uri("http://core2.inquiry.ayantech.ir/WebServices/Core.svc/");
+    x.Timeout = TimeSpan.FromSeconds(60);
+});
+
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();

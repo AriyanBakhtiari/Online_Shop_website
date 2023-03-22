@@ -33,4 +33,18 @@ public class MainController : Controller
     {
         return await MainServices.GetProductsDetail(productId);
     }
+
+    [HttpGet]
+    [Route("/CurrencyInquiry")]
+    public async Task<CurrencyInquieyViewModel[]> CurrencyInquiry()
+    {
+        return await MainServices.CurrencyInquiry();
+    }
+
+    [HttpGet]
+    [Route("/CryptoCurrencyInquiry")]
+    public async Task<CryptoCurrencyViewModel[]> CryptoCurrencyInquiey()
+    {
+        return await MainServices.CryptoCurrencyInquiey();
+    }
 }
