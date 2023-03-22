@@ -1,4 +1,4 @@
-import { getRequest } from "./apiCall.js";
+import { getRequest, postRequest } from "./apiCall.js";
 
 setTimeout(getProductDetail, 1);
 async function getProductDetail() {
@@ -6,7 +6,14 @@ async function getProductDetail() {
     const myParam = urlParams.get('id');
 
     const res = await getRequest("Products/Id/" + myParam);
-    analyzeProductDetail(res);
+    await analyzeProductDetail(res);
+
+    const form = document.getElementById("add-product-form");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        addProduct(this.elements);
+    });
 }
 async function analyzeProductDetail(res) {
     try {
@@ -39,5 +46,23 @@ async function analyzeProductDetail(res) {
         let icon = document.createElement("i");
         icon.classList = "fa fa-exclamation-triangle fa-6x error-icon middle";
         document.getElementById("product-detail-body").appendChild(icon);
+    }
+}
+
+async function addProduct(element) {
+    const urlParams = new URLSearchParams(window.location.search)
+    const myParam = urlParams.get('id');
+    const res = await postRequest("Order/AddProduct", {
+        productId: myParam,
+        quantity: element.quantity.value
+    })
+    analyseAddProduct(res);
+}
+function analyseAddProduct(res) {
+    if (res.status == 200) {
+        location.reload();
+    }
+    else {
+        alert(res.data.errorMessage);
     }
 }
