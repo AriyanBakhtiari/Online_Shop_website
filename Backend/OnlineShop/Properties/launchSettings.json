@@ -11,6 +11,7 @@
   "profiles": {
     "http": {
       "commandName": "Project",
+      "launchBrowser": false,
       "launchUrl": "swagger",
       "applicationUrl": "http://localhost:44373",
       "environmentVariables": {

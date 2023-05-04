@@ -11,17 +11,20 @@ public class MainServices
     private readonly IConfiguration _configuration;
     private readonly IHttpClientFactory _httpClient;
     private readonly IMapper _mapper;
+    private readonly ILogger<MainServices> _logger;
 
-    public MainServices(IProductRepository productRepository, IHttpClientFactory httpClient,IMapper mapper,IConfiguration configuration)
+    public MainServices(IProductRepository productRepository, IHttpClientFactory httpClient,IMapper mapper,IConfiguration configuration, ILogger<MainServices> logger)
     {
         _productRepository = productRepository;
         _configuration = configuration;
         _httpClient = httpClient;
         _mapper = mapper;
+        _logger = logger;
     }
 
     public async Task<List<ProductCartViewModel>> GetProductsList()
     {
+        _logger.LogInformation("##########################################################################################");
         // throw new ExceptionHandler("محصولی یافت نشد");
         var product = await _productRepository.GetProductsList();
         if (product == null || product.Count == 0) throw new ExceptionHandler("محصولی یافت نشد");

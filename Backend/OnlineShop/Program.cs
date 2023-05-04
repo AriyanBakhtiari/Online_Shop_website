@@ -9,6 +9,7 @@ using OnlineShop.Data.Repository;
 using OnlineShop.Data.Repository.Interface;
 using OnlineShop.Middleware;
 using OnlineShop.Services;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -75,6 +76,11 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 
 ////serilog
+// Use Serilog
+builder.Host.UseSerilog((hostContext, services, configuration) => {
+    configuration.ReadFrom.Configuration(hostContext.Configuration);
+});
+
 //builder.Host.UseSerilog((webHostBuilderContext, loggerConfiguration) =>
 //{
 //    loggerConfiguration.MinimumLevel.Debug();
