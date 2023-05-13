@@ -8,14 +8,17 @@ namespace OnlineShop.Data.Repository;
 public class ProductRepository : IProductRepository
 {
     private readonly OnlineShopeDbContext _context;
+    private readonly ILogger<ProductRepository> _logger;
 
-    public ProductRepository(OnlineShopeDbContext context)
+    public ProductRepository(OnlineShopeDbContext context, ILogger<ProductRepository> logger)
     {
         _context = context;
+        _logger = logger;
     }
 
     public Task<List<ProductCartViewModel>> GetProductsList()
     {
+        _logger.LogInformation("#######################################################");
         return _context.Products.Select(x => new ProductCartViewModel
                 {Name = x.Name, Id = x.Id, ImagePath = x.ImagePath, Price = x.Price.ToString().ToThousandSepratedInt()})
             .ToListAsync();
